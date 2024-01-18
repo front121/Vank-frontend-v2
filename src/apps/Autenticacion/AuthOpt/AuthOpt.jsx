@@ -72,8 +72,8 @@ const AuthOpt = () => {
 
   const handleClick = (index) => {
     inputRefs.current[index].setSelectionRange(1, 1);
-    // const newFieldValidity = new Array(length).fill(true);
-    // setFieldValidity(newFieldValidity);
+    const newFieldValidity = new Array(length).fill(true);
+    setFieldValidity(newFieldValidity);
     // optional
     if (index > 0 && !otp[index - 1]) {
       inputRefs.current[otp.indexOf("")].focus();
@@ -127,6 +127,8 @@ const AuthOpt = () => {
     // Convertir a cadena y almacenar en el estado
     setSecurityCode(randomCode.toString());
   };
+
+  
 
   return (
     <div className="min-h-screen py-10 flex justify-center items-center dark:bg-[#14181F]">

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Input from "../input/Input";
+import React from "react";
+import Input from "../Input/Input";
 import { useTranslation } from "react-i18next";
 import { registrationValidationSchema } from "../Auth";
 
