@@ -9,10 +9,10 @@ const length = 6;
 const AuthOpt = () => {
   const { email: encryptedEmail } = useParams();
 
-  const decryptedEmail = CryptoJS.AES.decrypt(
-    encryptedEmail,
-    "secret_key"
-  ).toString(CryptoJS.enc.Utf8);
+  // const decryptedEmail = CryptoJS.AES.decrypt(
+  //   encryptedEmail,
+  //   "secret_key"
+  // ).toString(CryptoJS.enc.Utf8);
 
   const [hiddenEmail, setHiddenEmail] = useState("");
   const [optionAuth, setOptionAuth] = useState("");
@@ -39,16 +39,16 @@ const AuthOpt = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d+$/; // Expresión regular para verificar si es un número de teléfono (sólo dígitos)
 
-    if (emailRegex.test(decryptedEmail)) {
-      const hidden = decryptedEmail.replace(/(?<=.{5}).(?=[^@]*@)/g, "*");
+    if (emailRegex.test(encryptedEmail)) {
+      const hidden = encryptedEmail.replace(/(?<=.{5}).(?=[^@]*@)/g, "*");
       setHiddenEmail(hidden);
       setOptionAuth("Email");
-    } else if (phoneRegex.test(decryptedEmail)) {
-      const hidden = decryptedEmail.replace(/(?<=.{3}).(?=.{4})/g, "*");
+    } else if (phoneRegex.test(encryptedEmail)) {
+      const hidden = encryptedEmail.replace(/(?<=.{3}).(?=.{4})/g, "*");
       setHiddenEmail(hidden);
       setOptionAuth("Phone");
     }
-  }, [decryptedEmail]);
+  }, [encryptedEmail]);
 
   const handleChange = (index, e) => {
     const value = e.target.value;

@@ -106,11 +106,11 @@ const Auth = () => {
 
       if (emailRegex.test(value?.email)) {
         console.log("Ingresaste un correo electrónico:", value?.email);
-        const encryptedEmail = CryptoJS.AES.encrypt(value?.email, 'secret_key').toString();
-        navigate(`/AuthOpt/${encryptedEmail}`)
+        // const encryptedEmail = CryptoJS.AES.encrypt(value?.email, 'secret_key').toString();
+        navigate(`/AuthOpt/${value?.email}`)
       } else if (phoneRegex.test(value?.email)) {
-        const encryptedEmail = CryptoJS.AES.encrypt(value?.email, 'secret_key').toString();
-        navigate(`/AuthOpt/${encryptedEmail}`)
+        // const encryptedEmail = CryptoJS.AES.encrypt(value?.email, 'secret_key').toString();
+        navigate(`/AuthOpt/${value?.email}`)
       }
       toast.success("Credenciales correctas!", {
         theme: theme === "dark" ? "dark" : "light",
