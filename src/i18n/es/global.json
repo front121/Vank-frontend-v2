@@ -2,7 +2,7 @@
   "Auth": {
     "login": {
       "emailTeleLabel": "Correo electrónico o teléfono",
-      "passwordLabel": "Contraseña 12",
+      "passwordLabel": "Contraseña",
       "loginButton": "Iniciar sesión",
       "newUserPrompt": "¿Es nuevo en la plataforma? ",
       "createAccount": "Crear una cuenta",
