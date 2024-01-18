@@ -1,0 +1,25 @@
+{
+  "Auth": {
+    "login": {
+      "emailTeleLabel": "Email or Phone Number",
+      "passwordLabel": "Password",
+      "loginButton": "Log In",
+      "newUserPrompt": "Are you new in the plataform? ",
+      "createAccount": "Create an account",
+      "ForgotPassword": "Forgot your password?",
+      "changeLanguage": "Change language to ",
+      "language": "Spanish"
+    },
+    "register": {
+      "fullNameLabel": "FullName",
+      "emailLabel": "Email",
+      "PhoneLabel": "Phone",
+      "passwordLabel": "Password",
+      "registerButton": "Sing up"
+    },
+    "common": {
+      "welcome": "Welcome to Vank! 👋",
+      "joinPlatform": "Join to the best plataform to save and send your money"
+    }
+  }
+}

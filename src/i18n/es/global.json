@@ -1,0 +1,25 @@
+{
+  "Auth": {
+    "login": {
+      "emailTeleLabel": "Correo electrónico o teléfono",
+      "passwordLabel": "Contraseña 12",
+      "loginButton": "Iniciar sesión",
+      "newUserPrompt": "¿Es nuevo en la plataforma? ",
+      "createAccount": "Crear una cuenta",
+      "ForgotPassword": "¿Ha olvidado su contraseña?",
+      "changeLanguage": "Cambiar el idioma a",
+      "language": "Ingles"
+    },
+    "register": {
+      "fullNameLabel": "Nombre completo",
+      "emailLabel": "Correo",
+      "PhoneLabel": "Telefono",
+      "passwordLabel": "Contraseña",
+      "registerButton": "Registrarse"
+    },
+    "common": {
+      "welcome": "¡Bienvenido a Vank! 👋",
+      "joinPlatform": "Únete a la mejor plataforma para ahorrar y enviar tu dinero"
+    }
+  }
+}
