@@ -19,8 +19,8 @@ const AuthOpt = () => {
 
   const [hiddenEmail, setHiddenEmail] = useState("");
   const [optionAuth, setOptionAuth] = useState("");
-  const [options, setOptions] = useState("");
   const [securityCode, setSecurityCode] = useState("");
+  const [userData, setUserData] = useState(null);
 
   const [otp, setOtp] = useState(new Array(length).fill(""));
 
@@ -47,14 +47,29 @@ const AuthOpt = () => {
       const hidden = decryptedEmail.replace(/(?<=.{5}).(?=[^@]*@)/g, "*");
       setHiddenEmail(hidden);
       setOptionAuth("Email");
-      setOptions("Email");
     } else if (phoneRegex.test(decryptedEmail)) {
       const hidden = decryptedEmail.replace(/(?<=.{3}).(?=.{4})/g, "*");
       setHiddenEmail(hidden);
       setOptionAuth("Phone");
-      setOptions("Phone");
     }
+
+    const __data = localStorage.getItem("Auth");
+    const Auth = JSON.parse(__data);
+    setUserData(Auth);
   }, [decryptedEmail]);
+
+  const _replace = (value) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d+$/; // Expresión regular para verificar si es un número de teléfono (sólo dígitos)
+
+    if (emailRegex.test(value)) {
+      return value.replace(/(?<=.{5}).(?=[^@]*@)/g, "*");
+    } else if (phoneRegex.test(value)) {
+      return value.replace(/(?<=.{3}).(?=.{4})/g, "*");
+    }
+
+    return "";
+  };
 
   const handleChange = (index, e) => {
     const value = e.target.value;
@@ -119,7 +134,7 @@ const AuthOpt = () => {
     } catch (error) {
       const newFieldValidity = new Array(length).fill(false);
       setFieldValidity(newFieldValidity);
-      toast.error(error.message, {
+      toast.error("Codigo Incorrecto!", {
         theme: "dark",
         position: "top-left",
       });
@@ -135,17 +150,19 @@ const AuthOpt = () => {
   };
 
   const handleOptionClick = (option) => {
-    if (options === "Phone" && option === "Email") {
-      // Si el userType es 'phone', no permitir seleccionar 'email'
-      return;
-    }
-    if (options === "Email" && option === "Phone") {
-      // Si el userType es 'email', no permitir seleccionar 'phone'
-      return;
-    }
-
+    // if (options === "Phone" && option === "Email") {
+    //   // Si el userType es 'phone', no permitir seleccionar 'email'
+    //   return;
+    // }
+    // if (options === "Email" && option === "Phone") {
+    //   // Si el userType es 'email', no permitir seleccionar 'phone'
+    //   return;
+    // }
     // Permitir seleccionar 'authy' en cualquier caso
     setOptionAuth((prevOption) => (prevOption === option ? null : option));
+    setOtp(new Array(length).fill(""));
+    const newFieldValidity = new Array(length).fill(true);
+    setFieldValidity(newFieldValidity);
   };
 
   return (
@@ -166,7 +183,7 @@ const AuthOpt = () => {
                       : "text-[#868585]"
                   }  cursor-pointer`}
                   onClick={() => handleOptionClick(value.option)}
-                  disabled={optionAuth && optionAuth === value.option}
+                  // disabled={optionAuth && optionAuth === value.option}
                 >
                   {value.name}
                 </button>
@@ -175,7 +192,17 @@ const AuthOpt = () => {
 
             <p className="text-sm leading-4 text-[#D1D1D1] font-bold">
               {t("Auth.Otp.codeSent")}
-              <span className="text-[#F4E522] ml-1">{hiddenEmail}</span>
+              <span className="text-[#F4E522] ml-1">
+                {optionAuth &&
+                  optionAuth === "Email" &&
+                  _replace(userData?.emailSing)}
+                {optionAuth &&
+                  optionAuth === "Phone" &&
+                  _replace(userData?.phoneSing)}
+                {optionAuth &&
+                  optionAuth === "Authy" &&
+                  _replace(userData?.emailSing)}
+              </span>
             </p>
             <p className="text-sm leading-[15.6px] text-[#FFFFFF] font-bold">
               {t("Auth.Otp.digitQuantity")}

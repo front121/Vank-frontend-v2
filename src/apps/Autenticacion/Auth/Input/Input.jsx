@@ -23,13 +23,13 @@ const Input = ({ type, value, handleChange, label, name, isValid, nameError }) =
       />
       <label
         htmlFor={name}
-        className={`absolute left-0 cursor-pointer peer-focus:text-sm peer-focus:-top-3  transition-all  font-semibold 
+        className={`absolute left-0 cursor-pointer peer-focus:text-sm peer-focus:-top-1  transition-all  font-semibold 
         ${
           isValid
             ? "peer-focus:text-[#FFED00] text-[#FFFFFF]"
             : "border-red-500 text-red-500"
         }
-        ${value ? "-top-2 text-[#FFED00] text-sm" : "top-4"}`}
+        ${value ? "-top-1 text-[#FFED00] text-sm" : "top-5"}`}
       >
         {label}
       </label>

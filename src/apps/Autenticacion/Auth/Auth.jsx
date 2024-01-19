@@ -4,7 +4,7 @@ import ModoLight from "../../../assets/ModoLight.svg";
 import ModoDark from "../../../assets/ModoDark.svg";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../../Context/ThemeContext";
-import i18next from "i18next";
+import i18next, { use } from "i18next";
 import * as Yup from "yup";
 import SingIn from "./SingIn/SingIn";
 import Singup from "./Singup/Singup";
@@ -44,6 +44,7 @@ const Auth = () => {
   const [isvisible, setIsvisible] = useState(false);
   const currentLanguage = i18next.language;
   const [rotate, setRotate] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -94,30 +95,69 @@ const Auth = () => {
     }
   };
 
+  const generateCript = (value) => {
+    const encryptedEmail = CryptoJS.AES.encrypt(value, "secret_key").toString();
+    const encodedEmail = encodeURIComponent(encryptedEmail);
+
+    return encodedEmail;
+  };
+
   const onLogin = async (value) => {
     try {
+      setIsLoading(true);
       // Expresión regular para verificar si es un correo electrónico
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
       // Expresión regular para verificar si es un número de teléfono (sólo dígitos)
       const phoneRegex = /^\d+$/;
 
-      if (emailRegex.test(value?.email)) {
-        const encryptedEmail = CryptoJS.AES.encrypt(
-          value?.email,
-          "secret_key"
-        ).toString();
-        const encodedEmail = encodeURIComponent(encryptedEmail)
-        navigate(`/AuthOpt/${encodedEmail}`);
-      } else if (phoneRegex.test(value?.email)) {
-        const encryptedEmail = CryptoJS.AES.encrypt(value?.email, 'secret_key').toString();
-        const encodedEmail = encodeURIComponent(encryptedEmail)
-        navigate(`/AuthOpt/${encodedEmail}`);
+      const dataUser = localStorage.getItem("Auth");
+
+      const users = JSON.parse(dataUser);
+
+      if (!users) {
+        setTimeout(() => {
+          toast.warning("Usuario no encontrado!", {
+            theme: theme === "dark" ? "dark" : "light",
+            position: "top-left",
+          });
+          setIsLoading(false);
+          setFormDataLog({
+            email: "",
+            password: "",
+          });
+          setValid((prevValid) => ({
+            ...prevValid,
+            email: true,
+            password: true,
+          }));
+        }, 1500);
+        return;
       }
-      toast.success("Credenciales correctas!", {
-        theme: theme === "dark" ? "dark" : "light",
-        position: "top-left",
-      });
+
+      if (
+        value?.email === users?.emailSing &&
+        value?.password === users?.passwordSing
+      ) {
+        setTimeout(() => {
+          if (emailRegex.test(value?.email)) {
+            navigate(`/AuthOpt/${generateCript(value?.email)}`);
+          } else if (phoneRegex.test(value?.email)) {
+            navigate(`/AuthOpt/${generateCript(value?.email)}`);
+          }
+          setIsLoading(false);
+          handleVisibleLog();
+          toast.success("Credenciales correcto!", {
+            theme: theme === "dark" ? "dark" : "light",
+            position: "top-left",
+          });
+        }, 1500);
+      } else {
+        toast.error("Credenciales Incorrecto!", {
+          theme: theme === "dark" ? "dark" : "light",
+          position: "top-left",
+        });
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -125,11 +165,17 @@ const Auth = () => {
 
   const onRegister = async (newValue) => {
     try {
-      console.log(newValue);
-      toast.success("Usuario creado correctamente!", {
-        theme: theme === "dark" ? "dark" : "light",
-        position: "top-left",
-      });
+      setIsLoading(true);
+      localStorage.setItem("Auth", JSON.stringify(newValue));
+
+      setTimeout(() => {
+        toast.success("Usuario creado correctamente!", {
+          theme: theme === "dark" ? "dark" : "light",
+          position: "top-left",
+        });
+        setIsLoading(false);
+        handleVisibleLog();
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -186,22 +232,26 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen py-10 flex justify-center items-center dark:bg-[#13171d]">
-      <div className="container mx-auto ">
-        <div className=" flex flex-col lg:flex-row w-11/12 rounded-xl mx-auto shadow-lg overflow-hidden">
-          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center bg-[#191E25]">
+      <div className="container mx-auto">
+        <div className=" flex flex-col lg:flex-row w-11/12 2xl:w-10/12 rounded-[16px] mx-auto shadow- transition-all duration-300">
+          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center bg-[#191E25] transition-all duration-300">
             <div className="flex justify-center items-center w-[70%] sm:h-[112px] 2xl:h-[182px]">
               <img src={Vank} className="w-full h-full object-contain" alt="" />
             </div>
             <p className="text-lg lg:text-xl text-white font-bold mb-3">
               {t("Auth.common.welcome")}
             </p>
-            <p className="text-base lg:text-lg text-white font-bold mb-3">
+            <p className="text-sm md:text-base xl:text-lg text-white font-bold mb-3">
               {t("Auth.common.joinPlatform")}
             </p>
           </div>
 
-          <div className="w-full lg:w-1/2 bg-[#FFED00] py-8 max-2xl:px-3 sm:px-12 md:px-7 xl:px-14 2xl:px-28">
-            <div className="w-full h-full flex flex-col bg-[#191E25] py-7 px-10 rounded-[14px] overflow-y-auto">
+          <div
+            className={`w-full lg:w-1/2 bg-[#FFED00] py-8 max-2xl:px-3 sm:px-12 md:px-7 xl:px-14 ${
+              isvisible ? "2xl:px-16" : "2xl:px-24"
+            } transition-all duration-300`}
+          >
+            <div className="w-full h-full flex flex-col bg-[#191E25] py-7 px-10 rounded-[14px]  transition-all duration-300">
               <div className="flex items-center justify-between">
                 <div className="flex gap-4">
                   <p
@@ -253,6 +303,8 @@ const Auth = () => {
                   formDataLog={formDataLog}
                   setFormDataLog={setFormDataLog}
                   onLogin={onLogin}
+                  isLoading={isLoading}
+                  handleVisibleReg={handleVisibleReg}
                 />
               )}
               {isvisible && (
@@ -266,6 +318,8 @@ const Auth = () => {
                   formDataSing={formDataSing}
                   setFormDataSing={setFormDataSing}
                   onRegister={onRegister}
+                  isLoading={isLoading}
+                  handleVisibleLog={handleVisibleLog}
                 />
               )}
             </div>
