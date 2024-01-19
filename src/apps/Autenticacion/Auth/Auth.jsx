@@ -234,7 +234,7 @@ const Auth = () => {
     <div className="min-h-screen py-10 flex justify-center items-center dark:bg-[#13171d]">
       <div className="container mx-auto">
         <div className=" flex flex-col lg:flex-row w-11/12 2xl:w-10/12 rounded-[16px] mx-auto shadow- transition-all duration-300">
-          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center bg-[#191E25] transition-all duration-300">
+          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center bg-[#191E25] transition-all duration-300 rounded-l-[16px]">
             <div className="flex justify-center items-center w-[70%] sm:h-[112px] 2xl:h-[182px]">
               <img src={Vank} className="w-full h-full object-contain" alt="" />
             </div>
@@ -247,7 +247,7 @@ const Auth = () => {
           </div>
 
           <div
-            className={`w-full lg:w-1/2 bg-[#FFED00] py-8 max-2xl:px-3 sm:px-12 md:px-7 xl:px-14 ${
+            className={`w-full lg:w-1/2 rounded-r-[16px] bg-[#FFED00] py-8 max-2xl:px-3 sm:px-12 md:px-7 xl:px-14 ${
               isvisible ? "2xl:px-16" : "2xl:px-24"
             } transition-all duration-300`}
           >
