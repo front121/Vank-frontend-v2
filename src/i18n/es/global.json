@@ -17,6 +17,18 @@
       "passwordLabel": "Contraseña",
       "registerButton": "Registrarse"
     },
+    "Otp": {
+      "title": "Validación 2FA",
+      "nav": {
+        "email": "Correo electrónico",
+        "Phone": "Teléfono",
+        "Authy": "Authy"
+      },
+      "codeSent": "El código se enviará a",
+      "digitQuantity": "Escriba los 6 dígitos de seguridad",
+      "send": "Enviar código",
+      "OtpButton": "continuar"
+    },
     "common": {
       "welcome": "¡Bienvenido a Vank! 👋",
       "joinPlatform": "Únete a la mejor plataforma para ahorrar y enviar tu dinero"

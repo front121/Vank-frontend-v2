@@ -10,8 +10,7 @@ import SingIn from "./SingIn/SingIn";
 import Singup from "./Singup/Singup";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import CryptoJS from 'crypto-js';
-
+import CryptoJS from "crypto-js";
 
 export const loginValidationSchema = Yup.object({
   email: Yup.string()
@@ -47,7 +46,6 @@ const Auth = () => {
   const [rotate, setRotate] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-
 
   const { theme, toggleDarkMode } = useTheme();
 
@@ -105,12 +103,16 @@ const Auth = () => {
       const phoneRegex = /^\d+$/;
 
       if (emailRegex.test(value?.email)) {
-        console.log("Ingresaste un correo electrónico:", value?.email);
-        // const encryptedEmail = CryptoJS.AES.encrypt(value?.email, 'secret_key').toString();
-        navigate(`/AuthOpt/${value?.email}`)
+        const encryptedEmail = CryptoJS.AES.encrypt(
+          value?.email,
+          "secret_key"
+        ).toString();
+        const encodedEmail = encodeURIComponent(encryptedEmail)
+        navigate(`/AuthOpt/${encodedEmail}`);
       } else if (phoneRegex.test(value?.email)) {
-        // const encryptedEmail = CryptoJS.AES.encrypt(value?.email, 'secret_key').toString();
-        navigate(`/AuthOpt/${value?.email}`)
+        const encryptedEmail = CryptoJS.AES.encrypt(value?.email, 'secret_key').toString();
+        const encodedEmail = encodeURIComponent(encryptedEmail)
+        navigate(`/AuthOpt/${encodedEmail}`);
       }
       toast.success("Credenciales correctas!", {
         theme: theme === "dark" ? "dark" : "light",

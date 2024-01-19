@@ -17,6 +17,18 @@
       "passwordLabel": "Password",
       "registerButton": "Sing up"
     },
+    "Otp": {
+      "title": "2FA validation ",
+      "nav": {
+        "email": "Email",
+        "Phone": "Phone number",
+        "Authy": "Authy"
+      },
+      "codeSent": "The code will be send to",
+      "digitQuantity": "Write the 6 security digits",
+      "send": "Send Code",
+      "OtpButton": "Continue"
+    },
     "common": {
       "welcome": "Welcome to Vank! 👋",
       "joinPlatform": "Join to the best plataform to save and send your money"

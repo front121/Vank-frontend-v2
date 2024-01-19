@@ -3,19 +3,23 @@ import { useParams } from "react-router-dom";
 
 import CryptoJS from "crypto-js";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const length = 6;
 
 const AuthOpt = () => {
   const { email: encryptedEmail } = useParams();
 
-  // const decryptedEmail = CryptoJS.AES.decrypt(
-  //   encryptedEmail,
-  //   "secret_key"
-  // ).toString(CryptoJS.enc.Utf8);
+  const decryptedEmail = CryptoJS.AES.decrypt(
+    encryptedEmail,
+    "secret_key"
+  ).toString(CryptoJS.enc.Utf8);
+
+  const [t, i18n] = useTranslation("global");
 
   const [hiddenEmail, setHiddenEmail] = useState("");
   const [optionAuth, setOptionAuth] = useState("");
+  const [options, setOptions] = useState("");
   const [securityCode, setSecurityCode] = useState("");
 
   const [otp, setOtp] = useState(new Array(length).fill(""));
@@ -27,9 +31,9 @@ const AuthOpt = () => {
   );
 
   const nav = [
-    { id: 1, name: "Email", option: "Email" },
-    { id: 2, name: "Phone number", option: "Phone" },
-    { id: 3, name: "Authy", option: "Authy" },
+    { id: 1, name: t("Auth.Otp.nav.email"), option: "Email" },
+    { id: 2, name: t("Auth.Otp.nav.Phone"), option: "Phone" },
+    { id: 3, name: t("Auth.Otp.nav.Authy"), option: "Authy" },
   ];
 
   useEffect(() => {
@@ -39,16 +43,18 @@ const AuthOpt = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d+$/; // Expresión regular para verificar si es un número de teléfono (sólo dígitos)
 
-    if (emailRegex.test(encryptedEmail)) {
-      const hidden = encryptedEmail.replace(/(?<=.{5}).(?=[^@]*@)/g, "*");
+    if (emailRegex.test(decryptedEmail)) {
+      const hidden = decryptedEmail.replace(/(?<=.{5}).(?=[^@]*@)/g, "*");
       setHiddenEmail(hidden);
       setOptionAuth("Email");
-    } else if (phoneRegex.test(encryptedEmail)) {
-      const hidden = encryptedEmail.replace(/(?<=.{3}).(?=.{4})/g, "*");
+      setOptions("Email");
+    } else if (phoneRegex.test(decryptedEmail)) {
+      const hidden = decryptedEmail.replace(/(?<=.{3}).(?=.{4})/g, "*");
       setHiddenEmail(hidden);
       setOptionAuth("Phone");
+      setOptions("Phone");
     }
-  }, [encryptedEmail]);
+  }, [decryptedEmail]);
 
   const handleChange = (index, e) => {
     const value = e.target.value;
@@ -128,14 +134,26 @@ const AuthOpt = () => {
     setSecurityCode(randomCode.toString());
   };
 
-  
+  const handleOptionClick = (option) => {
+    if (options === "Phone" && option === "Email") {
+      // Si el userType es 'phone', no permitir seleccionar 'email'
+      return;
+    }
+    if (options === "Email" && option === "Phone") {
+      // Si el userType es 'email', no permitir seleccionar 'phone'
+      return;
+    }
+
+    // Permitir seleccionar 'authy' en cualquier caso
+    setOptionAuth((prevOption) => (prevOption === option ? null : option));
+  };
 
   return (
     <div className="min-h-screen py-10 flex justify-center items-center dark:bg-[#14181F]">
       <div className="container mx-auto ">
         <div className="w-11/12 lg:w-[55%] h-[474px] p-8 rounded-xl mx-auto shadow-lg overflow-hidden bg-[#191E25]">
           <h2 className="text-[#FFFFFF] text-lg leading-[22.1px] font-bold">
-            2FA validation
+            {t("Auth.Otp.title")}
           </h2>
           <div className="mt-10 space-y-7 mb-5">
             <div className="flex gap-2">
@@ -144,11 +162,11 @@ const AuthOpt = () => {
                   key={index}
                   className={`text-[#FFFFFF] transition-colors duration-300 ease-in-out text-base font-bold py-2 px-7 rounded-3xl ${
                     optionAuth === value.option
-                      ? "bg-[#6A6868] text-white"
+                      ? "bg-[#6A6868] text-white "
                       : "text-[#868585]"
                   }  cursor-pointer`}
-                  onClick={() => setOptionAuth(value.option)}
-                  disabled={optionAuth && optionAuth !== value.option}
+                  onClick={() => handleOptionClick(value.option)}
+                  disabled={optionAuth && optionAuth === value.option}
                 >
                   {value.name}
                 </button>
@@ -156,11 +174,12 @@ const AuthOpt = () => {
             </div>
 
             <p className="text-sm leading-4 text-[#D1D1D1] font-bold">
-              The code will be send to
+              {t("Auth.Otp.codeSent")}
               <span className="text-[#F4E522] ml-1">{hiddenEmail}</span>
             </p>
             <p className="text-sm leading-[15.6px] text-[#FFFFFF] font-bold">
-              Write the 6 security digits {securityCode}
+              {t("Auth.Otp.digitQuantity")}
+              {/* {securityCode} */}
             </p>
 
             <div className="flex flex-col w-full">
@@ -184,12 +203,14 @@ const AuthOpt = () => {
                   );
                 })}
               </div>
-              <p
-                className="text-right mt-6 text-[#E5D714] text-sm font-bold leading-[15.6px] cursor-pointer"
-                onClick={generateSecurityCode}
-              >
-                Send Code
-              </p>
+              <div className="w-full flex items-center justify-end">
+                <button
+                  className="text-right mt-6 text-[#E5D714] text-sm font-bold leading-[15.6px] cursor-pointer"
+                  onClick={generateSecurityCode}
+                >
+                  {t("Auth.Otp.send")}
+                </button>
+              </div>
             </div>
           </div>
           <div className="w-full flex justify-center items-center">
@@ -197,7 +218,7 @@ const AuthOpt = () => {
               className="group relative bg-[#E5D714] w-[445px] h-[42px] rounded-[60px] text-base font-bold leading-[20.8px] text-[#000000]"
               onClick={onOtpSubmit}
             >
-              Continue
+              {t("Auth.Otp.OtpButton")}
               <div className="absolute inset-0 h-full w-full scale-0 rounded-[60px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/25" />
             </button>
           </div>
