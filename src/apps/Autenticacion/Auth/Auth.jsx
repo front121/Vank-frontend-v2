@@ -1,168 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Vank from "../../../assets/Vank.png";
 import ModoLight from "../../../assets/ModoLight.svg";
 import ModoDark from "../../../assets/ModoDark.svg";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../../Context/ThemeContext";
-import i18next, { use } from "i18next";
-import * as Yup from "yup";
-import SingIn from "./SingIn/SingIn";
+import i18next from "i18next";
 import Singup from "./Singup/Singup";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import CryptoJS from "crypto-js";
-
-export const loginValidationSchema = Yup.object({
-  email: Yup.string()
-    .matches(
-      /^(?:[^\s@]+@[^\s@]+\.[^\s@]+|\d{10})$/,
-      "Invalid email or Invalid phone (10 digits)"
-    )
-    .required("email or phone is required"),
-  password: Yup.string()
-    .min(6, "Min. 6 characters required.")
-    .required("Password is required"),
-});
-
-export const registrationValidationSchema = Yup.object({
-  fullNameSing: Yup.string()
-    .matches(/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s']+$/, "Invalid full name")
-    .required("Full ame is required"),
-  phoneSing: Yup.string()
-    .matches(/^\d{10}$/, "Invalid phone (10 digits)")
-    .required("phone is required"),
-  emailSing: Yup.string()
-    .email("Invalid email address.")
-    .required("email is required"),
-  passwordSing: Yup.string()
-    .min(6, "Min. 6 characters required.")
-    .required("Password is required"),
-});
+import Opt from "./Opt/Opt";
+import SingIn from "./SingIn/SingIn";
 
 const Auth = () => {
   const [t, i18n] = useTranslation("global");
+  const navigate = useNavigate();
   const [isvisible, setIsvisible] = useState(false);
   const currentLanguage = i18next.language;
   const [rotate, setRotate] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
-
+  const [currentView, setCurrentView] = useState(true);
   const { theme, toggleDarkMode } = useTheme();
 
-  // Estado para almacenar los valores de los inputs
-  const [formDataLog, setFormDataLog] = useState({
+  // registro
+  const [email, setEmail] = useState("");
+  //
+
+  // login
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [formDataSing, setFormDataSing] = useState({
-    fullNameSing: "",
-    phoneSing: "",
-    emailSing: "",
-    passwordSing: "",
-  });
-
-  const [isValid, setValid] = useState({
-    email: true,
-    password: true,
-    fullNameSing: true,
-    phoneSing: true,
-    emailSing: true,
-    passwordSing: true,
-  });
-
-  const validateInput = (name, value, type) => {
-    if (value.trim() === "") {
-      // Si el valor está vacío, se considera válido
-      setErrors({ ...errors, [name]: "" });
-      return true;
+  useEffect(() => {
+    if (currentView) {
+      setEmail("");
     }
+  }, [currentView]);
 
-    try {
-      if (type === "sing") {
-        registrationValidationSchema.validateSyncAt(name, { [name]: value });
-        setErrors({ ...errors, [name]: "" });
-        return true;
-      } else {
-        loginValidationSchema.validateSyncAt(name, { [name]: value });
-        setErrors({ ...errors, [name]: "" });
-        return true;
-      }
-    } catch (error) {
-      setErrors({ ...errors, [name]: error.message });
-      return false;
-    }
-  };
-
-  const generateCript = (value) => {
-    const encryptedEmail = CryptoJS.AES.encrypt(value, "secret_key").toString();
-    const encodedEmail = encodeURIComponent(encryptedEmail);
-
-    return encodedEmail;
-  };
-
-  const onLogin = async (value) => {
+  // handle login
+  const onLogin = async () => {
     try {
       setIsLoading(true);
-      // Expresión regular para verificar si es un correo electrónico
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      // Expresión regular para verificar si es un número de teléfono (sólo dígitos)
-      const phoneRegex = /^\d+$/;
-
-      const dataUser = localStorage.getItem("Auth");
-
-      const users = JSON.parse(dataUser);
-
-      if (!users) {
-        setTimeout(() => {
-          toast.warning("Usuario no encontrado!", {
-            theme: theme === "dark" ? "dark" : "light",
-            position: "top-left",
-          });
-          setIsLoading(false);
-          setFormDataLog({
-            email: "",
-            password: "",
-          });
-          setValid((prevValid) => ({
-            ...prevValid,
-            email: true,
-            password: true,
-          }));
-        }, 1500);
-        return;
-      }
-
-      if (
-        value?.email === users?.emailSing &&
-        value?.password === users?.passwordSing
-      ) {
-        setTimeout(() => {
-          if (emailRegex.test(value?.email)) {
-            navigate(`/AuthOpt/${generateCript(value?.email)}`);
-          } else if (phoneRegex.test(value?.email)) {
-            navigate(`/AuthOpt/${generateCript(value?.email)}`);
-          }
-          setIsLoading(false);
-          handleVisibleLog();
-          toast.success("Credenciales correcto!", {
-            theme: theme === "dark" ? "dark" : "light",
-            position: "top-left",
-          });
-        }, 1500);
-      } else {
-        toast.error("Credenciales Incorrecto!", {
+      // setTimeout(() => {
+      //   toast.warning("Usuario no encontrado!", {
+      //     theme: theme === "dark" ? "dark" : "light",
+      //     position: "top-left",
+      //   });
+      //   setIsLoading(false);
+      //   console.log(formData);
+      // }, 1500);
+      setTimeout(() => {
+        setIsLoading(false);
+        handleVisibleLog();
+        toast.success("Credenciales correcto!", {
           theme: theme === "dark" ? "dark" : "light",
           position: "top-left",
         });
-        setIsLoading(false);
-      }
+      }, 1500);
     } catch (error) {
       console.log(error);
     }
   };
 
+  // handle registro
   const onRegister = async (newValue) => {
     try {
       setIsLoading(true);
@@ -174,43 +74,26 @@ const Auth = () => {
           position: "top-left",
         });
         setIsLoading(false);
-        handleVisibleLog();
+        // handleVisibleLog();
       }, 2000);
     } catch (error) {
       console.log(error);
     }
   };
 
+  // visible el login
   const handleVisibleLog = () => {
     setIsvisible(false);
-    setFormDataSing({
-      fullNameSing: "",
-      phoneSing: "",
-      emailSing: "",
-      passwordSing: "",
-    });
-    setValid((prevValid) => ({
-      ...prevValid,
-      fullNameSing: true,
-      phoneSing: true,
-      emailSing: true,
-      passwordSing: true,
-    }));
+    setFormData({ email: "", password: "" });
   };
 
+  // visible el registro
   const handleVisibleReg = () => {
     setIsvisible(true);
-    setFormDataLog({
-      email: "",
-      password: "",
-    });
-    setValid((prevValid) => ({
-      ...prevValid,
-      email: true,
-      password: true,
-    }));
+    setEmail("");
   };
 
+  // cambio de modo
   const toggle = () => {
     setRotate(true);
 
@@ -220,6 +103,7 @@ const Auth = () => {
     }, 200); // Ajusta la duración de la transición según tus necesidades
   };
 
+  // cambio de idioma
   const toogleLenguaje = () => {
     if (currentLanguage === "es") {
       i18n.changeLanguage("en");
@@ -230,12 +114,20 @@ const Auth = () => {
     }
   };
 
+  const handleNext = () => {
+    setCurrentView(!currentView);
+  };
+
   return (
-    <div className="min-h-screen py-10 flex justify-center items-center dark:bg-[#13171d]">
-      <div className="container mx-auto">
-        <div className=" flex flex-col lg:flex-row w-11/12 2xl:w-10/12 rounded-[16px] mx-auto shadow- transition-all duration-300">
-          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center bg-[#191E25] transition-all duration-300 rounded-l-[16px]">
-            <div className="flex justify-center items-center w-[70%] sm:h-[112px] 2xl:h-[182px]">
+    <div className="relative h-screen flex justify-center items-center overflow-hidden dark:bg-[#13171d]">
+      <div
+        className={`h-full w-full flex justify-center items-center transition-transform duration-300 dark:bg-[#13171d] visible ${
+          currentView ? "translate-x-0" : "-translate-x-full invisible"
+        }`}
+      >
+        <div className=" flex w-screen h-screen transition-all duration-300">
+          <div className="w-[50%] flex flex-col items-center justify-center bg-[#191E25] transition-all duration-300 ">
+            <div className="flex justify-center items-center w-[100%] sm:h-[112px] 2xl:h-[30%]">
               <img src={Vank} className="w-full h-full object-contain" alt="" />
             </div>
             <p className="text-lg lg:text-xl text-white font-bold mb-3">
@@ -247,15 +139,13 @@ const Auth = () => {
           </div>
 
           <div
-            className={`w-full lg:w-1/2 rounded-r-[16px] bg-[#FFED00] py-8 max-2xl:px-3 sm:px-12 md:px-7 xl:px-14 ${
-              isvisible ? "2xl:px-16" : "2xl:px-24"
-            } transition-all duration-300`}
+            className={`w-[50%] flex justify-center items-center  bg-[#FFED00] transition-all duration-300`}
           >
-            <div className="w-full h-full flex flex-col bg-[#191E25] py-7 px-10 rounded-[14px]  transition-all duration-300">
+            <div className="w-[75%] h-[88%] flex flex-col bg-[#191E25] px-12 py-9 rounded-[32px]  transition-all duration-300">
               <div className="flex items-center justify-between">
-                <div className="flex gap-4">
+                <div className="flex gap-2">
                   <p
-                    className={`transition-colors duration-300 ease-in-out text-base font-bold py-2 px-7 ${
+                    className={`transition-colors duration-300 ease-in-out text-base font-bold font-pp-object-sans flex justify-center items-center min-w-[93.5px] max-w-max px-3 py-3 h-[32px] ${
                       !isvisible && "bg-[#373D46]"
                     }  text-[#F8F8F8] rounded-[50px] cursor-pointer`}
                     onClick={handleVisibleLog}
@@ -263,7 +153,7 @@ const Auth = () => {
                     {t("Auth.login.loginButton")}
                   </p>
                   <p
-                    className={`transition-colors duration-300 ease-in-out text-base font-bold py-2 px-7 ${
+                    className={`transition-colors duration-300 ease-in-out text-[16px] font-bold font-pp-object-sans flex justify-center items-center min-w-[93.5px] max-w-max px-3 py-3 h-[32px] ${
                       isvisible && "bg-[#373D46]"
                     }  text-[#F8F8F8] rounded-[50px] cursor-pointer`}
                     onClick={handleVisibleReg}
@@ -294,37 +184,40 @@ const Auth = () => {
 
               {!isvisible && (
                 <SingIn
-                  isValid={isValid}
-                  setValid={setValid}
-                  errors={errors}
-                  setErrors={setErrors}
-                  validateInput={validateInput}
                   toogleLenguaje={toogleLenguaje}
-                  formDataLog={formDataLog}
-                  setFormDataLog={setFormDataLog}
-                  onLogin={onLogin}
-                  isLoading={isLoading}
+                  formData={formData}
+                  setFormData={setFormData}
                   handleVisibleReg={handleVisibleReg}
+                  onLogin={onLogin}
                 />
               )}
               {isvisible && (
                 <Singup
-                  isValid={isValid}
-                  setValid={setValid}
-                  errors={errors}
-                  setErrors={setErrors}
-                  validateInput={validateInput}
                   toogleLenguaje={toogleLenguaje}
-                  formDataSing={formDataSing}
-                  setFormDataSing={setFormDataSing}
-                  onRegister={onRegister}
-                  isLoading={isLoading}
+                  // formDataSing={formDataSing}
+                  // setFormDataSing={setFormDataSing}
+                  // onRegister={onRegister}
+                  // isLoading={isLoading}
                   handleVisibleLog={handleVisibleLog}
+                  currentView={currentView}
+                  handleNext={handleNext}
+                  email={email}
+                  setEmail={setEmail}
                 />
               )}
             </div>
           </div>
         </div>
+      </div>
+      <div className="fixed inset-0 w-full h-full invisible">
+        <Opt
+          currentView={currentView}
+          handleNext={handleNext}
+          email={email}
+          theme={theme}
+          rotate={rotate}
+          toggle={toggle}
+        />
       </div>
     </div>
   );

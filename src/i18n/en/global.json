@@ -15,9 +15,10 @@
       "emailLabel": "Email",
       "PhoneLabel": "Phone",
       "passwordLabel": "Password",
-      "newUserPrompt": "already have an account? ",
+      "newUserPrompt": "Already have an Account? ",
       "createAccount": "Log in",
-      "registerButton": "Sing up"
+      "registerButton": "Sing up",
+      "button": "Continue"
     },
     "Otp": {
       "title": "2FA validation ",

@@ -7,10 +7,6 @@ const router = createBrowserRouter([
     Component: lazy(() => import("./apps/Autenticacion/Auth/Auth")),
   },
   {
-    path: "/AuthOpt/:email",
-    Component: lazy(() => import("./apps/Autenticacion/AuthOpt/AuthOpt")),
-  },
-  {
     path: "*",
     Component: lazy(() => import("./apps/Shared/NotFound/NotFound")),
   },

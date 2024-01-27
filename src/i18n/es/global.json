@@ -17,7 +17,7 @@
       "passwordLabel": "Contraseña",
       "newUserPrompt": "¿ya tienes una cuenta? ",
       "createAccount": "Inicia sesión",
-      "registerButton": "Registrarse"
+      "registerButton": "Continue"
     },
     "Otp": {
       "title": "Validación 2FA",

@@ -1,151 +1,210 @@
-import React from "react";
-import Input from "../Input/Input";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { registrationValidationSchema } from "../Auth";
+import * as Yup from "yup";
+
+import Check from "../../../../assets/Check.svg";
+import XIcon from "../../../../assets/XIcon.svg";
+
+import CustomButton from "../../../Shared/CustomButton/CustomButton";
+import CustomInput from "../../../Shared/CustomInput/CustomInput";
+import CustomImage from "../../../Shared/CustomImage/CustomImage";
+import { toast } from "react-toastify";
+
+import loadinss from "../../../../assets/loading-white.gif";
+
+export const EmailValidationSchema = Yup.object({
+  email: Yup.string()
+    .email("Not valid")
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Not valid")
+    .required("email is required"),
+});
+
+const length = 6;
 
 const Singup = ({
-  isValid,
-  setValid,
-  errors,
-  setErrors,
-  validateInput,
   toogleLenguaje,
-  formDataSing,
-  setFormDataSing,
-  onRegister,
-  isLoading,
   handleVisibleLog,
+  currentView,
+  handleNext,
+  email,
+  setEmail,
 }) => {
   const [t] = useTranslation("global");
 
-  const handleChangeSing = (e) => {
-    // Obtén el nombre y el valor del input que cambió
-    const { name, value } = e.target;
+  const [checked, setChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
-    // Actualiza el estado con el nuevo valor
-    setFormDataSing({
-      ...formDataSing,
-      [name]: value,
-    });
-    setValid((prevValid) => ({
-      ...prevValid,
-      [name]: validateInput(name, value, "sing"),
-    }));
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
+    setIsChecked(false);
   };
 
-  const handleSubmitReg = async (e) => {
-    e.preventDefault();
+  const handleChangeSing = async (e) => {
+    const { name, value } = e.target;
+
+    if (value.trim() === "") {
+      // Si el valor está vacío, se considera válido
+      setErrors("");
+      setEmail(value);
+      return;
+    }
+
     try {
-      await registrationValidationSchema.validate(formDataSing, {
-        abortEarly: false,
-      });
-      onRegister(formDataSing);
+      await EmailValidationSchema.validate(
+        { [name]: value },
+        { abortEarly: false }
+      );
+      setErrors({ ...errors, [name]: "" });
     } catch (error) {
       const newErrors = {};
       error.inner.forEach((err) => {
         newErrors[err.path] = err.message;
-        setValid((prevValid) => ({
-          ...prevValid,
-          [err.path]: false,
-        }));
       });
-      setErrors(newErrors);
+      setErrors({ ...errors, ...newErrors });
+    }
+    setEmail(value);
+  };
+
+  const onRegister = () => {};
+
+  const handleSubmitReg = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    toast.dismiss();
+
+    try {
+      if (!checked && !email) {
+        setIsChecked(true);
+        toast.error("Llena todos los campos!!", {
+          theme: "dark",
+          position: "top-left",
+        });
+      }
+      await EmailValidationSchema.validate({ email }, { abortEarly: false });
+      if (!checked) {
+        setIsLoading(false);
+        toast.error("Acepta los terminos!", {
+          theme: "dark",
+          position: "top-left",
+        });
+        return setIsChecked(true);
+      }
+
+      // onRegister(email);
+      setTimeout(() => {
+        handleNext();
+        // setChecked();
+        setIsLoading(false);
+      }, 1000);
+    } catch (error) {
+      const newErrors = {};
+      error.inner.forEach((err) => {
+        newErrors[err.path] = err.message;
+      });
+      setErrors({ ...errors, ...newErrors });
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="h-full w-full flex flex-col mt-6">
-      <div className={`transition-all duration-300`}>
-        <div
-          className={`grid grid-cols-2 gap-x-5 gap-y-0 justify-center transition-all duration-200 `}
-        >
-          <Input
-            type="text"
-            value={formDataSing.fullNameSing}
-            handleChange={handleChangeSing}
-            label={t("Auth.register.fullNameLabel")}
-            name="fullNameSing"
-            isValid={isValid?.fullNameSing}
-            nameError={errors?.fullNameSing}
-          />
+    <div className="h-full w-full flex flex-col ">
+      <div>
+        <p className="text-base font-bold text-[#FFFFFF] mt-6 mb-6 leading-[20.8px]">
+          Create personal account
+        </p>
 
-          <Input
-            type="number"
-            value={formDataSing.phoneSing}
-            handleChange={handleChangeSing}
-            label={t("Auth.register.PhoneLabel")}
-            name="phoneSing"
-            isValid={isValid?.phoneSing}
-            nameError={errors?.phoneSing}
-          />
+        <CustomInput
+          className="w-full flex flex-col gap-y-2 mb-6"
+          inputClassName={`h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[#3E4347] text-white outline-none focus:outline-none placeholder:text-[#7A7878] `}
+          label={"Email"}
+          onChange={handleChangeSing}
+          value={email}
+          error={errors.email}
+          icon={XIcon}
+          iconCheck={Check}
+          type="email"
+          name="email"
+          placeholder="Enter email"
+        />
 
-          <Input
-            type="email"
-            value={formDataSing.emailSing}
-            handleChange={handleChangeSing}
-            label={t("Auth.register.emailLabel")}
-            name="emailSing"
-            isValid={isValid?.emailSing}
-            nameError={errors?.emailSing}
-          />
+        <p className="text-base font-normal text-[#FFFFFF]">
+          We will send you a code to your email to confirm
+        </p>
 
-          <Input
-            type="password"
-            value={formDataSing.passwordSing}
-            handleChange={handleChangeSing}
-            label={t("Auth.register.passwordLabel")}
-            name="passwordSing"
-            isValid={isValid?.passwordSing}
-            nameError={errors?.passwordSing}
-          />
-        </div>
-        <button
-          className={`w-full flex justify-center items-center bg-[#FFED00] rounded-[60px] 2xl:py-2 py-[6px] text-lg font-bold mt-2 mb-5 `}
-          onClick={handleSubmitReg}
-        >
-          {isLoading ? (
-            <span className="text-sm flex items-center py-1">
-              <svg
-                width="15"
-                height="15"
-                fill="currentColor"
-                className="mr-1 animate-spin"
-                viewBox="0 0 1792 1792"
-                xmlns="http://www.w3.org/2000/svg"
+        <div className="flex items-center gap-4 mt-6">
+          <div className="flex items-center relative cursor-pointer">
+            <input
+              type="checkbox"
+              className={`appearance-none w-[22px] h-[22px] rounded-[4px] relative bg-[#3E4347] cursor-pointer ${
+                isChecked ? "border-2 border-red-600" : ""
+              } `}
+              onChange={handleCheckboxChange}
+              checked={checked}
+            />
+            {checked && (
+              <div
+                className="absolute w-full h-full flex justify-center items-center"
+                onClick={handleCheckboxChange}
               >
-                <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
-              </svg>
-              loading
+                <CustomImage
+                  src={Check}
+                  alt="Check"
+                  className="text-[#FAE100] w-[15px] h-[10px]"
+                />
+              </div>
+            )}
+          </div>
+          <p className="text-base text-[#FFFFFF] ">
+            By creating an account , i agree to Vank´s{" "}
+            <span className="font-bold underline cursor-pointer">
+              Terms of service
+            </span>{" "}
+            and
+            <span className="font-bold underline cursor-pointer">
+              privacy policy
             </span>
-          ) : (
-            t("Auth.register.registerButton")
-          )}
-        </button>
+          </p>
+        </div>
+      </div>
 
-        <div className="space-y-4 transition-all duration-200 ease-out">
-          <div>
-            <div className="w-full text-center text-[#FFFFFF] text-base font-bold mb-2">
-              {t("Auth.register.newUserPrompt")}
-              <span
-                className=" text-[#E5D714] ml-1 cursor-pointer"
-                onClick={handleVisibleLog}
-              >
-                {t("Auth.register.createAccount")}
-              </span>
-            </div>
-            <p className="font-bold text-[#E5D714] text-center text-base ">
-              {t("Auth.login.ForgotPassword")}
-            </p>
-          </div>
-          <div className="w-full text-center text-[#FFFFFF] text-base font-bold transition-all duration-200 ease-out">
-            {t("Auth.login.changeLanguage")}
-            <button
-              className="text-[#E5D714] ml-1 cursor-pointer"
-              onClick={toogleLenguaje}
-            >
-              {t("Auth.login.language")}
-            </button>
-          </div>
+      <CustomButton
+        className={`w-full h-[42px] flex justify-center items-center bg-[#FFED00] rounded-[60px] px-7 py-4 text-lg font-bold mt-9 mb-8 `}
+        onclick={handleSubmitReg}
+      >
+        {isLoading ? (
+          <span className="text-base font-bold flex gap-1 items-center py-1">
+            <CustomImage
+              src={loadinss}
+              alt="Check"
+              className="text-black w-[30px] h-[30px]"
+            />
+          </span>
+        ) : (
+          t("Auth.register.button")
+        )}
+      </CustomButton>
+
+      <div className="space-y-6 transition-all duration-200 ease-out">
+        <div className="w-full text-center text-[#FFFFFF] text-base font-normal mb-1 transition-all duration-300">
+          {t("Auth.register.newUserPrompt")}
+          <span
+            className=" text-[#E5D714] ml-1 cursor-pointer font-bold"
+            onClick={handleVisibleLog}
+          >
+            {t("Auth.register.createAccount")}
+          </span>
+        </div>
+
+        <div className="w-full text-center text-[#FFFFFF] text-base font-normal transition-all duration-200 ease-out">
+          {t("Auth.login.changeLanguage")}
+          <CustomButton
+            className="text-[#E5D714] ml-1 cursor-pointer font-bold"
+            onclick={toogleLenguaje}
+          >
+            {t("Auth.login.language")}
+          </CustomButton>
         </div>
       </div>
     </div>
