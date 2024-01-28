@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import XIcon from "../../../../assets/XIcon.svg";
 import Check from "../../../../assets/Check.svg";
 
-
 // import { loginValidationSchema } from "../Auth";
 import CustomInput from "../../../Shared/CustomInput/CustomInput";
 import CustomButton from "../../../Shared/CustomButton/CustomButton";
@@ -15,7 +14,9 @@ export const loginValidationSchema = Yup.object({
     .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Not valid")
     .required("email is required"),
   password: Yup.string()
-    .min(6, "Min. 6 characters required.")
+    .min(6, "Min. 8 characters required.")
+    .matches(/[A-Z]/, "At least 1 uppercase letter")
+    .matches(/[0-9]/, "At least 1 number")
     .required("Password is required"),
 });
 
@@ -32,6 +33,12 @@ const SingIn = ({
 
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleChangeLog = async (e) => {
     const { name, value } = e.target;
@@ -66,6 +73,7 @@ const SingIn = ({
       error.inner.forEach((err) => {
         newErrors[err.path] = err.message;
       });
+      console.log(newErrors);
       setErrors({ ...errors, ...newErrors });
       setIsLoading(false);
     }
@@ -95,6 +103,8 @@ const SingIn = ({
         error={errors.password}
         icon={XIcon}
         iconCheck={Check}
+        showPassword={showPassword}
+        togglePasswordVisibility={togglePasswordVisibility}
         type="password"
         name="password"
         placeholder="Enter Password"

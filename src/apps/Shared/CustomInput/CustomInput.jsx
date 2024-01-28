@@ -1,5 +1,6 @@
 import React from "react";
-import Check from "../../../assets/Check.svg";
+import Visibility from "../../../assets/Visibility.svg";
+import CustomImage from "../CustomImage/CustomImage";
 
 const CustomInput = ({
   className,
@@ -10,57 +11,82 @@ const CustomInput = ({
   error,
   icon,
   iconCheck,
+  showPassword,
+  togglePasswordVisibility,
+  type,
   ...rest
 }) => {
+  const getErrorClass = (error, value, iconCheck) => {
+    return error
+      ? "-translate-y-0 opacity-100 text-red-500"
+      : value && iconCheck
+      ? "-translate-y-0 opacity-100 text-[#7A7878]"
+      : "-translate-y-full opacity-0";
+  };
+
+  const getErrorText = (error, value, iconCheck) => {
+    return error ? error : value && iconCheck ? "Valid" : "";
+  };
+
+  const getErrorBorderClass = (error) => {
+    return error
+      ? "border-2 border-red-500"
+      : "focus:border-2 focus:border-[#FFED00]";
+  };
+
+  const renderIcon = (type, value, icon, error, iconCheck) => {
+    if (!error && !value || !iconCheck) {
+      return null;
+    }
+    const iconSrc =
+      type === "password" && value
+        ? Visibility
+        : error
+        ? icon
+        : value && iconCheck && iconCheck;
+
+    return (
+      <div
+        className="absolute inset-y-0 right-3 pl-3 flex items-center cursor-pointer z-30"
+        onClick={() => type === "password" && togglePasswordVisibility()}
+      >
+        <CustomImage
+          src={iconSrc}
+          alt="Input Icon"
+          className={`h-${error ? 3 : 12.63}px w-${
+            error ? 3 : 16
+          }px text-gray-400 ml-3 cursor-pointer`}
+        />
+      </div>
+    );
+  };
+
   return (
     <div className={className}>
       <div className="flex justify-between items-center">
         <label className="text-base font-normal text-[#FFFFFF]">{label}</label>
         <span
-          className={`text-xs font-medium mr-1 ${
-            error
-              ? "-translate-y-0 opacity-100 text-red-500"
-              : value && iconCheck
-              ? "-translate-y-0 opacity-100 text-[#7A7878]"
-              : "-translate-y-full opacity-0"
-          } transition-transform duration-500`}
+          className={`text-xs font-medium mr-1 ${getErrorClass(
+            error,
+            value,
+            iconCheck
+          )}`}
         >
-          {error ? error : value && iconCheck ? "Valid" : ""}
+          {getErrorText(error, value, iconCheck)}
         </span>
       </div>
       <div className="w-full relative z-30">
         <input
-          type="text"
+          type={showPassword ? "text" : type}
           value={value}
           onChange={onChange}
-          className={`w-full outline-none ${inputClassName} ${
+          className={`w-full outline-none ${inputClassName} ${getErrorBorderClass(
             error
-              ? "border-2 border-red-500"
-              : "focus:border-2 focus:border-[#FFED00]"
-          } transition-all duration-100`}
+          )}`}
           {...rest}
           autoComplete="off"
         />
-        {error ? (
-          <div className="absolute inset-y-0 right-3 pl-3 flex items-center pointer-events-none ">
-            <img
-              src={icon}
-              alt="Email Icon"
-              className="h-3 w-3 text-gray-400 ml-3"
-            />
-          </div>
-        ) : (
-          value &&
-          iconCheck && (
-            <div className="absolute inset-y-0 right-3 pl-3 flex items-center pointer-events-none ">
-              <img
-                src={iconCheck}
-                alt="Email Icon"
-                className="h-[10px] w-[15px] text-gray-400 ml-3"
-              />
-            </div>
-          )
-        )}
+        {renderIcon(type, value, icon, error, iconCheck)}
       </div>
     </div>
   );

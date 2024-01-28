@@ -19,8 +19,6 @@ export const EmailValidationSchema = Yup.object({
     .required("email is required"),
 });
 
-const length = 6;
-
 const Singup = ({
   toogleLenguaje,
   handleVisibleLog,
@@ -95,7 +93,7 @@ const Singup = ({
       // onRegister(email);
       setTimeout(() => {
         handleNext();
-        // setChecked();
+        setChecked(false);
         setIsLoading(false);
       }, 1000);
     } catch (error) {
@@ -133,7 +131,7 @@ const Singup = ({
           We will send you a code to your email to confirm
         </p>
 
-        <div className="flex items-center gap-4 mt-6">
+        <div className="flex items-center gap-4 mt-6 transition-transform duration-500">
           <div className="flex items-center relative cursor-pointer">
             <input
               type="checkbox"
@@ -162,7 +160,7 @@ const Singup = ({
               Terms of service
             </span>{" "}
             and
-            <span className="font-bold underline cursor-pointer">
+            <span className="font-bold underline cursor-pointer ml-1">
               privacy policy
             </span>
           </p>

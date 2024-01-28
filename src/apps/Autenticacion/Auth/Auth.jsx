@@ -8,8 +8,9 @@ import i18next from "i18next";
 import Singup from "./Singup/Singup";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import Opt from "./Opt/Opt";
+import Opt from "./Singup/Opt/Opt";
 import SingIn from "./SingIn/SingIn";
+import CreateUser from "./Singup/CreateUser/CreateUser";
 
 const Auth = () => {
   const [t, i18n] = useTranslation("global");
@@ -18,7 +19,7 @@ const Auth = () => {
   const currentLanguage = i18next.language;
   const [rotate, setRotate] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentView, setCurrentView] = useState(true);
+  const [currentView, setCurrentView] = useState(1);
   const { theme, toggleDarkMode } = useTheme();
 
   // registro
@@ -32,7 +33,7 @@ const Auth = () => {
   });
 
   useEffect(() => {
-    if (currentView) {
+    if (currentView === 1) {
       setEmail("");
     }
   }, [currentView]);
@@ -115,14 +116,18 @@ const Auth = () => {
   };
 
   const handleNext = () => {
-    setCurrentView(!currentView);
+    setCurrentView(prevCount => prevCount + 1);
+  };
+  
+  const handleBack = () => {
+    setCurrentView(prevCount => prevCount - 1);
   };
 
   return (
     <div className="relative h-screen flex justify-center items-center overflow-hidden dark:bg-[#13171d]">
       <div
         className={`h-full w-full flex justify-center items-center transition-transform duration-300 dark:bg-[#13171d] visible ${
-          currentView ? "translate-x-0" : "-translate-x-full invisible"
+          currentView === 1 ? "translate-x-0" : "-translate-x-full invisible"
         }`}
       >
         <div className=" flex w-screen h-screen transition-all duration-300">
@@ -210,9 +215,10 @@ const Auth = () => {
         </div>
       </div>
       <div className="fixed inset-0 w-full h-full invisible">
-        <Opt
+        <CreateUser
           currentView={currentView}
           handleNext={handleNext}
+          handleBack={handleBack}
           email={email}
           theme={theme}
           rotate={rotate}
