@@ -71,7 +71,7 @@ const CreateUser = ({
   return (
     <div
       className={`w-full h-full absolute flex flex-col justify-center items-center transition-transform duration-300 dark:bg-[#13171d] ${
-        currentView !== 2 ? "translate-x-full" : "translate-x-0 visible"
+        currentView !== 2 ? "translate-x-full" : "translate-x-0 visible z-30"
       } `}
     >
       {/* header */}
@@ -142,7 +142,7 @@ const CreateUser = ({
       </div>
 
       {/* Modal */}
-      <div className="absolute inset-0 flex justify-center items-center transition-transform duration-300">
+      <div className="absolute inset-0 flex justify-center items-center transition-transform duration-300 -z-20">
         <Opt
           handleNext={handleNext}
           handleBack={handleBack}
