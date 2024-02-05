@@ -2,3 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import "@fontsource/roboto/300.css";
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+@import "@fontsource/roboto/700.css"; */
+
+
+
+@font-face {
+    font-family: 'PP Object Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./assets/font/PPObjectSans/PPObjectSans-Thin.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'PP Object Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/font/PPObjectSans/PPObjectSans-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'PP Object Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/font/PPObjectSans/PPObjectSans-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'PP Object Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./assets/font/PPObjectSans/PPObjectSans-Bold.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'PP Object Sans';
+    font-style: normal;
+    font-weight: 800;
+    src: url('./assets/font/PPObjectSans/PPObjectSans-Heavy.ttf') format('truetype');
+  }
+
+body {
+    font-family: 'PP Object Sans', sans-serif;
+}

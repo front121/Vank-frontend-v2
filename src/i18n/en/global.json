@@ -1,4 +1,10 @@
 {
+  "common": {
+    "commonLanguaje": {
+      "languaje": "Languaje",
+      "search": "Search"
+    }
+  },
   "Auth": {
     "login": {
       "emailTeleLabel": "Email or Phone Number",
@@ -8,33 +14,82 @@
       "createAccount": "Create an account",
       "ForgotPassword": "Forgot your password?",
       "changeLanguage": "Change language to ",
-      "language": "Spanish"
+      "language": "Spanish",
+      "Otp": {
+        "back": "back",
+        "title": "2FA validation ",
+        "nav": {
+          "email": "Email",
+          "phone": "Phone number",
+          "authy": "Authy"
+        },
+        "thecodebesend": "The code will be send to",
+        "securityDigits": "Write the 6 security digits",
+        "resend": "Resend in",
+        "resendCode": "Resend Code",
+        "didnotCode": "Did not Recieve the Code?",
+        "OtpButton": "Continue"
+      }
     },
     "register": {
-      "fullNameLabel": "FullName",
       "emailLabel": "Email",
-      "PhoneLabel": "Phone",
-      "passwordLabel": "Password",
+      "sendConfirmationCode": {
+        "WeWillSendYouA": "We will send you a",
+        "code": "code",
+        "toYour": "to your",
+        "email": "email",
+        "toConfirm": "to confirm"
+      },
+      "opt": {
+        "back": "back",
+        "emailVerification": "Email Verification",
+        "InfoCode": {
+          "info": "Please enter the 6 digit verification code that was sent to",
+          "code": "the code is valid for 30 minutes."
+        },
+        "resend": "Resend in",
+        "resendCode": "Resend Code",
+        "didnotCode": "Did not Recieve the Code?"
+      },
+      "createPassword": {
+        "setPassword": "Set User Password",
+        "password": {
+          "labelPassword": "Password",
+          "placeholder": "Enter Password"
+        },
+        "confirmPassword": {
+          "labelPassword": "Confirm Password",
+          "placeholder": "Enter Confirm Password"
+        },
+        "rules": {
+          "one": "At least 8 characters",
+          "two": "At least 1 number",
+          "three": "At least 1 upper case letter",
+          "four": "Passwords must match"
+        },
+        "resend": "Reenviar en",
+        "resendCode": "Reenviar código",
+        "didnotCode": "¿No ha recibido el código?"
+      },
       "newUserPrompt": "Already have an Account? ",
       "createAccount": "Log in",
-      "registerButton": "Sing up",
-      "button": "Continue"
+      "registerButton": "Sign up",
+      "buttonContinue": "Continue",
+      "button": "Sign Up"
     },
-    "Otp": {
-      "title": "2FA validation ",
-      "nav": {
-        "email": "Email",
-        "Phone": "Phone number",
-        "Authy": "Authy"
-      },
-      "codeSent": "The code will be send to",
-      "digitQuantity": "Write the 6 security digits",
-      "send": "Send Code",
-      "OtpButton": "Continue"
-    },
+ 
     "common": {
       "welcome": "Welcome to Vank! 👋",
-      "joinPlatform": "Join to the best plataform to save and send your money"
+      "joinPlatform": {
+        "joinToThe": "Join to the",
+        "bestPlatform": "best platform",
+        "to": "to",
+        "save": "save",
+        "and": "and",
+        "send": "send",
+        "your": "your",
+        "money": "money"
+      }
     }
   }
 }

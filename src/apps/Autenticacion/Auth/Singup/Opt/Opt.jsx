@@ -3,7 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
-import Check from "../../../../../assets/Check.svg";
+import Login from "../../../../../assets/Icon/Login.svg";
+import lock from "../../../../../assets/Icon/lock.svg";
 import CustomButton from "../../../../Shared/CustomButton/CustomButton";
 import CustomImage from "../../../../Shared/CustomImage/CustomImage";
 
@@ -11,13 +12,13 @@ const length = 6;
 
 const Opt = ({
   handleNext,
-  handleBack,
+  handleBackRegister,
   nextPage,
   email,
   isModalInfo,
   setIsModalInfo,
   currentPage,
-  currentView,
+  currentViewRegister,
 }) => {
   const [t, i18n] = useTranslation("global");
 
@@ -33,7 +34,7 @@ const Opt = ({
 
   useEffect(() => {
     console.log(inputRefs.current);
-  }, [currentView]);
+  }, [currentViewRegister]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,11 +48,11 @@ const Opt = ({
   }, [count]);
 
   useEffect(() => {
-    if (currentView === 2) {
+    if (currentViewRegister === 2) {
       setCount(30);
       inputRefs.current[0].focus();
     }
-  }, [currentView]);
+  }, [currentViewRegister]);
 
   const handleChange = (index, e) => {
     const value = e.target.value;
@@ -110,17 +111,17 @@ const Opt = ({
       if (otp.join("") !== "23232") {
         throw new Error("Codigo invalido");
       }
-      toast.success("Codigo correcto!", {
-        theme: "dark",
-        position: "top-left",
-      });
+      // toast.success("Codigo correcto!", {
+      //   theme: "dark",
+      //   position: "top-left",
+      // });
     } catch (error) {
       const newFieldValidity = new Array(length).fill(false);
       setFieldValidity(newFieldValidity);
-      toast.error("Codigo Incorrecto!", {
-        theme: "dark",
-        position: "top-left",
-      });
+      // toast.error("Codigo Incorrecto!", {
+      //   theme: "dark",
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -133,25 +134,30 @@ const Opt = ({
     <>
       {/* modal de verificacion */}
       <div
-        className={`absolute w-11/12 lg:w-[40%]  p-8  rounded-xl m-auto shadow-lg transition-all duration-300 bg-[#191E25] ${
+        className={`absolute w-full sm:w-auto px-[22px] py-[36px] sm:p-[36px] rounded-[32px] shadow-lg transition-all duration-300 bg-[#14181F] ${
           currentPage === 1 ? "translate-x-0" : "-translate-x-[200%]"
         }`}
       >
-        <p
-          className="mb-3 text-base font-normal leading-[20.8px] text-[#FFFFFF] cursor-pointer"
-          onClick={handleBack}
-        >
-          Back
-        </p>
-        <h2 className="text-[#FFFFFF] text-lg leading-[22.1px] font-bold">
-          Email Verification
-        </h2>
-        <div className="mt-4 space-y-7 mb-5">
-          <p className="text-base text-white">
-            Please enter the 6 digit verification code that was sent to
-            <span className="ml-1 font-bold">{email}</span>, the code is valid
-            for 30 minutes.
+        <div className="relative h-[146px] ">
+          <p
+            className="mb-3 text-base font-normal leading-[20.8px] text-[#EFF0F1] cursor-pointer opacity-[0.6]"
+            onClick={handleBackRegister}
+          >
+            {t("Auth.register.opt.back")}
           </p>
+          <h2 className="text-[#EFF0F1] text-sm sm:text-base leading-[22.1px] font-bold">
+            {t("Auth.register.opt.emailVerification")}
+          </h2>
+          <p className="mt-4 space-y-7 mb-5 w-full sm:w-[514px] text-sm sm:text-base font-normal text-[#EFF0F1] leading-[20.8px]">
+            {t("Auth.register.opt.InfoCode.info")}{" "}
+            <span className="font-bold">{email}</span>,{" "}
+            {t("Auth.register.opt.InfoCode.code")}
+          </p>
+          <CustomImage
+            src={lock}
+            alt="lock"
+            className="absolute right-1 top-1 w-[29.81px] h-[39px]"
+          />
         </div>
         <div className="flex flex-col w-full overflow-hidden">
           <div className="w-full flex justify-between items-center">
@@ -166,7 +172,7 @@ const Opt = ({
                   onChange={(e) => handleChange(i, e)}
                   onClick={() => handleClick(i)}
                   onKeyDown={(e) => handleKeyDown(i, e)}
-                  className={`w-[54px] h-[54px] rounded-[10px] bg-[#777777] text-center outline-none text-white text-xl font-bold ${
+                  className={`w-[54px] h-[54px] rounded-[10px] bg-[#3E4347] text-center outline-none text-white text-xl font-bold ${
                     !fieldValidity[i] && "border-2 border-red-600"
                   }  focus:border-2 focus:border-[#E5D714]`}
                   maxLength={1}
@@ -174,21 +180,21 @@ const Opt = ({
               );
             })}
           </div>
-          <div className="w-full flex gap-2 items-center justify-between mt-3">
+          <div className="w-full flex gap-2 items-center justify-between mt-5">
             {count === 0 ? (
               <CustomButton
                 className={`text-right  text-[#E5D714] text-sm font-bold leading-[18.2px] cursor-pointer `}
                 onclick={generateSecurityCode}
                 disabled={false}
               >
-                Resend Code
+                {t("Auth.register.opt.resendCode")}
               </CustomButton>
             ) : (
               <span className="text-sm text-white font-bold">
-                Resend in {count}s
+                {t("Auth.register.opt.resend")} {count}s
               </span>
             )}
-            <div className="flex items-center justify-center gap-1">
+            {/* <div className="flex items-center justify-center gap-1">
               <p className="text-sm font-normal leading-[18.2px] text-[#FAE100]">
                 Valid
               </p>
@@ -197,22 +203,24 @@ const Opt = ({
                 alt="check"
                 className="w-[14px] h-[14px]"
               />
-            </div>
+            </div> */}
           </div>
-          <div className="w-full flex  justify-center items-center mb-5 mt-5">
+          <div className="w-full flex  justify-center items-center mb-7 mt-5">
             <CustomButton
-              className="group relative bg-[#E5D714] w-[445px] h-[42px] rounded-[60px] text-base font-bold leading-[20.8px] text-[#000000] "
+              className="group flex justify-center items-center relative bg-[#FAE100] w-full h-[42px] rounded-[60px] text-base font-bold leading-[20.8px] text-[#000000] px-[12px]"
               onclick={onOtpSubmit}
             >
-              {t("Auth.Otp.OtpButton")}
-              <div className="absolute inset-0 h-full w-full scale-0 rounded-[60px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/25" />
+              {/* {t("Auth.register.buttonContinue")} */}
+              <span className="w-[114px]">{t("Auth.register.buttonContinue")}</span>
+              <CustomImage src={Login} alt="Login" className="w-[28px]" />
+              {/* <div className="absolute inset-0 h-full w-full scale-0 rounded-[60px] transition-all duration-300 group-hover:scale-100 group-hover:bg-white/25" /> */}
             </CustomButton>
           </div>
           <p
-            className="text-sm text-white font-bold cursor-pointer leading-[18.2px]"
+            className="text-sm sm:text-base text-white font-bold cursor-pointer leading-[18.2px]"
             onClick={() => setIsModalInfo(false)}
           >
-            Didn't receive the code?
+            {t("Auth.register.opt.didnotCode")}
           </p>
         </div>
       </div>
@@ -258,7 +266,8 @@ const Opt = ({
             className="w-full h-[40px] bg-[#E5D714] rounded-[5px] text-lg font-bold"
             onclick={() => setIsModalInfo(true)}
             label={"ok"}
-          />
+          >
+          </CustomButton>
         </div>
       </div>
     </>
