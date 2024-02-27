@@ -91,5 +91,42 @@
         "money": "dinero"
       }
     }
+  },
+  "Vank":{
+    "Home":{
+      "nav":{
+        "btnResumen":"Resumen",
+        "btnAccount":"Cuenta",
+        "btnCards":"Carta",
+        "btnWallets":"Carteras",
+        "amountInfo":"Saldo total"
+      },
+      "AccountInfo":{
+        "account":"cuenta",
+        "usdSavings":"Ahorro en USD"
+      },
+      "CardsInfo":{
+        "myCard":"mi tarjeta"
+      },
+      "CryptoInfo":{
+        "tether":"Atadura",
+        "ethereum":"",
+        "bitcoin":""
+      }
+    }
+  },
+  "Share":{
+    
+    "Sidebar":{
+      "Home":"Inicio",
+      "Transaction":"Transacción",
+      "Beneficiaries":"Beneficiarios",
+      "Share":"Compartir la app",
+      "Accessibility":"Accesibilidad",
+      "BtnLanguage":"Idioma",
+      "BtnLogOut":"Salir",
+      "Info":"No comparta su código de Google Authentificator o SMS con nadie, incluido el personal de atención al cliente de Qoripay."
+
+    }
   }
 }

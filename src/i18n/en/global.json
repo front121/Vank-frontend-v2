@@ -91,5 +91,42 @@
         "money": "money"
       }
     }
+  },
+  "Vank":{
+    "Home":{
+      "nav":{
+        "btnResumen":"Resumen",
+        "btnAccount":"Account",
+        "btnCards":"Card",
+        "btnWallets":"Wallets",
+        "amountInfo":"Total balance"
+      },
+      "AccountInfo":{
+        "account":"Accounts",
+        "usdSavings":"USD Savings"
+      },
+      "CardsInfo":{
+        "myCard":"My Card"
+      },
+      "CryptoInfo":{
+        "tether":"Tether",
+        "ethereum":"Ethereum",
+        "bitcoin":"Bitcoin"
+      }
+    }
+  },
+  "Share":{
+    
+    "Sidebar":{
+      "Home":"Home",
+      "Transaction":"Transaction",
+      "Beneficiaries":"Beneficiaries",
+      "Share":"Share app",
+      "Accesibility":"Accessibility",
+      "BtnLanguage":"Language",
+      "BtnLogOut":"Log out",
+      "Info":"Do not share your Google Authentificator or SMS code with anyone, including Qoripay customer support staff"
+
+    }
   }
 }
