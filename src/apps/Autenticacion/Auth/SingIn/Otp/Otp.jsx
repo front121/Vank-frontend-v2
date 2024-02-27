@@ -4,7 +4,7 @@ import FooterAuth from "../../FooterAuth/FooterAuth";
 import CustomButton from "../../../../Shared/CustomButton/CustomButton";
 import CustomImage from "../../../../Shared/CustomImage/CustomImage";
 import { useTranslation } from "react-i18next";
-
+import {useNavigate } from 'react-router-dom';
 import lock from "../../../../../assets/Icon/lock.svg";
 import Login from "../../../../../assets/Icon/Login.svg";
 
@@ -12,6 +12,7 @@ const length = 6;
 
 const Otp = ({ currentViewLogin, handleBackLogin, email }) => {
   const [t, i18n] = useTranslation("global");
+  const navigate = useNavigate(); 
 
   let allTabs = [
     {
@@ -121,6 +122,7 @@ const Otp = ({ currentViewLogin, handleBackLogin, email }) => {
     }
 
     try {
+      navigate("/");
       if (otp.join("") !== "23232") {
         throw new Error("Codigo invalido");
       }
@@ -128,6 +130,7 @@ const Otp = ({ currentViewLogin, handleBackLogin, email }) => {
       //   theme: "dark",
       //   position: "top-left",
       // });
+      navigate("/")
     } catch (error) {
       const newFieldValidity = new Array(length).fill(false);
       setFieldValidity(newFieldValidity);
@@ -135,7 +138,9 @@ const Otp = ({ currentViewLogin, handleBackLogin, email }) => {
       //   theme: "dark",
       //   position: "top-left",
       // });
+
     }
+    
   };
 
   const generateSecurityCode = () => {
@@ -256,12 +261,12 @@ const Otp = ({ currentViewLogin, handleBackLogin, email }) => {
           <div className="w-full flex  justify-center items-center mb-7 mt-5">
             <CustomButton
               className="group flex justify-center items-center relative bg-[#FAE100] disabled:bg-[#D6CA5C] w-full h-[42px] rounded-[60px] text-base font-bold leading-[20.8px] text-[#000000] px-[12px]"
-              // onclick={onOtpSubmit}
+              onclick={onOtpSubmit}
               disabled={true}
             >
               <span className="w-[114px]">{t("Auth.login.Otp.OtpButton")}</span>
               <CustomImage src={Login} alt="Login" className="w-[26px] sm:w-[28px]" />
-            </CustomButton>
+            </CustomButton >
           </div>
           <p
             className="text-sm sm:text-base text-white font-bold cursor-pointer leading-[18.2px]"
