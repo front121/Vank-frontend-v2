@@ -1,5 +1,5 @@
 import React from "react";
-import { IconNotification } from "../../../../assets/icon/iconsSidebar/IconNotification";
+import {IconNotification} from '../../../../assets/Icon/IconsSidebar/IconNotification'
 import { IconCircleUser } from "../../../../assets/icon/iconsSidebar/IconCircleUser";
 import VankLogo from "../../../../assets/VankLogo";
 import { IconSun } from "../../../../assets/icon/iconsSidebar/IconSun";
