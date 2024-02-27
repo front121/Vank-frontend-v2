@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Sidebar } from "./Sidebar";
-import { IconHaus } from "../../../../assets/icon/iconsSidebar/IconHaus";
+import {IconHaus} from "../../../../assets/Icon/IconsSidebar/IconHaus"
 import { IconMoneyDolar } from "../../../../assets/icon/iconsSidebar/IconMoneyDolar";
 import { IconUsers } from "../../../../assets/icon/iconsSidebar/IconUsers";
 import { IconShare } from "../../../../assets/icon/iconsSidebar/IconShare";
@@ -17,7 +17,7 @@ export const ListLinkSidebar = ({ className }) => {
     {
       id: "1",
       path: "",
-      icon: <IconHaus />,
+      icon: <IconHaus/>,
       text: t("Share.Sidebar.Home"),
       className: `${"text-[16px]"}`,
     },
