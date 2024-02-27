@@ -1,8 +1,8 @@
 import React from "react";
-import { IconSun } from "../../../../assets/icon/iconsSidebar/IconSun";
 import { IconNotification } from "../../../../assets/icon/iconsSidebar/IconNotification";
 import { IconCircleUser } from "../../../../assets/icon/iconsSidebar/IconCircleUser";
 import VankLogo from "../../../../assets/VankLogo";
+import { IconSun } from "../../../../assets/icon/iconsSidebar/IconSun";
 export const Header = ({ moreStyle }) => {
   return (
     // return (
@@ -21,14 +21,14 @@ export const Header = ({ moreStyle }) => {
 
         <div className="flex w-[126px] items-center justify-between xl:h-[24.77px]">
           <button>
-            <IconCircleUser />
+            <IconCircleUser/>
           </button>
           <button>
-            <IconSun />
+            <IconSun/>
           </button>
           <button className="flex relative">
             <span>
-              <IconNotification />
+              <IconNotification/>
               <p className="absolute -right-2 -top-2 text-[11px] rounded-full px-[5px]   bg-[#FFED00] text-black font-bold">
                 2
               </p>
