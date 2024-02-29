@@ -10,6 +10,7 @@ export const Header = ({ moreStyle }) => {
   return (
     // return (
     <header
+    
       className={`2xl:h-[100px] flex justify-between sm:h-[100px] xl:h-[100px]  py-[16px] px-[40px] bg-[#191E25] bg-transparent    items-center  z-[60] lg:h-[80px] ${moreStyle} 
      `}
     >
