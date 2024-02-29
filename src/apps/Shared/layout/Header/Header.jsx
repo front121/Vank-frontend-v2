@@ -1,6 +1,6 @@
 import React from "react";
 import {IconNotification} from '../../../../assets/Icon/IconsSidebar/IconNotification'
-import { IconCircleUser } from "../../../../assets/icon/iconsSidebar/IconCircleUser";
+import { IconCircleUser } from "../../../../assets/Icon/IconsSidebar/IconCircleUser";
 import VankLogo from "../../../../assets/VankLogo";
 import { IconSun } from "../../../../assets/icon/iconsSidebar/IconSun";
 export const Header = ({ moreStyle }) => {
