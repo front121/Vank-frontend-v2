@@ -4,6 +4,7 @@ import  {IconCircleUser}  from '../../../../assets/Icon/IconsSidebar/IconCircleU
 import VankLogo from "../../../../assets/VankLogo";
 import  IconSun from "../../../../assets/icon/iconsSidebar/IconSun";
 export const Header = ({ moreStyle }) => {
+  const newLocal = <IconSun />;
   return (
     // return (
     <header
@@ -24,7 +25,7 @@ export const Header = ({ moreStyle }) => {
             <IconCircleUser/>
           </button>
           <button>
-            <IconSun/>
+            {newLocal}
           </button>
           <button className="flex relative">
             <span>
