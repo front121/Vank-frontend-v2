@@ -30,23 +30,24 @@ stages:
 #    - npm install
 #    - npm test
 
-#Deploy Dev:
-#  stage: deploy
-#  tags:
-#    - aws 
-#  script:
-#    - aws s3 sync /ruta/carpeta-local s3://nombre-bucket --recursive
-#  environment: dev
-
-Deploy Prod:
-  only:
-    refs:
-      - main
-  tags:
-    - aws   
+Deploy Dev:
   stage: deploy
-  when: manual  
+  tags:
+    - aws 
   script:
     - npm i &&  npm run build && ls && aws s3 sync dist/ s3://dev-frontend-deploy
     - cat dragon.txt
   environment: dev
+
+#Deploy Prod:
+#  only:
+#    refs:
+#      - main
+#  tags:
+#    - aws   
+#  stage: deploy
+#  when: manual  
+#  script:
+#    - npm i &&  npm run build && ls && aws s3 sync dist/ s3://dev-frontend-deploy
+#    - cat dragon.txt
+#  environment: dev
