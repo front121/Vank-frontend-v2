@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconCircleUser = () => {
+export const IconCircleUser = () => {
   return (
     <svg
       width="26"
@@ -18,5 +18,3 @@ const IconCircleUser = () => {
     </svg>
   );
 };
-
-export default IconCircleUser;
