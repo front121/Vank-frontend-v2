@@ -47,6 +47,6 @@ Deploy Prod:
   stage: deploy
   when: manual  
   script:
-    - npm i vite &&  npm run build && ls && aws s3 sync dist/ s3://dev-frontend-deploy/front-vank
+    - npm i &&  npm run build && ls && aws s3 sync dist/ s3://dev-frontend-deploy/front-vank
     - cat dragon.txt
   environment: dev
