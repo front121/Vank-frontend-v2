@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import {IconHaus} from "../../../../assets/Icon/IconsSidebar/IconHaus"
-import { IconMoneyDolar } from "../../../../assets/icon/iconsSidebar/IconMoneyDolar";
-import { IconUsers } from "../../../../assets/icon/iconsSidebar/IconUsers";
-import { IconShare } from "../../../../assets/icon/iconsSidebar/IconShare";
-import { Icon } from "../../../../assets/icon/iconsSidebar/Icon";
-import { IconLanguage } from "../../../../assets/icon/iconsSidebar/IconLanguage";
-import { IconLogout } from "../../../../assets/icon/iconsSidebar/IconLogout";
-import { IconMessageInfo } from "../../../../assets/icon/iconsSidebar/IconMessageInfo";
+import { IconMoneyDolar } from "../../../../assets/Icon/IconsSidebar/IconMoneyDolar";
+import { IconUsers } from "../../../../assets/Icon/IconsSidebar/IconUsers";
+import { IconShare } from "../../../../assets/Icon/IconsSidebar/IconShare";
+import { Icon } from "../../../../assets/Icon/IconsSidebar/Icon";
+import { IconLanguage } from "../../../../assets/Icon/IconsSidebar/IconLanguage";
+import { IconLogout } from "../../../../assets/Icon/IconsSidebar/IconLogout";
+import { IconMessageInfo } from "../../../../assets/Icon/IconsSidebar/IconMessageInfo";
 import { useTranslation } from "react-i18next";
 
 export const ListLinkSidebar = ({ className }) => {
@@ -24,7 +24,7 @@ export const ListLinkSidebar = ({ className }) => {
     {
       id: "2",
       path: "transactions",
-      icon: <IconMoneyDolar />,
+      icon: <IconMoneyDolar/>,
       text: t("Share.Sidebar.Transaction"),
       className: `${"text-[16px]"}`,
     },

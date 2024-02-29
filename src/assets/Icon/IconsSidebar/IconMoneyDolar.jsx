@@ -2,8 +2,9 @@ import React from "react";
 
 export const IconMoneyDolar = ({className}) => {
   return (
-    <div className={className}>
+   
       <svg
+        className={className}
         width="20"
         height="20"
         viewBox="0 0 20 20"
@@ -15,6 +16,6 @@ export const IconMoneyDolar = ({className}) => {
           fill="#D4D4D5"
         />
       </svg>
-    </div>
+  
   );
 };

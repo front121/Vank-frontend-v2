@@ -1,8 +1,8 @@
 import React from "react";
 import {IconNotification} from '../../../../assets/Icon/IconsSidebar/IconNotification'
-import { IconCircleUser } from "../../../../assets/icon/iconsSidebar/IconCircleUser";
+import { IconCircleUser } from "../../../../assets/../assets/Icon/IconsSidebar/IconCircleUser";
 import VankLogo from "../../../../assets/VankLogo";
-import { IconSun } from "../../../../assets/icon/iconsSidebar/IconSun";
+import { IconSun } from "../../../../assets/Icon/IconsSidebar/IconSun";
 export const Header = ({ moreStyle }) => {
   return (
     // return (
