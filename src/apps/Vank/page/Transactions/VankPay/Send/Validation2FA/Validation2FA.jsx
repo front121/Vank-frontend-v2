@@ -6,21 +6,29 @@ import { Modal } from "../../../Modal/Modal";
 const length = 6;
 
 export const Validation2FA = ({ retur, back }) => {
+
+  //crea un nuevo array con una longitud especificada, lleno de cadenas vacías.
   const [otp, setOtp] = useState(new Array(length).fill(""));
+  
+  //Globalizar texto
   const [t, i18n] = useTranslation("global");
 
-  //Veiw Modal
+  //estado que maneja la visibilidad de la modal
   const [modal, setModal] = useState(false);
 
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
 
+  /// Estado que maneja la validez de los campos del código OTP.
   const [fieldValidity, setFieldValidity] = useState(
     new Array(length).fill(true)
   );
 
+  // Referencia mutable para los campos de entrada del código OTP.
   const inputRefs = useRef([]);
+
+  // Maneja el evento de tecla presionada en un campo de entrada del código OTP.
   const handleKeyDown = (index, e) => {
     if (
       e.key === "Backspace" &&
@@ -32,6 +40,7 @@ export const Validation2FA = ({ retur, back }) => {
     }
   };
 
+  // Maneja el evento de clic en un campo de entrada del código OTP.
   const handleClick = (index) => {
     inputRefs.current[index].setSelectionRange(1, 1);
     const newFieldValidity = new Array(length).fill(true);
@@ -42,6 +51,7 @@ export const Validation2FA = ({ retur, back }) => {
     }
   };
 
+  // Maneja el evento de cambio en un campo de entrada del código OTP.
   const handleChange = (index, e) => {
     const value = e.target.value;
     if (isNaN(value)) return false;
@@ -58,6 +68,8 @@ export const Validation2FA = ({ retur, back }) => {
     setFieldValidity(newFieldValidity);
   };
 
+
+  // Efecto que se ejecuta cuando cambia el índice de la pestaña activa.
   useEffect(() => {
     if (activeTabIndex === null) {
       return;
@@ -77,6 +89,7 @@ export const Validation2FA = ({ retur, back }) => {
       return;
     }
 
+    //
     const setTabPosition = () => {
       const currentTab = tabsRef.current[activeTabIndex];
       setTabUnderlineLeft(currentTab?.offsetLeft ?? 0);
@@ -86,6 +99,7 @@ export const Validation2FA = ({ retur, back }) => {
     setTabPosition();
   }, [activeTabIndex, i18n]);
 
+  // Datos de las pestañas disponibles.
   let allTabs = [
     {
       id: t("Auth.login.Otp.nav.email"),
@@ -107,7 +121,7 @@ export const Validation2FA = ({ retur, back }) => {
       setModal(true);
     }
   };
-
+  //Referencia mutable para las pestañas.
   const tabsRef = useRef([]);
   return (
     <div className="flex flex-col  h-[540px] items-center justify-center">
@@ -121,6 +135,7 @@ export const Validation2FA = ({ retur, back }) => {
             >
               <span className="h-full w-full rounded-3xl bg-gray-200/30" />
             </span>
+            {/*Recorremos los btn email phone auth*/}
             {allTabs.map((tab, index) => {
               const isActive = activeTabIndex === index;
 
@@ -155,6 +170,7 @@ export const Validation2FA = ({ retur, back }) => {
           </div>
           <div className="h-[90px] flex flex-col justify-between">
             <form className="flex justify-between w-[550px]">
+              {/**Recorremos el Array con los capos del codigo Otp*/}
               {otp.map((value, i) => {
                 return (
                   <input
@@ -179,12 +195,18 @@ export const Validation2FA = ({ retur, back }) => {
         </div>
         <FooterBtn onClik={() => sendOpt()} onclickBack={back} history={`VankPay history  \u25BA`}/>
       </div>
+      {/**si modal es true no permite ver la venta modal*/}
       {modal && (
+        <>
         <Modal
           volver={retur}
-          moreStyle={`${modal ? "absolute bg-[#191E25] ba-[8px] " : ""}`}
+          moreStyle={`${modal ? "absolute bg-[#191E25] ba-[8px] z-50" : ""}`}
         />
+        <div className="h-[100vh] absolute top-0 bg-[#14181F99] w-[100vw]"></div>
+        </>
       )}
+
+        
     </div>
   );
 };

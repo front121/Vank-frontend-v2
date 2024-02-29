@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { CardItem } from "../../../../../../Shared/CardItem/CardItem";
-
 export const SectionCardBTC = ({
   img,
   title,
@@ -11,8 +9,7 @@ export const SectionCardBTC = ({
   btnOnClick,
   btnLabel
 }) => {
-    const [open,setOpen]=useState(false);
-
+    
   return (
     <div onClick={onClick}
       className={` cursor-pointer h-[120px] rounded-[16px] py-[31px] pr-[34px] pl-[30px] bg-[#3E4347] text-body hover:bg-[#5E6061] 

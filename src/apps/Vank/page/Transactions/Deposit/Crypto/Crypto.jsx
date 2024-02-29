@@ -6,13 +6,6 @@ import imgUsdt from '../../../../../../assets/images/usdt.jpeg'
 
 export const Crypto = () => {
     const [value,setValue]=useState(0);
-    const handleContent=()=>{
-        if(open){
-            setOpen(false)
-        }else{
-            setOpen(true)
-        }
-    }
   return (
     <div className='h-[438px] w-[550px] flex flex-col justify-between'>
         <SectionCardBTC img={imgBitcoin} title={'Bitcoin BTC'} subTitle={'BTC'}
