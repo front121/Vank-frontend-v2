@@ -111,7 +111,7 @@ export const Validation2FA = ({ retur, back }) => {
   const tabsRef = useRef([]);
   return (
     <div className="flex flex-col  h-[540px] items-center justify-center">
-      <div className="w-[550px] h-[372px]  flex flex-col gap-[40px] bg-black ">
+      <div className="w-[550px] h-[372px]  flex flex-col gap-[41.5px]  ">
         <h1 className="font-bold">2FA validation</h1>
         <div className="h-[318px] w-[550px] flex flex-col gap-[32px]">
           <ul className="flew-row relative  h-[36px] flex items-center ">
@@ -174,10 +174,10 @@ export const Validation2FA = ({ retur, back }) => {
                 );
               })}
             </form>
-            <p className="text-end text-[#FAE100] ">Resend Code</p>
+            <p className="text-end text-[#FFED00] text-[14px] leading-[18.2px] font-bold">Resend Code</p>
           </div>
         </div>
-        <FooterBtn onClik={() => sendOpt()} onclickBack={back} />
+        <FooterBtn onClik={() => sendOpt()} onclickBack={back} history={`VankPay history  \u25BA`}/>
       </div>
       {modal && (
         <Modal
