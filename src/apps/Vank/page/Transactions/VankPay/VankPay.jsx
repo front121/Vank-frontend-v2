@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import { Recieve } from './Recieve/Recieve'
 import { Send } from './Send/Send'
 
-export const VankPay = ({selectView}) => {
+export const VankPay = ({selectView,veiwHistorial}) => {
   useEffect(()=>{
-    console.log(selectView);
+    
   },[])
   return (
    <>
-    {selectView==1?<Send/>:<Recieve/>}
+    {selectView==1?<Send onClickHistorial={veiwHistorial}/>:<Recieve/>}
    </> 
     
   )

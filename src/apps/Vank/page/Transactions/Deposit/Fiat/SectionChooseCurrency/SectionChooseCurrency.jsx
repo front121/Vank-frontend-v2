@@ -27,11 +27,11 @@ export const SectionChooseCurrency = () => {
   }
 
   return (
-    <div className="flex  justify-between items-center w-[550px] h-[94px]">
-      <div className="flex flex-col  h-[94px] w-[171px] py-[9px] gap-[13px]">
+    <div className="flex  justify-between items-center w-[100%] h-[94px]">
+      <div className="flex flex-col  h-[94px] w-[171px] py-[9px] gap-[13px] ">
         <h2>Choose currency</h2>
         <nav className="" >
-          <ul onClick={()=>deploy()} className={`transition-heigth duration-500 ${visible?' h-[212px]  bg-[#5E6061]':'bg-[#3E4347]'} pb-[12px] w-[163px] h-[39px] overflow-hidden  rounded-[12px] absolute z-50 `} >
+          <ul onClick={()=>deploy()} className={`transition-heigth duration-500 ${visible?' h-[212px]  bg-[#5E6061]':'bg-[#3E4347]'} pb-[12px] w-[163px] h-[39px] overflow-hidden  rounded-[12px] absolute z-0 `} >
             {ChooseCurrency.map((item, index) => (
               <li  key={index} className={`${visible?'hover:bg-[#3E4347]':'hover:bg-[#5E6061]'} flex  h-[36px] gap-[24px] w-[163px]   py-[8px]  px-[12px] `} >
                 {item.flag}

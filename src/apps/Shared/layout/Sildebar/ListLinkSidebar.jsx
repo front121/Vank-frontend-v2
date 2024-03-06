@@ -10,7 +10,7 @@ import { IconLogout } from "../../../../assets/Icon/IconsSidebar/IconLogout";
 import { IconMessageInfo } from "../../../../assets/Icon/IconsSidebar/IconMessageInfo";
 import { useTranslation } from "react-i18next";
 
-export const ListLinkSidebar = ({ className }) => {
+export const ListLinkSidebar = ({ className,rounded,onMouseEnter,onMouseLeave }) => {
   const [t, i18n] = useTranslation("global");
 
   const listLinksHeader = [
@@ -73,7 +73,11 @@ export const ListLinkSidebar = ({ className }) => {
     <Sidebar
       listLinksHeader={listLinksHeader}
       listLinksFooter={listLinksFooter}
-      moreStyle={className}
+      className={className}
+      rounded={rounded}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      
     />
   );
 };

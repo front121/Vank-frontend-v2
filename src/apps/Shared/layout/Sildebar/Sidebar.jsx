@@ -2,9 +2,12 @@ import { React, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 // import {Rounded} from "../../../../assets/Rounded";
 export const Sidebar = ({
-  moreStyle,
+  className,
   listLinksHeader = [],
   listLinksFooter = [],
+  rounded,
+  onMouseEnter,
+  onMouseLeave  
   
 }) => {
   const languages = [
@@ -23,17 +26,17 @@ export const Sidebar = ({
   const w=258;
 
   return (
-    <div
-      className={`  2xl:pt-[34px] xl:pt-[34px] w-[120px] flex relative  overflow-hidden  transition-width duration-700 ease-in-out float-left   group  flex-col sm:px-[31px]   xl:px-[31px] ${moreStyle} 
-     `}
+    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
+      className={className}
     >
+      {rounded}
       {/* <Rounded
         fill={'wi'}
         className="absolute 2xl:-top-[5px] 2xl:-right-[55px] md:-top-[17px] md:-right-[55px]  "
       />
       */}
       {/* pb-15px */}
-      <nav className="h-[87%] flex flex-col justify-between 2xl:pt-[40px] sm:pt-20 xl:pt-[50px]  group-hover:w-[100%]  ">
+      <nav  className="h-[87%] flex flex-col justify-between 2xl:pt-[40px] sm:pt-20 xl:pt-[50px]  group-hover:w-[100%]  ">
         <div className="h-full flex flex-col  pb-[0px] justify-between group-hover:w-full ">
           <ul className="media-sidebar-icons1 flex flex-col 2xl:gap-[36px] lg:gap-5 sm:gap-[36px] xl:gap-[36px]   group-hover:w-full ">
             {listLinksHeader.map((index) => (

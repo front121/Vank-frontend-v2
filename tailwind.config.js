@@ -16,7 +16,7 @@ export default {
 
       },
       boxShadow:{
-        "box-header":"-32px -500px 0px #191E25"
+        "box-header":"47px -28px 0px #191E25"
       },
       screens: {
         

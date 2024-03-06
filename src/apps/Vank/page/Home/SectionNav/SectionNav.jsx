@@ -10,7 +10,7 @@ export const SectionNav = ({
   value,
 }) => {
   const [items, setItems] = useState([
-    { id: 1, text: "Resumen", active: true, action: onclickResume },
+    { id: 1, text: "Resume", active: true, action: onclickResume },
     { id: 2, text: "Account", action: onclickAccounts },
     { id: 3, text: "Card", action: onclickCards },
     { id: 4, text: "Wallets", action: onClickWallets },
@@ -25,9 +25,9 @@ export const SectionNav = ({
   };
 
   return (
-    <div className={`w-full flex justify-between   h-[10%] ${moreStyle} `}>
+    <div className={`w-full flex justify-between    ${moreStyle} `}>
       
-        <div className="nav-container sm:w-[] sm-text-[16px] sm:gap-[15px]  w-[338px] flex h-[25px]  justify-between  xl:w-[338px]  text-[#A1A1A1] ">
+        <div className="nav-container w-[338px] flex h-[25px] xl:max-2xl:w-[60%]  justify-between text-[#A1A1A1]">
           {items.map((item, i) => (
             <div
               className={`nav-item  item-${i} ${item.active ? "active font-[700] border-b-[px] relative " : "font-normal "}`}
@@ -43,12 +43,12 @@ export const SectionNav = ({
       
 
       <div className=" text-body  relative">
-        <span className="gap-1 lg:text-[16px] 2xl:text-[16px]  sm:text-[16px] font-[700] leading-[20.8px] xl:text-[16px] w-[100%]  flex flex-row items-center  mt-1 ">
+        <span className="gap-1    font-[700] leading-[20.8px]  w-[100%]  flex flex-row items-center  mt-1 ">
           Total balance
           {/* <AiTwotoneEye /> */}
           <IconEye />
         </span>
-        <h1 className="top xl:text-[24px] sm:text-[24px]  text-end mr-1   font-[700] leading-[20.8px] w-[100px] h-[36.75px] relative -right-5 top-1">
+        <h1 className="top text-[22px]  text-end mr-1   font-[700] leading-[20.8px] w-[100px] h-[36.75px] relative -right-5 top-1">
           $80.60
         </h1>
       </div>

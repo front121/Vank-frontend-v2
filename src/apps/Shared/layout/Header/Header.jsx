@@ -5,20 +5,19 @@ import { IconCircleUser } from "../../../../assets/../assets/Icon/IconsSidebar/I
 import VankLogo from "../../../../assets/VankLogo";
 import { IconSun } from "../../../../assets/Icon/IconsSidebar/IconSun";
 
-export const Header = ({ moreStyle }) => {
+export const Header = ({ className }) => {
   const newLocal = <IconSun />;
   return (
     // return (
-    <header
+    <header className={className}
     
-      className={`2xl:h-[100px] flex justify-between sm:h-[100px] xl:h-[100px]  py-[16px] px-[40px] bg-[#191E25] bg-transparent    items-center  z-[60] lg:h-[80px] ${moreStyle} 
-     `}
+     
     >
-      <div className=" w-full xl:h-[68px] flex justify-between items-center ">
+      <div className=" w-full xl:h-[68px] flex justify-between items-center bg-[#191E25] ">
 
         <div className="xl:w-[160px] flex items-center xl:h-[68px]">
           <VankLogo
-            className="2xl:w-[151.94px] 2xl:h-[52px] lg:w-[115px] sm:h-[29px] sm:w-[97px] absolute z-50  xl:w-[151.94px] xl:h-[52px]"
+            className="2xl:w-[151.94px] 2xl:h-[52px] lg:w-[115px] sm:h-[29px] sm:w-[97px] absolute z-[100]  xl:w-[151.94px] xl:h-[52px]"
             fill={"#FFED00"}
           />
         </div>

@@ -15,9 +15,9 @@ const Home = () => {
 
   return (
     
-    <div className="home-responsi-1 bg-[#191E25] p-[36px] lg:w-[622px] xl:h-[668px] md:h-[740px]  text-body sm:h-[86%]  overflow-hidden rounded-[32px]">
+    <div className="h-[708px] w-[622px] xl:max-2xl:h-[100%] xl:max-2xl:w-[45%]  bg-[#191E25] p-[2.25rem]  text-body    rounded-[32px] " >
      
-      <div  className="home-responsi-2 w-[550px] h-[596px] md:h-full xl:h-full media-cueri ">
+      <div  className="w-[550px] h-[596px]  xl:max-2xl:h-[100%] xl:max-2xl:w-[100%]  xl:max-2xl:text-sm  ">
         <SectionNav 
           value={value}
           onclickResume={() => {
@@ -33,7 +33,7 @@ const Home = () => {
             setValue(4);
           }}
         />
-        <div className={`home-responsi-3  w-full flex flex-col relative lg:justify-between  md:justify-between  line   xl:h-[90%] overflow-hidden md:h-[90%]`} >
+        <div className={`home-responsi-3  w-full flex flex-col relative lg:justify-between  md:justify-between  line   xl:h-[90%] lg:h-[90%] 2xl:h-[90%] overflow-hidden md:h-[90%]`} >
           {value === 1 || value === 2 ? <SectionAccounts moreStyle={`block  transition-opacity duration-700  ${value!==1?'':''}`}/> : <SectionAccounts moreStyle={'opacity-0'}/>}
           {value === 1 || value === 3 ? <SectionCards moreStyle={`block transition-opacity duration-700  ${value!==1?'absolute top-0 left-0 right-0':''}`}/> : <SectionCards moreStyle={'opacity-0'}/>}
           {value === 1 || value === 4 ? <SectionCryto moreStyle={`block transition-opacity duration-700 ${value!==1?'absolute top-0 left-0 right-0':''}`}/> :  <SectionCryto moreStyle={'opacity-0'}/>}
