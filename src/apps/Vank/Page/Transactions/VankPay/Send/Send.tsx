@@ -226,6 +226,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                   {t("Vank.Transaction.VankPay.Send.VankID")}
                 </span>
               </div>
+              
               <Controller
                 render={({ field: { onChange, value, name } }) => (
                   <CustomInput
