@@ -1,6 +1,4 @@
-import React from "react";
 import visa from "../../../../../assets/Icon/visa.png";
-// import savings from "../../../../../assets/images/USD Savings.png";
 import { useTranslation } from "react-i18next";
 import { CardItem } from "../CardItem/CardItem";
 

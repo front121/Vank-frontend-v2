@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Recieve } from "./Recieve/Recieve";
-import { Send } from "./Send/Send";
+import {useEffect} from "react";
+import {Recieve} from "./Recieve/Recieve";
+import {Send} from "./Send/Send";
 
 export const VankPay = ({
   selectView,

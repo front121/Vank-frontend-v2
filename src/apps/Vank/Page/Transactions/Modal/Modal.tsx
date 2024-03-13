@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 import tick from "../../../../../assets/Icon/Tick 2.png";
 import CustomButton from "../../../../Shared/CustomButton/CustomButton";

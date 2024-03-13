@@ -1,5 +1,3 @@
-import React from "react";
-
 export const CardItem = ({
   image,
   text,

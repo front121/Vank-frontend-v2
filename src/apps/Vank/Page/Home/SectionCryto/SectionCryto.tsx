@@ -1,4 +1,3 @@
-import React from "react";
 import eth from "../../../../../assets/Icon/eth.jpeg";
 import usdt from "../../../../../assets/Icon/usdt.jpeg";
 import btc from "../../../../../assets/Icon/Bitcoin.jpeg";

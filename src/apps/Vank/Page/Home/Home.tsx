@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SectionNav } from "./SectionNav/SectionNav";
 import { SectionAccounts } from "./SectionAccounts/SectionAccounts";
 import { SectionCards } from "./SectionCards/SectionCards";

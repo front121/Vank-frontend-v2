@@ -6,9 +6,9 @@ import { TransactioResume } from "./TransactioResume/TransactioResume";
 import { z } from "zod";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { findById, etUserField, } from "../../../../../service/ServiceTransaction/ServiceTransaction";
+// import { findById, etUserField, } from "../../../../../service/ServiceTransaction/ServiceTransaction";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
-import { Controller, set, useForm } from "react-hook-form";
+import { Controller,useForm } from "react-hook-form";
 // import { date } from "zod";
 // import { transactionAssets } from "../../../../../service/ServiceVankPay/ServiceVanPay";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -54,7 +54,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
   const [description, setDescription] = useState('');
 
 
-  const [dataResumen, setDataResumen] = useState({
+  const [dataResumen, setDataResumen] = useState<any>({
     FROM_EMAIL: "",
     FROM_ACCOUNT_TYPE: "",
     TO_EMAIL: "",
@@ -111,7 +111,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
   }, [amount]);
 
   //Manejar el valor del amount y su validacion
-  const handleChangeAmount = (event) => {
+  const handleChangeAmount = (event:any) => {
 
     let newValue = event.target.value;
     if (/^\d*\.?\d*$/.test(newValue) || newValue === '') {
@@ -140,10 +140,10 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
 
       // const response=await transactionAssets(transactionAsset);
+      
       setDataResumen(transactionAsset);
       //toast.success("Transaction ID "+response?.body.tranId) //nos trae el id de la transaction
       setContinue(contine + 1)
-      toast.info("Verify the information")
 
     } catch (error: any) {
       console.log(error?.response?.data.body);
@@ -245,7 +245,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                         ? "Phone"
                         : typeField == "Vank ID" && "Vank ID"
                       }`}
-                    disabled={amount <= 0}
+                    disabled={!amount}
 
                   />
                 )}
@@ -294,9 +294,11 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
               </span> */}
 
               <CustomTextArea 
+              classNameLabel={""}
               label={t("Vank.Transaction.VankPay.Send.Description")}
               classNameTextArea={'h-[103px] xl:max-2xl:h-[87px]'}
-              onChange={(e)=>setDescription(e.target.value)}
+              value={description}
+              onChange={(e:any)=>setDescription(e.target.value)}
               />
 
               {/* <input
@@ -335,7 +337,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
         />
       )}
-      <div className="absolute"><ToastContainer /></div>
+      
     </>
 
   );

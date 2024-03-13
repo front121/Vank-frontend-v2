@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ShateButton } from "../../../shared/ShareButton/ShareButton";
 import codigoQR from "../../../../../../../assets/Icon/QR.png";
 import { ButtonCopy } from "../../../shared/ButtonCopy/ButtonCopy";

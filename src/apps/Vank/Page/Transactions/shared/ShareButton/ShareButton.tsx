@@ -19,7 +19,7 @@ export const ShateButton = () => {
         label={<label className="flex gap-2 text-center w-[80%] text-[#14181F] font-normal leading-[20.8px] cursor-pointer max-2xl:text-[12px] items-center justify-center ">QR Sharing
           <span className="flex items-center justify-center">
             {visible ?
-              <Close2 />
+              <Close2 className='' />
               :
               <ShareCircle className={'group-hover:hidden'} />
             }

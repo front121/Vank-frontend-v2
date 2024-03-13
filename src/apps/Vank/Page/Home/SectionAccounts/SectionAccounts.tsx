@@ -1,4 +1,3 @@
-import React from "react";
 import { CardItem } from "../CardItem/CardItem";
 import usd from "../../../../../assets/Icon/USD.png";
 import savings from "../../../../../assets/Icon/USDSavings.png";

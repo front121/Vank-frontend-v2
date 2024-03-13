@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FooterBtn } from "../../../FooterBtn/FooterBtn";
 import "./style.css";
 import { Validation2FA } from "../Validation2FA/Validation2FA";
@@ -16,9 +16,9 @@ export const TransactioResume = ({
   retur?: any;
   back?: any;
   amount?: any;
-  beneficiary?:any;
+  beneficiary?: any;
 }) => {
-  const [data, seData] = useState({});
+  const [data, seData] = useState({} as any);
 
   const [continu, setContinue] = useState(1);
   const [typeMoney, setMoney] = useState("");
@@ -27,39 +27,49 @@ export const TransactioResume = ({
   const [t, i18n] = useTranslation("global");
 
   const {
-    handleSubmit,
-    watch,
+    // handleSubmit,
+    // watch,
     control,
-    formState: { errors, isValid },
-    setValue,
+    // formState: { errors, isValid },
+    // setValue,
     getValues,
-    clearErrors,
+    // clearErrors,
   } = useForm({
     // resolver: zodResolver(_schema),
     mode: "onChange",
     reValidateMode: "onChange",
     defaultValues: {
       email: "",
-      terms: false,
+      terms: "",
     },
   });
 
   useEffect(() => {
     seData(dataUser);
     setMoney(localStorage.getItem("money") as string);
-    setTextmoney(localStorage.getItem("money").split(" ")[0]);
+
+    const moneyFromLocalStorage = localStorage.getItem("money");
+    
+    if (moneyFromLocalStorage !== null) {
+      const textMoney = moneyFromLocalStorage.split(" ")[0];
+      setTextmoney(textMoney)
+    } else {
+      // Si el valor en localStorage es null, manejarlo de alguna manera
+    }
+
+    
   }, []);
 
   return (
     <div className="responsi-transaction-resume-main  2xl:w-full  2xl:h-[527px] flex flex-col gap-[32px]   xl:max-2xl:gap-[10px] max-lg:h-[100%] ">
       {continu == 1 && (
         <div className="responsi-transaction-resume-main2 flex flex-col h-full gap-[22.74px]  max-lg:justify-between 2xl:justify-between">
-          
+
           <h1 className="responsive-text text-[#EFF0F1] font-bold  leading-[20.8px]  xl:max-2xl:text-sm">
             Transaction Resume
           </h1>
           <div className="responsi-transaction-resume-content1 w-[550px] h-[355px] flex flex-col gap-[33px]  xl:max-2xl:gap-[20px] xl:max-2xl:h-[320px] max-lg:h-[70%] ">
-            
+
             <div className="responsi-transaction-resume-content2 h-[264px] flex flex-col justify-between w-[100%] text-[16px]   xl:max-2xl:text-sm xl:max-2xl:h-[70%] ">
               <div className="flex w-[100%] justify-between h-[21px]">
                 <p>{t("Vank.Transaction.VankPay.Send.Amount")} :</p>
@@ -98,13 +108,12 @@ export const TransactioResume = ({
                     <div className="flex items-center relative cursor-pointer">
                       <input
                         type="checkbox"
-                        onClick={()=>settermsConditions(termsConditions?false:true)}
+                        onClick={() => settermsConditions(termsConditions ? false : true)}
                         name={name}
                         value={value}
                         checked={termsConditions}
-                        className={`appearance-none w-[22px] h-[22px] rounded-[4px] relative bg-[--dark-gray] cursor-pointer z-20 ${
-                          getValues("terms") && "opacity-10"
-                        }`}
+                        className={`appearance-none w-[22px] h-[22px] rounded-[4px] relative bg-[--dark-gray] cursor-pointer z-20 ${getValues("terms") && "opacity-10"
+                          }`}
                         onChange={onChange}
                       />
                       {getValues("terms") && (
@@ -119,7 +128,7 @@ export const TransactioResume = ({
                 />
               </div>
               <p className="responsive-text text-[16px] font-normal leading-[20.8px] xl:text-[15px]">
-              {t("Vank.Transaction.VankPay.Send.Resume.TermsAndConditions.textByClicking")}{" "}
+                {t("Vank.Transaction.VankPay.Send.Resume.TermsAndConditions.textByClicking")}{" "}
                 <span className=" font-bold">{t("Vank.Transaction.VankPay.Send.Resume.TermsAndConditions.TextContinue")}</span>,{" "}{t("Vank.Transaction.VankPay.Send.Resume.TermsAndConditions.TextIAgree")}{" "}
                 <span className=" font-bold">{t("Vank.Transaction.VankPay.Send.Resume.TermsAndConditions.TextTerms")}</span>{" "} {t("Vank.Transaction.VankPay.Send.Resume.TermsAndConditions.And")}{" "}
                 <span className="font-bold">{t("Vank.Transaction.VankPay.Send.Resume.TermsAndConditions.Conditions")}.</span>{" "}
@@ -137,7 +146,7 @@ export const TransactioResume = ({
       )}
 
       {continu == 2 && (
-        <Validation2FA  data={dataUser} retur={retur} back={() => setContinue(1)} />
+        <Validation2FA data={dataUser} retur={retur} back={() => setContinue(1)} />
       )}
     </div>
   );

@@ -5,10 +5,10 @@ import btc from "../../../../../../../assets/Icon/Bitcoin.jpeg";
 import usdt from "../../../../../../../assets/Icon/usdt.jpeg";
 import trx from "../../../../../../../assets/Icon/TRX (2).png";
 
-import {
-  convertir,
-  findById,
-} from "../../../../../../service/ServiceTransaction/ServiceTransaction";
+// import {
+//   convertir,
+//   findById,
+// } from "../../../../../../service/ServiceTransaction/ServiceTransaction";
 import { assetsList } from "../../../../../../service/ServiceVankPay/ServiceVanPay";
 
 export const CustomSelect = ({ label, data }: { label?: any; data?: any }) => {
@@ -33,7 +33,7 @@ export const CustomSelect = ({ label, data }: { label?: any; data?: any }) => {
   const [user, setUser] = useState({});
   // const [assets, setAssets] = useState([]);
 
-  const [assets, setAssets] = useState([]);
+  const [assets, setAssets] = useState([] as any[]);
   const [assetList, setAssetsList] = useState([]);
   const [amountAvailable, setAmountAvailable] = useState(0);
 
@@ -95,6 +95,8 @@ export const CustomSelect = ({ label, data }: { label?: any; data?: any }) => {
 
     const getListAssets=async()=>{
       const body = await assetsList();
+      console.log("boDy "+body?.body);
+      
       setAssetsList(body?.body)
     }
     getListAssets();
@@ -108,10 +110,12 @@ export const CustomSelect = ({ label, data }: { label?: any; data?: any }) => {
   }
 
   //funcion que realiza un llamdo al filtraporAssets el cual nos de vuelve un free  
-  const handleItem = async (item?: any) => {
+  const handleItem = (item?: any) => {
 
-    const resultado = filtrarPorAsset(item?.text);
+    const resultado:any= filtrarPorAsset(item?.text);
+    
     setAmountAvailable(resultado[0]?.free);
+   
 
     localStorage.setItem("assets",item?.text)
   
@@ -179,7 +183,7 @@ export const CustomSelect = ({ label, data }: { label?: any; data?: any }) => {
         className={`flex flex-col absolute  -left-4 top-6 bg-[#191E25] pb-2 rounded-[12px] w-full h-auto z-50 px-[6px] gap-[12px] items-center ${veiw ? "block" : "hidden"
           } `}
       >
-        {assets.map((item, index) => (
+        {assets.map((item) => (
           <button onClick={() => handleItem(item)}>
             <div
               className={
@@ -196,12 +200,6 @@ export const CustomSelect = ({ label, data }: { label?: any; data?: any }) => {
                   {item?.text}
                 </p>
               </div>
-
-              {/* <span className="w-[73px] h-[16px] ">
-                <p className="font-bold 2xl:text-[12px] leading-[15.6px] flex flex-col items-center overflow-hidden w-[100px] max-xl:text-[90%]">
-                  $ {100000}
-                </p>
-              </span> */}
             </div>
           </button>
         ))}

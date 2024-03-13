@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FooterBtn } from "../../../FooterBtn/FooterBtn";
 // import { Modal } from "../../../Modal/Modal";
@@ -9,7 +9,7 @@ import CustomTooltip from "../../../../../../Shared/CustomTooltip/CustomTooltip"
 import { Modal } from "../../../Modal/Modal";
 import { transactionAssets } from "../../../../../../service/ServiceVankPay/ServiceVanPay";
 import { ToastContainer, toast } from 'react-toastify';
-import { isValid } from "zod";
+// import { isValid } from "zod";
 
 const length = 6;
 
@@ -137,7 +137,7 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
         const response=await transactionAssets(data);
         setTransactionId(response?.body.tranId)
         setModal(true);
-      }catch(error){
+      }catch(error:any){
         toast.error(error?.response?.data.body)
         setModal(false);
       }
@@ -175,7 +175,7 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
               return (
                 <li
                   key={index}
-                  ref={(el) => (tabsRef.current[index] = el)}
+                  ref={(el) => ((tabsRef.current[index] as any) = el)}
                   className={`flex justify-center items-center transition-all duration-300 xl:text-[14px] max-xl:text-[14px] max-2xl:text-[16px] 2xl:text-[16px] ${
                     isActive ? `  text-white` : `text-link `
                   } cursor-pointer rounded-full h-[7px] px-[10px]  text-base `}

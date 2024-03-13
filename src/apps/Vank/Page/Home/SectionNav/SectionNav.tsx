@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { IconEye } from "../../../../../assets/Icon/IconEye";
 import "./SectionNavStyle.css";
 export const SectionNav = ({
