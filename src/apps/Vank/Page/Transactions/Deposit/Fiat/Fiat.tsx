@@ -11,8 +11,8 @@ export const Fiat = ({ className }: { className?: string }) => {
   const [iconLindkWithdraw, setIconLindkWithdraw] = useState(false);
 
   return (
-    <div className={className}>
-      <div className="w-[100%] h-[368px] flex flex-col justify-between ">
+    <div className={'w-[100%]'}>
+      <div className="w-[100%] h-[368px] flex flex-col justify-between  ">
         <SectionChooseCurrency />
         <div className="flex items-center gap-4 font-normal text-[14px] leading-[18.2px] text-[#9D9DA2] h-[45px]">
           <div className="w-[43px] h-[43px] flex items-center justify-center">

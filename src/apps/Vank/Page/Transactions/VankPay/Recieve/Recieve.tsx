@@ -4,29 +4,28 @@ import vectorshare from "../../../../../../assets/Icon/Vectorshare.png";
 import img from "../../../../../../assets/Icon/Vectorimg.png";
 import QR from "../../../../../../assets/Icon/QR.png";
 import copy from "../../../../../../assets/Icon/Iconcopy.png";
-import CustomInput from "../../../../../Shared/CustomInput/CustomInput";
-import { Controller, useForm } from "react-hook-form";
 import CustomButton from "../../../../../Shared/CustomButton/CustomButton";
 import { ShareCircle } from "../../../../../../assets/Icon/ShareCircle";
 import Visibility from "../../../../../../assets/Icon/Visibility";
 import whatsapp from "../../../../../../assets/Icon/WHATSAPP-ICON.png"
 import email from "../../../../../../assets/Icon/GMAIL-ICON.png"
 import image from "../../../../../../assets/Icon/JPG-ICON.png"
-import Close from "../../../../../../assets/Icon/Close";
 import { Close2 } from "../../../../../../assets/Icon/Close2";
+import { IconCopy } from "../../../../../../assets/Icon/IconCopy";
+import { ButtonCopy } from "../../shared/ButtonCopy/ButtonCopy";
 
 export const Recieve = () => {
-  const {
-    control,
-    formState: { errors },
-  } = useForm({
-    mode: "onChange",
-    reValidateMode: "onChange",
-    defaultValues: {
-      email: "",
-      VankId: "",
-    },
-  });
+  // const {
+  //   control,
+  //   formState: { errors },
+  // } = useForm({
+  //   mode: "onChange",
+  //   reValidateMode: "onChange",
+  //   defaultValues: {
+  //     email: "",
+  //     VankId: "",
+  //   },
+  // });
 
   const [visible, setVisible] = useState(false);
   const [data, setData] = useState({email:'jheisonruapachon7_virtual@3acnd1hunoemail.com',id:'1234567'});
@@ -62,7 +61,7 @@ export const Recieve = () => {
               <span className="text-sm sm:text-base font-normal text-[--text-body] border-b-[2px] border-[#3E4347] leading-[20.8px] text-body max-2xl:text-[15px]">
                 User Email
               </span>
-              <p className="flex items-center gap-2 max-2xl:text-[14px]"><input type="text" className="dark:bg-[#191E25]" value={data.email} disabled/> <Visibility/>  <img src={copy} alt="" className="" /></p>
+              <p className="flex items-center gap-2 max-2xl:text-[14px]"><input type="text" className="dark:bg-[#191E25]" value={data.email} disabled/> <Visibility/><ButtonCopy textCopy={data.email}/></p>
               
               {/* <Controller
                 render={({ field: { onChange, value, name } }) => (
@@ -87,7 +86,7 @@ export const Recieve = () => {
                 Vank ID 
               </span>
 
-              <p className="flex items-center gap-2 max-2xl:text-[14px]">{data.id}<Visibility/>  <img src={copy} alt="" className="" /> </p>
+              <p className="flex items-center gap-2 max-2xl:text-[14px]">{data.id}<Visibility/><ButtonCopy textCopy={data.id}/></p>
               {/* <Controller
                 render={({ field: { onChange, value, name } }) => (
                   <CustomInput

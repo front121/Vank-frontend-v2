@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import tick from "../../../../../assets/Icon/Tick 2.png";
 import CustomButton from "../../../../Shared/CustomButton/CustomButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 export const Modal = ({
   moreStyle,
@@ -26,7 +26,12 @@ export const Modal = ({
   const [typeMoney, setMoney] = useState("");
   const [currentDateTime, setCurrentDateTime] = useState("");
 
+  const nagavite=useNavigate();
+
+  
   useEffect(() => {
+
+
     setMoney(localStorage.getItem("money") as string);
     setTimeout(() => {
       setLoading(true);
@@ -61,12 +66,13 @@ export const Modal = ({
                 </span>
               ) : (
                 <img src={tick} alt="" />
-              )}
+              )}  
+              {/* typeMoney.split(" ")[0] */}
             </div>
             <div className="w-[430px] h-[51px] flex flex-col gap-[6px] justify-center items-center">
               {loading && (
                 <div className="w-[430px] h-[51px] flex flex-col gap-[6px] justify-center items-center">
-                  <h1 className="text-[20px] leading-[26px] font-bold">{`$${monto}`}</h1>
+                  <h1 className="text-[20px] leading-[26px] font-bold">{`${typeMoney.split(" ")[0]=="USD"?'$':''}`} {monto} {`${typeMoney.split(" ")[0]}`}</h1>
                   <p className="text-[#EFF0F1] font-normal text-[16px] leading-[20.8px]">
                   {t("Vank.Transaction.VankPay.Send.Modal.SentSuccesFully.SentSuccesFully")}
                     

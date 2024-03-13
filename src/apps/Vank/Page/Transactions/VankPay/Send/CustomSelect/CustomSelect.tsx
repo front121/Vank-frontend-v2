@@ -90,6 +90,9 @@ export const CustomSelect = ({ label, data }: { label?: any; data?: any }) => {
 
   //Se realiza una peticion al servidor el cual nos regresa una lista de Assets
   useEffect(()=>{
+
+    localStorage.setItem("money", list[list.length-1].text + " " + list[list.length-1].subText);
+
     const getListAssets=async()=>{
       const body = await assetsList();
       setAssetsList(body?.body)

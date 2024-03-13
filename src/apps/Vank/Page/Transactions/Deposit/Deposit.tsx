@@ -1,16 +1,25 @@
-import React, { useState } from "react";
 import { Fiat } from "./Fiat/Fiat";
 import { Crypto } from "./Crypto/Crypto";
+import CustomButton from "../../../../Shared/CustomButton/CustomButton";
+import { FooterBtn } from "../FooterBtn/FooterBtn";
 
-export const Deposit = ({ selectView }: { selectView?: any }) => {
+export const Deposit = ({ selectView, veiwHistorial }: { selectView?: any, veiwHistorial: any }) => {
   return (
-    <div className="flex flex-col gap-[16px] w-[550px] h-[70%] w-full">
+    <div className="flex flex-col h-full overflow-hidden  gap-[30px] w-full">
       {/*Si selectView vale uno nos permite ver la section de Fiat si no Crypto  */}
       {selectView == 1 ? (
-        <Fiat className={"h-full flex flex-col justify-between w-full"} />
+        <Fiat />
       ) : (
-        <Crypto  />
+        <Crypto />
       )}
+      <div className="text-end">
+        {selectView == 1 ?
+          <FooterBtn onClickHistory={veiwHistorial} history={'Deposit History'} />
+          :
+          <CustomButton onclick={veiwHistorial} label={'Deposit History'} className="font-normal w-auto text-[#9D9DA2]" />
+        }
+
+      </div>
     </div>
   );
 };

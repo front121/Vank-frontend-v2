@@ -6,18 +6,17 @@ import { TransactioResume } from "./TransactioResume/TransactioResume";
 import { z } from "zod";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import {findById,etUserField,} from "../../../../../service/ServiceTransaction/ServiceTransaction";
-
+import { findById, etUserField, } from "../../../../../service/ServiceTransaction/ServiceTransaction";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
 import { Controller, set, useForm } from "react-hook-form";
 // import { date } from "zod";
 // import { transactionAssets } from "../../../../../service/ServiceVankPay/ServiceVanPay";
-
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
+import './send.css'
+import { CustomTextArea } from "../../../../../Shared/CustomTextArea/CustomTextArea";
 
+//Validacion de formulario
 const schema = z.object({
   email: z.string().email("Invalid email format"),
   amount: z.string()
@@ -28,6 +27,12 @@ const schema = z.object({
       message: "Amount must be a number"
     })
     .transform(val => parseFloat(val.replace(",", ".")))
+    .refine(val => {
+      // Comprueba si el valor es mayor que cero
+      return val > 0;
+    }, {
+      message: "Amount must be greater than zero"
+    })
 });
 
 export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
@@ -41,11 +46,13 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
   const [beneficiary, setBeneficiary] = useState("");
   const [contine, setContinue] = useState(1);
   const [user, setUser] = useState({});
- 
+
   const [typeField, setTypeField] = useState("Email");
-  const [amount, setAmout] = useState(0);
+  const [amount, setAmount] = useState("");
   const [fromEmail, setFromEmail] = useState('');
   const [toEmail, setToEmail] = useState('');
+  const [description, setDescription] = useState('');
+
 
   const [dataResumen, setDataResumen] = useState({
     FROM_EMAIL: "",
@@ -56,9 +63,10 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
     AMOUNT: ""
   })
 
+  //validacion de fomulario
   const {
     control,
-    formState: { errors, isValid },
+    formState: { errors, isValid }, reset
   } = useForm({
     resolver: zodResolver(schema),
     mode: "onChange",
@@ -71,6 +79,19 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
     },
   });
 
+  //Resetiar valores del formulario
+  const resetForm = () => {
+    reset({
+      amount: "",
+      email: "",
+      beneficiary: "",
+      description: "",
+    });
+
+    setAmount("")
+    setToEmail('')
+    setBeneficiary('')
+  };
 
   useEffect(() => {
     const storedData = sessionStorage.getItem("data");
@@ -87,11 +108,21 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
       console.log("No se encontraron datos en sessionStorage.");
     }
 
-    console.log(amount);
-
   }, [amount]);
 
+  //Manejar el valor del amount y su validacion
+  const handleChangeAmount = (event) => {
 
+    let newValue = event.target.value;
+    if (/^\d*\.?\d*$/.test(newValue) || newValue === '') {
+      // Si es un número o una cadena vacía, actualizar el estado con el nuevo valor
+      if (newValue === '0' && amount.length == 0) {
+        // Si el siguiente carácter es un número, agregar un punto
+        newValue += '.';
+      }
+      setAmount(newValue);
+    }
+  }
 
 
   //Al dar continuar se setean los datos en el objeto transactionAsset y lo enviamos como parametros
@@ -114,10 +145,6 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
       setContinue(contine + 1)
       toast.info("Verify the information")
 
-      // setToEmail("")
-      // setAmout(0)
-      // setBeneficiary("")
-
     } catch (error: any) {
       console.log(error?.response?.data.body);
       toast.error(error?.response?.data.body)
@@ -126,8 +153,6 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
 
   }
-
-
 
   return (
 
@@ -143,25 +168,28 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
               <CustomSelect data={user} label={'Choose account or wallet'} />
               <div className="w-[259px] flex flex-col gap-y-[2px]">
                 <span className="text-sm sm:text-base font-normal text-[--text-body] xl:text-[14px] 2xl:text-[16px]">
-                {t("Vank.Transaction.VankPay.Send.Amount")}
+                  {t("Vank.Transaction.VankPay.Send.Amount")}
                 </span>
                 <Controller
                   render={({ field: { onChange, value, name } }) => (
 
                     <CustomInput
                       type="text"
-                      value={value}
+                      value={amount}
+
                       onChange={(e) => {
                         onChange(e.target.value)
-                        setAmout(e.target.value)
+                        handleChangeAmount(e)
                       }}
-                      className="send-input w-[259px] h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none focus-visible:border-[#6F6E64] placeholder:text-[--text-light-body]  "
+                      className="send-input  w-[259px] focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64]  h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none focus-visible:border-[#6F6E64] focus-visible:border-[2px] placeholder:text-[--text-light-body]  "
                       name={name}
                       error={Boolean(errors["amount"])}
+
                       helperText={
                         errors["amount"] ? errors["amount"].message : ""
                       }
-                      inputmode="numeric"
+
+                      inputmode="Number"
                       pattern="[0-9]*"
                     />
                   )}
@@ -188,14 +216,14 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                   className={`text-sm sm:text-base font-normal cursor-pointer xl:text-[14px] 2xl:text-[16px] ${typeField == "Phone" ? "text-[--text-body]" : ""
                     }`}
                 >
-                   {t("Vank.Transaction.VankPay.Send.Amount")}
+                  {t("Vank.Transaction.VankPay.Send.Phone")}
                 </span>
                 <span
                   onClick={() => setTypeField("Vank ID")}
                   className={`text-sm sm:text-base font-normal cursor-pointer xl:text-[14px] 2xl:text-base ${typeField == "Vank ID" ? "text-[--text-body]" : ""
                     }`}
                 >
-                 {t("Vank.Transaction.VankPay.Send.VankID")}
+                  {t("Vank.Transaction.VankPay.Send.VankID")}
                 </span>
               </div>
               <Controller
@@ -207,7 +235,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                       onChange(e.target.value)
                       setToEmail(e.target.value)
                     }}
-                    className="send-input 2xl:text-[16px] w-full h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] focus-visible:border-[#6F6E64] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body] "
+                    className="send-input  focus-visible:border-[2px] focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64]  2xl:text-[16px] w-full h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] focus-visible:border-[#6F6E64] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body] "
                     name={name}
                     error={Boolean(errors["email"])}
                     helperText={errors["email"] ? errors["email"].message : ""}
@@ -231,7 +259,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
             <div className="w-full flex flex-col gap-y-[2px]">
               <span className="text-sm sm:text-base font-normal text-[--text-body] xl:text-[14px] 2xl:text-[16px]">
-              {t("Vank.Transaction.VankPay.Send.Beneficiary")}
+                {t("Vank.Transaction.VankPay.Send.Beneficiary")}
               </span>
               <Controller
                 render={({ field: { onChange, value, name } }) => (
@@ -242,13 +270,14 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                       onChange(e)
                       setBeneficiary(e.target.value)
                     }}
-                    className="send-input focus-visible:border-[#6F6E64] w-full h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body]"
+                    className="send-input  focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64] focus-visible:border-[2px] focus-visible:border-[#6F6E64] w-full h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body]"
                     name={name}
                     error={Boolean(errors["beneficiary"])}
                     helperText={
                       errors["beneficiary"] ? errors["beneficiary"].message : ""
                     }
                     placeholder="Type beneficiary"
+                    disabled={!isValid}
                   />
                 )}
                 name="beneficiary"
@@ -260,30 +289,26 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
             </div>
 
             <div className="w-full flex flex-col gap-y-[2px]">
-              <span className="text-sm sm:text-base font-normal text-[--text-body] xl:text-[14px] 2xl:text-[16px]">
-              {t("Vank.Transaction.VankPay.Send.Description")}
-              </span>
-              <Controller
-                render={({ field: { onChange, value, name } }) => (
-                  <CustomInput
-                    type="text"
-                    value={value}
-                    onChange={onChange}
-                    className="send-textarea  focus-visible:border-[#6F6E64] w-full h-[83px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body] "
-                    name={name}
-                    error={Boolean(errors["description"])}
-                    helperText={
-                      errors["description"] ? errors["description"].message : ""
-                    }
-                    placeholder="Type description"
-                  />
-                )}
-                name="description"
-                control={control}
-                rules={{
-                  required: true,
-                }}
+              {/* <span className="text-sm sm:text-base font-normal text-[--text-body] xl:text-[14px] 2xl:text-[16px]">
+                {t("Vank.Transaction.VankPay.Send.Description")}
+              </span> */}
+
+              <CustomTextArea 
+              label={t("Vank.Transaction.VankPay.Send.Description")}
+              classNameTextArea={'h-[103px] xl:max-2xl:h-[87px]'}
+              onChange={(e)=>setDescription(e.target.value)}
               />
+
+              {/* <input
+                type="text"
+                value={description}
+                onChange={(e)=>setDescription(e.target.value)}
+                className="send-textarea  focus-visible:border-[#6F6E64] w-full h-[83px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body] "
+                name={'description'}
+                placeholder="Description"
+              /> */}
+
+
             </div>
           </div>
           <FooterBtn
@@ -291,7 +316,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
             onClickHistory={onClickHistorial}
             onClik={() => handleChangeData()}
             onclickBack={() => setContinue(1)}
-            disabled={toEmail?.length <= 0 || beneficiary.length <= 0}
+            disabled={toEmail?.length <= 0 || beneficiary.length <= 0 || !isValid}
           />
         </div>
       )}
@@ -301,7 +326,11 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
           amount={amount}
           dataUser={dataResumen}
           beneficiary={beneficiary}
-          retur={() => setContinue(1)}
+          retur={() => {
+            setContinue(1)
+            resetForm()
+          }
+          }
           back={() => setContinue(1)}
 
         />

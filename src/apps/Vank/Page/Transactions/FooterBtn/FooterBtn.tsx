@@ -26,7 +26,7 @@ export const FooterBtn = ({
           onclick={onClik}
           disabled={disabled}
           className={
-            `${disabled?'bg-[#D6CA5C]':'hover:bg-[#FFFF33] bg-[#FFED00] '} footer-btn  rounded-[33px] w-[243px] h-[36px] text-[#14181F]  text-[16px] font-bold leading-[20.8px] `
+            `${disabled?'bg-[#D6CA5C]':'hover:bg-[#FFFF33] bg-[#FFED00]'} footer-btn  rounded-[33px] w-[243px] h-[36px] text-[#14181F]  text-[16px] font-bold leading-[20.8px] `
           }
         />
       </div>
