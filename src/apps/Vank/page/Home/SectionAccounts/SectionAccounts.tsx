@@ -3,7 +3,7 @@ import usd from "../../../../../assets/Icon/USD.png";
 import savings from "../../../../../assets/Icon/USDSavings.png";
 import { useTranslation } from "react-i18next";
 
-export const SectionAccounts = ({ moreStyle,onclik }: { moreStyle?: string,onclik:any }) => {
+export const SectionAccounts = ({ moreStyle,onclik }: { moreStyle?: string,onclik?:any }) => {
   const [t, i18n] = useTranslation("global");
   return (
     <div

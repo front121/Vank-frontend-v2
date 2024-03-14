@@ -2,7 +2,7 @@ import visa from "../../../../../assets/Icon/visa.png";
 import { useTranslation } from "react-i18next";
 import { CardItem } from "../CardItem/CardItem";
 
-export const SectionCards = ({ moreStyle,onclik }: { moreStyle?: string ,onclik:any}) => {
+export const SectionCards = ({ moreStyle,onclik }: { moreStyle?: string ,onclik?:any}) => {
   const [t, i18n] = useTranslation("global");
   return (
     <div
