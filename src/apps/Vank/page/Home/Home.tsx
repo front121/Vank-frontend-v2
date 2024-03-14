@@ -33,18 +33,16 @@ const Home = () => {
           className={`responsive-home-cards  2xl:w-full 2xl:h-[580px]  flex flex-col relative justify-between  max-2xl:h-[28.1713rem] max-sm:justify-between max-sm:h-[100%] max-lg:justify-between max-lg:h-[100%] `}
         >
           {value === 1 || value === 2 ? (
-            <SectionAccounts
-              onclik={() => setValue(2)}
+            <SectionAccounts onclik={()=>setValue(2)}
               moreStyle={`block  transition-opacity duration-700 trasaction-display duration-1000 ${
                 value !== 1 ? "absolute top-0 left-0 right-0" : ""
               }`}
             />
           ) : (
-            <SectionAccounts moreStyle={"opacity-0"} onclik={() => {}} />
+            <SectionAccounts moreStyle={"opacity-0"} />
           )}
           {value === 1 || value === 3 ? (
-            <SectionCards
-              onclik={() => setValue(3)}
+            <SectionCards onclik={()=>setValue(3)}
               moreStyle={`block transition-opacity duration-700 trasaction-display duration-1000  ${
                 value !== 1 ? "absolute top-0 left-0 right-0 " : ""
               }`}
@@ -53,10 +51,9 @@ const Home = () => {
             <SectionCards moreStyle={"opacity-0"} />
           )}
           {value === 1 || value === 4 ? (
-            <SectionCryto
-              onclick={() => setValue(4)}
+            <SectionCryto onclick={()=>setValue(4)}
               moreStyle={`block transition-opacity duration-700    ${
-                value !== 1 ? "absolute   " : ""
+                value !== 1 ? "absolute   ":""
               }`}
             />
           ) : (

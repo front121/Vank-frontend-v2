@@ -157,11 +157,11 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
   const tabsRef = useRef([]);
   return (
     <div className="responsi-transaction-2fa flex flex-col  h-[527px] items-center justify-center max-2xl:h-full ">
-      <div className="responsi-transaction-2fa-contnt1 w-full flex flex-col 2xl:gap-[27px]  max-lg:h-full max-lg:justify-between 2xl:justify-between ">
-        <div className="responsi-transaction-2fa-contnt2 w-full 2xl:h-[410px] flex flex-col justify-between max-2xl:max-2xl:h-[330px] max-lg:h-[80%] ">
+      <div className="responsi-transaction-2fa-contnt1 flex flex-col 2xl:gap-[27px]  max-lg:h-full max-lg:justify-between 2xl:justify-between ">
+        <div className="responsi-transaction-2fa-contnt2 w-full 2xl:h-[410px] flex flex-col justify-between max-2xl:max-2xl:h-[360px] max-lg:h-[80%] ">
           <h1 className="font-bold text-[18px] xl:text-[18px]"> {t("Vank.Transaction.VankPay.Send.2FAValidation.Title")}</h1>
 
-          <ul className="flew-row relative 2xl:h-[36px] flex items-center gap-4 w-full  max-2xl:max-2xl:h-[2.25rem]  mb-4">
+          <ul className="flew-row relative 2xl:h-[36px] flex items-center gap-4 w-[100%]  max-2xl:max-2xl:h-[2.25rem]  ">
             <span
               className="absolute bottom-0 top-0 flex  rounded-3xl  transition-all duration-300 "
               style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
@@ -219,7 +219,7 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
               <div className="relative flex flex-col w-full  mb-3">
                 { otp.join("") === code && <p className="absolute -top-8 z-50 right-3 text-[#FAE100] text-[15px] font-normal">valid ✓</p>}    
                 <CustomInputOtp
-                  className="mb-4 w-full"
+                  className="mb-4"
                   length={6}
                   otp={otp}
                   setOtp={setOtp}
@@ -291,17 +291,17 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
               </div>
             </>
           ) : (
-            <div className="flex justify-center gap-10 items-center h-full py-5  w-full text-[16px] ">
+            <div className="flex justify-center gap-10 items-center h-[297px] w-full pb-[36px]   text-[16px] ">
               <div className="w-[212px] h-[213px]">
                 <img src={codigoQR} alt="" />
               </div>
 
-              <div className="w-[275px] h-full flex flex-col justify-between pt-2">
+              <div className="w-[275px] h-[200px] flex flex-col justify-between pt-2">
                 <p className="font-normal text-[16px] leading-[20.8px]">
                 {t("Vank.Transaction.VankPay.Send.2FAValidation.Authy.TextOpenQR")}
                 </p>
 
-                <div className="h-[81px] flex flex-col justify-center items-start gap-[24px] text-[90%]">
+                <div className="h-[81px] flex flex-col gap-[24px] text-[90%]">
                   <p className=" ">
                   {t("Vank.Transaction.VankPay.Send.2FAValidation.Authy.TextExpires")}
                   </p>

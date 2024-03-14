@@ -63,12 +63,12 @@ export const TransactioResume = ({
   return (
     <div className="responsi-transaction-resume-main  2xl:w-full  2xl:h-[527px] flex flex-col gap-[32px]   xl:max-2xl:gap-[10px] max-lg:h-[100%] ">
       {continu == 1 && (
-        <div className="responsi-transaction-resume-main2 flex flex-col h-full gap-y-[12px] 2xl:gap-[22.74px]  max-lg:justify-between 2xl:justify-between">
+        <div className="responsi-transaction-resume-main2 flex flex-col h-full gap-[22.74px]  max-lg:justify-between 2xl:justify-between">
 
           <h1 className="responsive-text text-[#EFF0F1] font-bold  leading-[20.8px]  xl:max-2xl:text-sm">
             Transaction Resume
           </h1>
-          <div className="responsi-transaction-resume-content1 w-full h-[355px]  flex flex-col gap-[33px]  xl:max-2xl:gap-[20px] xl:max-2xl:h-full max-lg:h-[70%] ">
+          <div className="responsi-transaction-resume-content1 w-[550px] h-[355px] flex flex-col gap-[33px]  xl:max-2xl:gap-[20px] xl:max-2xl:h-[320px] max-lg:h-[70%] ">
 
             <div className="responsi-transaction-resume-content2 h-[264px] flex flex-col justify-between w-[100%] text-[16px]   xl:max-2xl:text-sm xl:max-2xl:h-[70%] ">
               <div className="flex w-[100%] justify-between h-[21px]">
@@ -101,7 +101,7 @@ export const TransactioResume = ({
               <div className="responsi-transaction-resume-border h-[36px] pt-[24px] pb-[10px] border-b-[2px] border-[#3E4347] "></div>
             </div>
 
-            <div className="flex items-center gap-x-5 transition-transform duration-500 w-full h-[42px]  mb-6">
+            <div className="flex items-center gap-x-5 transition-transform duration-500 w-full h-[42px] mb-6">
               <div className="flex items-center relative cursor-pointer">
                 <Controller
                   render={({ field: { onChange, value, name } }) => (

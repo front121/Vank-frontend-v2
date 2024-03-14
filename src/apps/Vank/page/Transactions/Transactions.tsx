@@ -25,7 +25,7 @@ const Transactions = () => {
 
   return (
     <div
-      className={`responsive-transaction-main h-[708px] relative w-full xl:max-2xl:h-[100%] xl:max-2xl:w-[90%]  max-sm:h-[100%] max-lg:h-[100%]  flex items-center justify-center   ${
+      className={`responsive-transaction-main h-[708px] relative w-full xl:max-2xl:h-[100%] xl:max-2xl:w-[90%]  max-sm:h-[100%] max-lg:h-[100%]  flex items-center justify-center    ${
         viewHistory > 0 ? " gap-[36px] transition-gap duration-1000 ease-in-out" : ""
       } `}
     >

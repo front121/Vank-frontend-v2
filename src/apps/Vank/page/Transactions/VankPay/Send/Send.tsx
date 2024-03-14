@@ -161,7 +161,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
       {contine == 1 && (
 
 
-        <div className="transaction-send w-full   h-[527px] flex flex-col justify-between relative  max-lg:h-full  overflow-hidden">
+        <div className="transaction-send w-[100%] h-[527px] flex flex-col justify-between relative  max-lg:h-full  ">
 
           <div className="transaction-send-content2 w-[100%] h-[392px]  flex flex-col  gap-[32px] xl:max-2xl:gap-0 xl:max-2xl:justify-between  xl:max-2xl:h-[342px] max-sm: max-lg:justify-between max-lg:h-[80%]">
             <div className="w-[100%] h-[65px]  flex justify-between">
@@ -181,7 +181,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                         onChange(e.target.value)
                         handleChangeAmount(e)
                       }}
-                      className="send-input  w-full focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64]  h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none focus-visible:border-[#6F6E64] focus-visible:border-[2px] placeholder:text-[--text-light-body]  "
+                      className="send-input  w-[259px] focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64]  h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none focus-visible:border-[#6F6E64] focus-visible:border-[2px] placeholder:text-[--text-light-body]  "
                       name={name}
                       error={Boolean(errors["amount"])}
 
