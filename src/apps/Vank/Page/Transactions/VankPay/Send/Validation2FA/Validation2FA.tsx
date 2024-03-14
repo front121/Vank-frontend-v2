@@ -156,12 +156,15 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
   //Referencia mutable para las pestañas.
   const tabsRef = useRef([]);
   return (
-    <div className="responsi-transaction-2fa flex flex-col  h-[527px] items-center justify-center max-2xl:h-full ">
-      <div className="responsi-transaction-2fa-contnt1 flex flex-col 2xl:gap-[27px]  max-lg:h-full max-lg:justify-between 2xl:justify-between ">
-        <div className="responsi-transaction-2fa-contnt2 w-full 2xl:h-[410px] flex flex-col justify-between max-2xl:max-2xl:h-[360px] max-lg:h-[80%] ">
-          <h1 className="font-bold text-[18px] xl:text-[18px]"> {t("Vank.Transaction.VankPay.Send.2FAValidation.Title")}</h1>
+    <div className="responsi-transaction-2fa flex flex-col  h-[527px] items-center justify-center max-2xl:h-full  max-2xl:max-2xl:h-[100%] ">
+      
+      <div className="responsi-transaction-2fa-contnt1 w-full flex flex-col 2xl:gap-[27px]  max-lg:h-full max-lg:justify-between 2xl:justify-between  xl:h-full">
+       
+        <div className="responsi-transaction-2fa-contnt2 w-full 2xl:h-[410px]  flex flex-col justify-between max-2xl:max-2xl:h-[330px] max-lg:h-[80%] xl:max-2xl:h-full xl:max-2xl:mt-0 xl:max-2xl:justify-between">
+          
+          <h1 className="font-bold text-[18px] 2xl:text-[18px]  xl:max-2xl:text-[15px]"> {t("Vank.Transaction.VankPay.Send.2FAValidation.Title")}</h1>
 
-          <ul className="flew-row relative 2xl:h-[36px] flex items-center gap-4 w-[100%]  max-2xl:max-2xl:h-[2.25rem]  ">
+          <ul className="flew-row relative 2xl:h-[36px] flex items-center gap-4 w-full  max-2xl:max-2xl:h-[2.25rem]  mb-4 xl:max-2xl:mt-2">
             <span
               className="absolute bottom-0 top-0 flex  rounded-3xl  transition-all duration-300 "
               style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
@@ -176,7 +179,7 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
                 <li
                   key={index}
                   ref={(el) => ((tabsRef.current[index] as any) = el)}
-                  className={`flex justify-center items-center transition-all duration-300 xl:text-[14px] max-xl:text-[14px] max-2xl:text-[16px] 2xl:text-[16px] ${
+                  className={`flex justify-center items-center transition-all duration-300 xl:text-[14px] max-xl:text-[14px] max-2xl:text-[16px] 2xl:text-[16px]  xl:max-2xl:text-[14px] ${
                     isActive ? `  text-white` : `text-link `
                   } cursor-pointer rounded-full h-[7px] px-[10px]  text-base `}
                   onClick={() => setActiveTabIndex(index)}
@@ -190,7 +193,7 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
 
           {activeTabIndex != 2 ? (
             <>
-              <p className=" space-y-7 mb-5 w-full sm:w-[514px]  sm:text-base text-[#EFF0F1] leading-[20.8px] max-2xl:text-[16px] max-xl:text-[14px]  2xl:text-[16px]">
+              <p className=" space-y-7 mb-5 w-full sm:w-[514px]   xl:max-2xl:text-[14px]  sm:text-base text-[#EFF0F1] leading-[20.8px] max-2xl:text-[16px] max-xl:text-[14px]  2xl:text-[16px]">
                 {activeTabIndex == 0 && (
                   <>
                     {t("Auth.login.Otp.thecodebesend")}{" "}
@@ -212,14 +215,14 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
                 )}
               </p>
 
-              <p className=" mb-5 w-[514px]  sm:text-base  text-[#EFF0F1] leading-[20.8px] max-2xl:text-[16px] max-xl:text-[14px]  2xl:text-[16px]">
+              <p className=" mb-5 w-[514px]  sm:text-base  text-[#EFF0F1] leading-[20.8px] max-2xl:text-[16px] max-xl:text-[14px]  2xl:text-[16px]   xl:max-2xl:w-full   xl:max-2xl:text-[14px] ">
                 {t("Auth.login.Otp.securityDigits")}
               </p>
               
-              <div className="relative flex flex-col w-full  mb-3">
+              <div className="relative flex flex-col w-full  mb-3 ">
                 { otp.join("") === code && <p className="absolute -top-8 z-50 right-3 text-[#FAE100] text-[15px] font-normal">valid ✓</p>}    
                 <CustomInputOtp
-                  className="mb-4"
+                  className="mb-4 w-full"
                   length={6}
                   otp={otp}
                   setOtp={setOtp}
@@ -228,7 +231,7 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
                 />
                 <div className="w-full flex justify-between items-center mb-4">
                   <div className="flex items-center justify-center gap-1">
-                    <p className="text-right  text-[--text-body] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer">
+                    <p className="text-right  text-[--text-body] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer xl:max-2xl:text-[12px]">
                     {t("Vank.Transaction.VankPay.Send.2FAValidation.DescriptionNotReciveTheCode")}?
                     </p>
                     <InfoIcon
@@ -277,7 +280,7 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
                   </div>
                   {count === 0 ? (
                     <p
-                      className={`text-right  text-[--yellow] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer `}
+                      className={`text-right  text-[--yellow] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer xl:max-2xl:text-[12px] `}
                       onClick={generateSecurityCode}
                     >
                       {t("Auth.login.Otp.resendCode")}
@@ -291,18 +294,18 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
               </div>
             </>
           ) : (
-            <div className="flex justify-center gap-10 items-center h-[297px] w-full pb-[36px]   text-[16px] ">
-              <div className="w-[212px] h-[213px]">
-                <img src={codigoQR} alt="" />
+            <div className="flex justify-center gap-10 items-center h-full py-5  w-full text-[16px] xl:max-2xl:text-[14px] xl:max-2xl:h-[215px]">
+              <div className="w-[212px] h-[213px] xl:max-2xl:h-full">
+                <img src={codigoQR} alt=""  className="xl:max-2xl:h-full xl:max-2xl:w-full"/>
               </div>
 
-              <div className="w-[275px] h-[200px] flex flex-col justify-between pt-2">
-                <p className="font-normal text-[16px] leading-[20.8px]">
+              <div className="w-[275px] h-full flex flex-col justify-between pt-2">
+                <p className="font-normal text-[16px] leading-[20.8px] xl:max-2xl:text-[14px]">
                 {t("Vank.Transaction.VankPay.Send.2FAValidation.Authy.TextOpenQR")}
                 </p>
 
-                <div className="h-[81px] flex flex-col gap-[24px] text-[90%]">
-                  <p className=" ">
+                <div className="h-[81px] flex flex-col justify-center items-start gap-[24px] text-[90%] xl:max-2xl:text-[14px]">
+                  <p className=" xl:max-2xl:text-[14px]">
                   {t("Vank.Transaction.VankPay.Send.2FAValidation.Authy.TextExpires")}
                   </p>
                   {t("Vank.Transaction.VankPay.Send.2FAValidation.Authy.TextProblemsQR")}
@@ -325,7 +328,7 @@ export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;da
         <>
           <Modal
             volver={retur}
-            moreStyle={`${modal ? "absolute bg-[#191E25] top-[100px] z-50 max-2xl:top-2 max-lg:top-[10%]" : ""}`}
+            moreStyle={`${modal ? "absolute bg-[#191E25] top-[100px] z-50 max-2xl:top-2 max-lg:top-[10%] max-[1280px]:top-[42px]" : ""}`}
             monto={data?.AMOUNT}
             data={data}
             transactionId={transactionId}

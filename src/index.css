@@ -83,7 +83,7 @@ nav a.active {
   /* background: red; */
 }
 
-@media screen and (min-height: 800px) and (max-height: 840px) {
+/* @media screen and (min-height: 800px) and (max-height: 840px) { */
   /* @media screen and (min-height:800px ) and (max-height:840px) {
   
   .card{
@@ -540,4 +540,6 @@ nav a.active {
       width: 100%;
     }
   }
-}
+
+
+ 

@@ -26,7 +26,7 @@ const Transactions = () => {
   return (
     <div
       className={`responsive-transaction-main h-[708px] relative w-full xl:max-2xl:h-[100%] xl:max-2xl:w-[90%]  max-sm:h-[100%] max-lg:h-[100%]  flex items-center justify-center    ${
-        viewHistory > 0 ? " gap-[36px] transition-gap duration-1000 ease-in-out" : ""
+        viewHistory > 0 ? " gap-1 transition-gap duration-1000 ease-in-out" : ""
       } `}
     >
       <div className={`responsive-transaction h-full  w-[622px] responsive-transaction-medium  xl:max-2xl:gap-[12px]  relative z-50  transition-transform duration-1000 ease-out  bg-[#191E25] p-[36px]  flex flex-col  gap-[32px]  text-body  rounded-[32px] max-2xl:w-[520px] ${viewHistory==4?'transition-transform -translate-x-10':'transition-transform translate-x-0'}`}>

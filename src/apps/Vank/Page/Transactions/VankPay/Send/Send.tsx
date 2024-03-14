@@ -36,12 +36,7 @@ const schema = z.object({
 });
 
 export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
-  // const [error, setError] = useState(false);
-  // const [DataEmail, setDataEmail] = useState({});
-  // const [validateEmail, setvalidateEmail] = useState(false);
-  // const [amount, setAmount] = useState(0);
-  // const [typeMoney, setTypeMoney] = useState("");
-
+  
   const [t, i18n] = useTranslation("global");
   const [beneficiary, setBeneficiary] = useState("");
   const [contine, setContinue] = useState(1);
@@ -161,17 +156,17 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
       {contine == 1 && (
 
 
-        <div className="transaction-send w-[100%] h-[527px] flex flex-col justify-between relative  max-lg:h-full  ">
+        <div className="transaction-send w-[100%] h-[527px]  flex flex-col justify-between relative  max-lg:h-full xl:max-2xl:h-full  ">
 
-          <div className="transaction-send-content2 w-[100%] h-[392px]  flex flex-col  gap-[32px] xl:max-2xl:gap-0 xl:max-2xl:justify-between  xl:max-2xl:h-[342px] max-sm: max-lg:justify-between max-lg:h-[80%]">
-            <div className="w-[100%] h-[65px]  flex justify-between">
-              <CustomSelect label={'Choose account or wallet'} />
+          <div className="transaction-send-content2  w-[100%] h-[392px]  flex flex-col  gap-[32px] xl:max-2xl:gap-0 xl:max-2xl:justify-between xl:max-2xl:h-full  max-lg:justify-between max-lg:h-[80%] xl:max-2xl:pb-1">
+            <div className="w-[100%] h-[65px]  flex justify-between ">
+              <CustomSelect data={user} label={'Choose account or wallet'} />
               <div className="w-[259px] flex flex-col gap-y-[2px]">
                 <span className="text-sm sm:text-base font-normal text-[--text-body] xl:text-[14px] 2xl:text-[16px]">
                   {t("Vank.Transaction.VankPay.Send.Amount")}
                 </span>
                 <Controller
-                  render={({ field: { onChange, name } }) => (
+                  render={({ field: { onChange, value, name } }) => (
 
                     <CustomInput
                       type="text"
@@ -181,7 +176,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                         onChange(e.target.value)
                         handleChangeAmount(e)
                       }}
-                      className="send-input  w-[259px] focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64]  h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none focus-visible:border-[#6F6E64] focus-visible:border-[2px] placeholder:text-[--text-light-body]  "
+                      className="send-input  w-full focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64]  h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none focus-visible:border-[#6F6E64] focus-visible:border-[2px] placeholder:text-[--text-light-body]  "
                       name={name}
                       error={Boolean(errors["amount"])}
 
@@ -202,11 +197,11 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
               </div>
             </div>
 
-            <div className="w-full flex flex-col gap-y-[2px] xl:text-[14px]">
+            <div className="w-full flex flex-col gap-y-[2px] xl:text-[14px] ">
               <div className="flex items-center gap-12">
                 <span
                   onClick={() => setTypeField("Email")}
-                  className={`text-sm sm:text-base 2xl:text-base xl:text-[14px] font-normal cursor-pointer  ${typeField == "Email" ? "text-[--text-body]" : ""
+                  className={`text-sm sm:text-base 2xl:text-base xl:text-[14px] font-normal cursor-pointer  ${typeField == "Email" ? "text-[--text-body] xl:max-2xl:text-[14px]" : ""
                     }`}
                 >
                   {t("Vank.Transaction.VankPay.Send.Email")}
@@ -236,7 +231,10 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                       onChange(e.target.value)
                       setToEmail(e.target.value)
                     }}
-                    className="send-input  focus-visible:border-[2px] focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64]  2xl:text-[16px] w-full h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] focus-visible:border-[#6F6E64] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body] "
+                    className=" focus-visible:border-[2px] focus-visible:bg-[#4D5358] 
+                    hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64]  2xl:text-[16px] w-full h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] xl:max-2xl:hover:border-0
+                    focus-visible:border-[#6F6E64] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body] 
+                    xl:max-2xl:h-[90%]"
                     name={name}
                     error={Boolean(errors["email"])}
                     helperText={errors["email"] ? errors["email"].message : ""}
@@ -271,7 +269,9 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                       onChange(e)
                       setBeneficiary(e.target.value)
                     }}
-                    className="send-input  focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64] focus-visible:border-[2px] focus-visible:border-[#6F6E64] w-full h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none focus:outline-none placeholder:text-[--text-light-body]"
+                    className="send-input  focus-visible:bg-[#4D5358] hover:bg-[#4D5358] hover:border-[2px] hover:border-[#6F6E64] focus-visible:border-[2px] 
+                    focus-visible:border-[#6F6E64] w-full h-[42px] pt-[11px] pb-[13px] pr-[30px] pl-[13px] rounded-[10px] bg-[--dark-gray] text-[--text-body] outline-none 
+                    focus:outline-none placeholder:text-[--text-light-body] xl:max-2xl:h-[90%] xl:max-2xl:text-[14px] xl:max-2xl:hover:border-0"
                     name={name}
                     error={Boolean(errors["beneficiary"])}
                     helperText={
@@ -295,9 +295,9 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
               </span> */}
 
               <CustomTextArea 
-              classNameLabel={""}
+              classNameLabel={"xl:max-2xl:text-[14px]"}
               label={t("Vank.Transaction.VankPay.Send.Description")}
-              classNameTextArea={'h-[103px] xl:max-2xl:h-[87px]'}
+              classNameTextArea={'h-[103px] xl:max-2xl:h-[70%]'}
               value={description}
               onChange={(e:any)=>setDescription(e.target.value)}
               />
@@ -326,6 +326,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
       {contine == 2 && (
         <TransactioResume
+          amount={amount}
           dataUser={dataResumen}
           beneficiary={beneficiary}
           retur={() => {

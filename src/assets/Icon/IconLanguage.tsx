@@ -1,8 +1,9 @@
 import React from "react";
 
-export const IconLanguage = () => {
+export const IconLanguage = ({className}:{className:any}) => {
   return (
     <svg
+      className={className}
       width="20"
       height="20"
       viewBox="0 0 20 20"

@@ -46,27 +46,28 @@ export const Sidebar = ({
       {/* pb-15px */}
       <nav className="h-[87%] flex flex-col justify-between 2xl:pt-[40px] sm:pt-20 xl:pt-[50px]  group-hover:w-[100%]  ">
         <div className="h-full flex flex-col  pb-[0px] justify-between group-hover:w-full ">
-          <ul className="media-sidebar-icons1 flex flex-col 2xl:gap-[36px] lg:gap-5 sm:gap-[36px] xl:gap-[36px]   group-hover:w-full ">
+          <ul className="media-sidebar-icons1 flex flex-col 2xl:gap-[36px] lg:gap-5 sm:gap-[36px] xl:max-2xl:gap-[20px]   group-hover:w-full ">
             {listLinksHeader.map((index) => (
               <NavLink
                 key={index.id}
                 to={`/${index.path}`}
                 className={`group-hover: ${index.className} flex items-center  h-[25px]   w-[186px]  gap-[4px]  text-icons `}
+              
               >
-                <p className="w-[1px]  h-[18px] pl-5 text-type">{index.icon}</p>
-                <p className="  mt-2   pr-[0px]  relative -right-10   h-full  duration-500 group-hover:block opacity-0 group-hover:opacity-100">
+                <p className="w-[1px]  h-[18px] pl-5 text-type ">{index.icon}</p>
+                <p className="  mt-2   pr-[0px]  relative -right-10   h-full  duration-500 group-hover:block opacity-0 group-hover:opacity-100 xl:max-2xl:text-[14px]">
                   {index.text}
                 </p>
               </NavLink>
             ))}
           </ul>
 
-          <ul className="relative flex flex-col xl:h-[170px] xl:py-3 xl:justify-between  group-hover:xl:h-[220px] md:h-[170px] md:justify-between group-hover:gap-[20px]   w-[186px]   justify-end ">
+          <ul className="relative flex flex-col xl:h-[170px] xl:py-3 xl:max-2xl:py-7 xl:justify-between  group-hover:xl:h-[220px] md:h-[170px] md:justify-between group-hover:gap-[20px]   w-[186px]   justify-end ">
             {listLinksFooter.map((item) => (
               <div
                 className={` pl-5 ${
                   item.id != 3
-                    ? "group-hover:ml-2 cursor-pointer group-hover:bg-[#3E4347] group-hover:p-[10px] group-hover:pl-[35px] group-hover:w-[169px] group-hover:rounded-[33px]  "
+                    ? "group-hover:ml-2 cursor-pointer group-hover:bg-[#3E4347] group-hover:p-[10px] xl:max-2xl:group-hover:py-[5px] group-hover:pl-[35px] group-hover:w-[169px] xl:max-2xl:group-hover:w-40 xl:max-2xl:group-hover:pl-[30px] group-hover:rounded-[33px]  "
                     : "group-hover:pl-[0px]"
                 } `}
                 onClick={
@@ -118,7 +119,7 @@ export const Sidebar = ({
                   : "hidden "
               } top-0 right-2 gap-[6px] bg-[#232428] w-[170px] h-[122px] absolute text-[#FFFFFF] text-[16px] flex flex-col items-center justify-center rounded-[12px]`}
             >
-              {languages.map((item) => (
+              {languages.map((item, index) => (
                 <li
                   className="hover:bg-[#3E4347] py-[10px] px-[50px] cursor-pointer "
                   onClick={() =>

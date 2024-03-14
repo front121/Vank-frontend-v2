@@ -44,7 +44,7 @@ export const CustomSelect = ({
   //estado de user
   const [user, setUser] = useState({});
 
-  const list: any[] = [
+  const list: any = [
     {
       icon: usdt,
       text: "USDT",
