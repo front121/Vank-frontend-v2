@@ -56,6 +56,8 @@ const SingIn = ({
 
   const [strength, setStrength] = useState(0);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [val, setVal] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
@@ -120,8 +122,10 @@ const SingIn = ({
 
   const onSubmit = (data: any) => {
     console.log(data);
+    setIsLoading(true);
     setTimeout(() => {
       // setIsLoading(false);
+      setIsLoading(false);
       navigate("SingIn/Otp");
     }, 1000);
   };
@@ -277,14 +281,35 @@ const SingIn = ({
         </div> */}
 
         <CustomButton
-          className={`w-full h-[42px] flex justify-center items-center gap-x-2 bg-[--yellow] disabled:bg-[--yellow-disabled] rounded-[60px] px-[12px] text-lg font-bold  text-[#14181F] mb-4`}
+          className={`w-full h-[42px] flex justify-center items-center gap-x-2 bg-[--yellow] disabled:bg-[--yellow-disabled] rounded-[60px] px-[12px] text-lg font-bold  text-[--background-dark-blue] mb-4 relative overflow-hidden`}
           onclick={handleSubmit(onSubmit)}
           disabled={!isValid}
         >
-          <span className="min-w-[70px] px-3">
-            {t("Auth.login.loginButton")}
-          </span>
-          <Login className="w-[28px]" />
+          <div
+            className={` w-full flex justify-center items-center flex-row gap-2 absolute transition-all duration-500 ${
+              isLoading ? "translate-y-0" : "-translate-y-[300%]"
+            }`}
+          >
+            <div className="w-[10px] h-[10px] rounded-full bg-black animate-bounce"></div>
+            <div className="w-[10px] h-[10px] rounded-full bg-black animate-bounce [animation-delay:-.5s]"></div>
+            <div className="w-[10px] h-[10px] rounded-full bg-black animate-bounce [animation-delay:-.5s]"></div>
+          </div>
+          <div
+            className={`flex absolute w-full justify-center items-center transition-all duration-500 `}
+          >
+            <span
+              className={`min-w-[70px] px-3 transition-all duration-500 ${
+                !isLoading ? "translate-x-0" : "-translate-x-[300%]"
+              }`}
+            >
+              {t("Auth.login.loginButton")}
+            </span>
+            <Login
+              className={`w-[28px] transition-all duration-500 ${
+                !isLoading ? "translate-x-0" : "translate-x-[1700%]"
+              }`}
+            />
+          </div>
         </CustomButton>
 
         <div className="flex flex-col justify-center items-center space-y-4 mb-5">
