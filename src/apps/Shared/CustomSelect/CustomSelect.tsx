@@ -4,7 +4,6 @@ import usd from "../../../assets/images/USD.png";
 import eth from "../../../assets/images/eth.jpeg";
 import btc from "../../../assets/images/Bitcoin.jpeg";
 import usdt from "../../../assets/images/usdt.jpeg";
-import { use } from "i18next";
 import {
   convertir,
   findById,
@@ -45,7 +44,7 @@ export const CustomSelect = ({
   //estado de user
   const [user, setUser] = useState({});
 
-  const list = [
+  const list: any[] = [
     {
       icon: usdt,
       text: "USDT",

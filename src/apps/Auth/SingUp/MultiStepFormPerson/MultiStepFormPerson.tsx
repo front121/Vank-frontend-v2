@@ -34,7 +34,7 @@ const MultiStepFormPerson = () => {
       label: "Document Verification",
       description:
         "On this Step, you will have  to choose a verification method, you can scan a QR Code or click the verification Link. ",
-      icon: <Identity color="#FFED00" />,
+      icon: <Identity />,
     },
     {
       id: 2,
@@ -48,7 +48,7 @@ const MultiStepFormPerson = () => {
       label: "Address Information",
       description:
         "To improve our understanding of your location, please provide your current residential Address.",
-      icon: <Residence color="#FFED00" />,
+      icon: <Residence />,
     },
     {
       id: 4,
@@ -120,7 +120,7 @@ const MultiStepFormPerson = () => {
   const handleModalStatus = (modal: any) => {
     navigate("/Auth");
     console.log(modal);
-    
+
     // const actions = {
     //   cancel: () => setIsCancelModalOpened(!isCancelModalOpened),
     //   complete: () => setIsCompletedModalOpened(!isCompleteModalOpened),
@@ -172,7 +172,6 @@ const MultiStepFormPerson = () => {
             circle={circle}
             currentStep={currentStep}
             width={width}
-            setOpen={setIsOpen}
             onActionTriggered={(
               action: Action,
               stepNumber?: number,
@@ -190,7 +189,6 @@ const MultiStepFormPerson = () => {
                 data?: any
               ) => handleActionTriggered(action, stepNumber, data)}
               setShowModal={setShowModal}
-              setVerificatioId={setVerificatioId}
             />
             <FormCreateInfo
               onActionTriggered={(

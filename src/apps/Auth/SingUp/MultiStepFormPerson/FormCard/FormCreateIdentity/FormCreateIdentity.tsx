@@ -6,11 +6,9 @@ import { useRecoilState } from "recoil";
 
 const FormCreateIdentity = ({
   onActionTriggered,
-  setVerificatioId,
   setShowModal,
 }: {
   onActionTriggered?: any;
-  setVerificatioId: (value: string) => void;
   setShowModal: (value: boolean) => void;
 }) => {
   const [userPayload, setUserPayload] = useRecoilState(createUserInfoState);

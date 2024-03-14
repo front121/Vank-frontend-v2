@@ -36,7 +36,7 @@ const MultiStepFormCompany = () => {
       label: "Document Verification",
       description:
         "We will need some details about your company's legal identity",
-      icon: <Identity color="#FFED00" />,
+      icon: <Identity />,
     },
     {
       id: 2,
@@ -56,7 +56,7 @@ const MultiStepFormCompany = () => {
       label: "Owner Information",
       description:
         "Details of the authorized person who can manage the company's digital wallet",
-      icon: <Residence color="#FFED00" />,
+      icon: <Residence />,
     },
     {
       id: 5,

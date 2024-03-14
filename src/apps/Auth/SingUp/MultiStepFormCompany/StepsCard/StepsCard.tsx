@@ -4,18 +4,14 @@ import React, { useEffect, useState } from "react";
 interface StepsCardProps {
   circle?: any;
   currentStep?: any;
-  setCurrentStep?: (value: number) => void;
   width?: any;
-  setOpen?: (value: boolean) => void;
   onActionTriggered?: any;
 }
 
 const StepsCard = ({
   circle,
   currentStep,
-  setCurrentStep,
   width,
-  setOpen,
   onActionTriggered,
 }: StepsCardProps) => {
   const [isOpen, setIsOpen] = useState(true);
