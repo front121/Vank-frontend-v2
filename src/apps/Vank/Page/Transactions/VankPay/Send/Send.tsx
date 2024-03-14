@@ -160,13 +160,13 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
           <div className="transaction-send-content2  w-[100%] h-[392px]  flex flex-col  gap-[32px] xl:max-2xl:gap-0 xl:max-2xl:justify-between xl:max-2xl:h-full  max-lg:justify-between max-lg:h-[80%] xl:max-2xl:pb-1">
             <div className="w-[100%] h-[65px]  flex justify-between ">
-              <CustomSelect data={user} label={'Choose account or wallet'} />
+              <CustomSelect label={'Choose account or wallet'} />
               <div className="w-[259px] flex flex-col gap-y-[2px]">
                 <span className="text-sm sm:text-base font-normal text-[--text-body] xl:text-[14px] 2xl:text-[16px]">
                   {t("Vank.Transaction.VankPay.Send.Amount")}
                 </span>
                 <Controller
-                  render={({ field: { onChange, value, name } }) => (
+                  render={({ field: { onChange, name } }) => (
 
                     <CustomInput
                       type="text"
@@ -326,7 +326,6 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
       {contine == 2 && (
         <TransactioResume
-          amount={amount}
           dataUser={dataResumen}
           beneficiary={beneficiary}
           retur={() => {
