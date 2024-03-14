@@ -171,7 +171,7 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                   {t("Vank.Transaction.VankPay.Send.Amount")}
                 </span>
                 <Controller
-                  render={({ field: { onChange, value, name } }) => (
+                  render={({ field: { onChange, name } }) => (
 
                     <CustomInput
                       type="text"
@@ -326,7 +326,6 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
       {contine == 2 && (
         <TransactioResume
-          amount={amount}
           dataUser={dataResumen}
           beneficiary={beneficiary}
           retur={() => {
