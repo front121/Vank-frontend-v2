@@ -82,7 +82,7 @@ const FormCreateIdentity = ({
   }, [button]);
 
   return (
-    <div className="w-full h-[430px]  flex flex-col p-4 justify-center items-center rounded-[32px] relative z-40 bg-[--background-dark-blue] shadow-lg ">
+    <div className="w-full h-full  flex flex-col p-4 justify-center items-center rounded-[32px] relative z-40 bg-[--background-dark-blue] shadow-lg ">
       <div className="flex flex-col justify-between items-center z-30">
         <h2 className="text-lg font-bold text-[--text-body] mb-2">
           Get your Document ready

@@ -13,13 +13,7 @@ import { Default } from "../../Default";
 import CustomInput from "../../../../../Shared/CustomInput/CustomInput";
 import CustomSelectCountries from "../../CustomSelectCountries/CustomSelectCountries";
 
-const FormCreateInfo = ({
-  onActionTriggered,
-  verificatioId,
-}: {
-  onActionTriggered?: any;
-  setVerificatioId: (value: string) => void;
-}) => {
+const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
   const [t, i18n] = useTranslation("global");
 
   const [userPayload, setUserPayload] = useRecoilState(createUserInfoState);

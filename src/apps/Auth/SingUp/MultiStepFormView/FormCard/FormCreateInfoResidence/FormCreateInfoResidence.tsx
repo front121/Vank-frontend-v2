@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ResidentialAddressSchema } from "../../schema/create-schema-auth";
 import CustomInput from "../../../../../Shared/CustomInput/CustomInput";
 import CustomSelectCountries from "../../CustomSelectCountries/CustomSelectCountries";
-import { FetchHttpClientRepository } from "../../../../../Shared/Http/FetchHttp";
+// import { FetchHttpClientRepository } from "../../../../../Shared/Http/FetchHttp";
 
 function FormCreateInfoResidence({
   onActionTriggered,
@@ -16,9 +16,9 @@ function FormCreateInfoResidence({
 }) {
   const [t, i18n] = useTranslation("global");
 
-  const [userPayload, setUserPayload] = useRecoilState(createUserInfoState);
+  const [userPayload, setUserPayload] = useRecoilState<any>(createUserInfoState);
 
-  const HttpRepository = new FetchHttpClientRepository();
+  // const HttpRepository = new FetchHttpClientRepository();
 
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
@@ -82,73 +82,73 @@ function FormCreateInfoResidence({
     }));
   };
 
-  const getCountry = async () => {
-    const params = {
-      Authorization: `Bearer ${userPayload?.auth_token}`,
-      Accept: "application/json",
-    };
-    const response = await HttpRepository.get({
-      url: "/api/countries",
-      baseURL: "https://www.universal-tutorial.com",
-      headers: params,
-    });
-    const data = formatCountryForList(response);
-    setCountries(data);
-    setIsLoading(false);
-  };
+  // const getCountry = async () => {
+  //   const params = {
+  //     Authorization: `Bearer ${userPayload?.auth_token}`,
+  //     Accept: "application/json",
+  //   };
+  //   const response = await HttpRepository.get({
+  //     url: "/api/countries",
+  //     baseURL: "https://www.universal-tutorial.com",
+  //     headers: params,
+  //   });
+  //   const data = formatCountryForList(response);
+  //   setCountries(data);
+  //   setIsLoading(false);
+  // };
 
-  useEffect(() => {
-    setIsLoading(true);
-    getCountry();
-  }, [userPayload]);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   getCountry();
+  // }, [userPayload]);
 
-  const getStates = async () => {
-    const params = {
-      Authorization: `Bearer ${userPayload?.auth_token}`,
-      Accept: "application/json",
-    };
-    try {
-      const response = await HttpRepository.get({
-        url: `/api/states/${getValues("country")}`,
-        baseURL: "https://www.universal-tutorial.com",
-        headers: params,
-      });
-      const data = formatStatesForList(response);
-      setStates(data);
-      setIsLoadingState(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getStates = async () => {
+  //   const params = {
+  //     Authorization: `Bearer ${userPayload?.auth_token}`,
+  //     Accept: "application/json",
+  //   };
+  //   try {
+  //     const response = await HttpRepository.get({
+  //       url: `/api/states/${getValues("country")}`,
+  //       baseURL: "https://www.universal-tutorial.com",
+  //       headers: params,
+  //     });
+  //     const data = formatStatesForList(response);
+  //     setStates(data);
+  //     setIsLoadingState(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    setIsLoadingState(true);
-    getStates();
-  }, [getValues("country")]);
+  // useEffect(() => {
+  //   setIsLoadingState(true);
+  //   getStates();
+  // }, [getValues("country")]);
 
-  const getCity = async () => {
-    const params = {
-      Authorization: `Bearer ${userPayload?.auth_token}`,
-      Accept: "application/json",
-    };
-    try {
-      const response = await HttpRepository.get({
-        url: `/api/cities/${getValues("region")}`,
-        baseURL: "https://www.universal-tutorial.com",
-        headers: params,
-      });
-      const data = formatCityForList(response);
-      setCity(data);
-      setIsLoadingCity(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getCity = async () => {
+  //   const params = {
+  //     Authorization: `Bearer ${userPayload?.auth_token}`,
+  //     Accept: "application/json",
+  //   };
+  //   try {
+  //     const response = await HttpRepository.get({
+  //       url: `/api/cities/${getValues("region")}`,
+  //       baseURL: "https://www.universal-tutorial.com",
+  //       headers: params,
+  //     });
+  //     const data = formatCityForList(response);
+  //     setCity(data);
+  //     setIsLoadingCity(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    setIsLoadingCity(true);
-    getCity();
-  }, [getValues("region")]);
+  // useEffect(() => {
+  //   setIsLoadingCity(true);
+  //   getCity();
+  // }, [getValues("region")]);
 
   useEffect(() => {
     if (userPayload?.country) {

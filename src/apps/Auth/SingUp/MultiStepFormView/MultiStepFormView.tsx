@@ -13,7 +13,6 @@ import FormCreateIdentity from "./FormCard/FormCreateIdentity/FormCreateIdentity
 import FormCreateInfo from "./FormCard/FormCreateInfo/FormCreateInfo";
 import FormCreateInfoResidence from "./FormCard/FormCreateInfoResidence/FormCreateInfoResidence";
 import FormCreatePassword from "./FormCard/FormCreatePassword/FormCreatePassword";
-import { FetchHttpClientRepository } from "../../../Shared/Http/FetchHttp";
 import { createUserInfoState } from "./state";
 import { useRecoilState } from "recoil";
 import Close from "../../../../assets/Icon/Close";
@@ -24,7 +23,7 @@ const MultiStepFormView = () => {
   const [userPayload, setUserPayload] = useRecoilState(createUserInfoState);
 
   const navigate = useNavigate();
-  const HttpRepository = new FetchHttpClientRepository();
+  // const HttpRepository = new FetchHttpClientRepository();
 
   const [circle, setCircle] = useState([
     {
@@ -69,33 +68,33 @@ const MultiStepFormView = () => {
   }, [circle, currentStep]);
   //
 
-  const getToken = async () => {
-    const params = {
-      Accept: "application/json",
-      "api-token":
-        "pNxYbbXgTDsZ6oMIYf4IYe8K9qobX2jPq3ExK25oAPJFW4t0k9aSS1O-XWzBo1Bq0rI",
-      "user-email": "frontend@thisisvank.com",
-    };
-    const response = await HttpRepository.get({
-      url: "/api/getaccesstoken",
-      baseURL: "https://www.universal-tutorial.com",
-      headers: params,
-    });
+  // const getToken = async () => {
+  //   const params = {
+  //     Accept: "application/json",
+  //     "api-token":
+  //       "pNxYbbXgTDsZ6oMIYf4IYe8K9qobX2jPq3ExK25oAPJFW4t0k9aSS1O-XWzBo1Bq0rI",
+  //     "user-email": "frontend@thisisvank.com",
+  //   };
+  //   const response = await HttpRepository.get({
+  //     url: "/api/getaccesstoken",
+  //     baseURL: "https://www.universal-tutorial.com",
+  //     headers: params,
+  //   });
 
-    console.log(response);
+  //   console.log(response);
 
-    setUserPayload((currentPayload?: any) => {
-      const updatedBenefitPayload = {
-        ...currentPayload,
-        ...response,
-      };
-      return updatedBenefitPayload;
-    });
-  };
+  //   setUserPayload((currentPayload?: any) => {
+  //     const updatedBenefitPayload = {
+  //       ...currentPayload,
+  //       ...response,
+  //     };
+  //     return updatedBenefitPayload;
+  //   });
+  // };
 
-  useEffect(() => {
-    getToken();
-  }, []);
+  // useEffect(() => {
+  //   getToken();
+  // }, []);
 
   useEffect(() => {
     let timer: any;
@@ -169,27 +168,46 @@ const MultiStepFormView = () => {
               setCurrentStep={setCurrentStep}
               width={width}
               setOpen={setIsOpen}
-              onActionTriggered={(...args) => handleActionTriggered(...args)}
+              onActionTriggered={(
+                action: Action,
+                stepNumber?: number,
+                data?: any
+              ) => handleActionTriggered(action, stepNumber, data)}
             />
             <CreateFormStepper
               step={currentStep}
               className="lg:w-[60%]  flex justify-center items-center"
             >
               <FormCreateIdentity
-                onActionTriggered={(...args) => handleActionTriggered(...args)}
+                onActionTriggered={(
+                  action: Action,
+                  stepNumber?: number,
+                  data?: any
+                ) => handleActionTriggered(action, stepNumber, data)}
                 setShowModal={setShowModal}
                 setVerificatioId={setVerificatioId}
               />
               <FormCreateInfo
-                onActionTriggered={(...args) => handleActionTriggered(...args)}
-                verificatioId={verificatioId}
+                onActionTriggered={(
+                  action: Action,
+                  stepNumber?: number,
+                  data?: any
+                ) => handleActionTriggered(action, stepNumber, data)}
               />
 
               <FormCreateInfoResidence
-                onActionTriggered={(...args) => handleActionTriggered(...args)}
+                onActionTriggered={(
+                  action: Action,
+                  stepNumber?: number,
+                  data?: any
+                ) => handleActionTriggered(action, stepNumber, data)}
               />
               <FormCreatePassword
-                onActionTriggered={(...args) => handleActionTriggered(...args)}
+                onActionTriggered={(
+                  action: Action,
+                  stepNumber?: number,
+                  data?: any
+                ) => handleActionTriggered(action, stepNumber, data)}
               />
             </CreateFormStepper>
           </div>

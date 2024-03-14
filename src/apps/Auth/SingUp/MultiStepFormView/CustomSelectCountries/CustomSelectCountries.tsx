@@ -22,7 +22,7 @@ const CustomSelectCountries = ({
   data: any;
   name: string;
   value: string;
-  onChange: (value: string) => void;
+  onChange: (value: any) => void;
   getValues: string;
   onValue: (country: string) => void;
   placeholder: string;
@@ -33,7 +33,7 @@ const CustomSelectCountries = ({
 }) => {
   const [isFocus, setIsFocus] = useState(false);
   // const [selected, setSelected] = useState("");
-  const divRef = useRef(null);
+  const divRef = useRef<any>(null);
   const [userPayload, setUserPayload] = useRecoilState(createUserInfoState);
 
   useEffect(() => {

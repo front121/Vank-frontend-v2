@@ -94,7 +94,7 @@ const FormCreatePassword = ({
         <h2 className="text-[--text-body] text-lg leading-[22.1px] font-bold mb-7">
           {t("Auth.register.createPassword.setPassword")}
         </h2>
-        <div className="w-full grid grid-cols-1 2xl:gap-y-2">
+        <div className="w-full grid grid-cols-1 gap-y-3 2xl:gap-y-2">
           <div className="w-full flex flex-col gap-y-[7px] mb-3">
             <span className="text-sm sm:text-base font-normal text-[--text-body]">
               password

@@ -15,7 +15,7 @@ const FormCreateIdentity = ({
 }) => {
   const [userPayload, setUserPayload] = useRecoilState(createUserInfoState);
 
-  const button = useRef(null);
+  const button = useRef<any>(null);
   const [clientid] = useState("65c6644b27717e001de90cb1");
   const [isLoading, setIsLoading] = useState(false);
   const [flowid] = useState("65c6644b27717e001de90cb0");

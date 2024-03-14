@@ -147,7 +147,7 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
   console.log(errors);
 
   return (
-    <div className="w-full h-full p-10 flex jucstify-center  items-center rounded-[32px]  bg-[--background-dark-blue] shadow-lg transition-all duration-300">
+    <div className="w-full h-full p-8 flex jucstify-center  items-center rounded-[32px]  bg-[--background-dark-blue] shadow-lg transition-all duration-300">
       <form
         onSubmit={handleSubmit((data) => {
           console.log(data);
