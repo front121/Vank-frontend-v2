@@ -2,10 +2,8 @@ import React from "react";
 
 const Identity = ({
   className,
-  color,
 }: {
   className?: string;
-  color?: string;
 }) => {
   return (
     <svg

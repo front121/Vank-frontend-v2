@@ -17,14 +17,12 @@ const CustomSelectPhone = ({
   value,
   name,
   isvisible,
-  onError,
 }: {
   className?: string;
   onChange?: any;
   value?: any;
   name?: any;
   isvisible?: any;
-  onError?: any;
 }) => {
   const [isFocus, setIsFocus] = useState(false);
   const [selected, setSelected] = useState("");
@@ -118,7 +116,10 @@ const CustomSelectPhone = ({
             setInputValue(e.target.value);
           }}
           className={`w-full h-full outline-none p-[8px] pr-[42px] bg-[--dark-gray] rounded-[10px] text-[--text-body] text-base ${
-            isValidPhoneNumber(`${selected + inputValue}`, selectedCountry as any)
+            isValidPhoneNumber(
+              `${selected + inputValue}`,
+              selectedCountry as any
+            )
               ? inputValue && "focus:border-[1.5px] focus:border-[#FFED00]"
               : inputValue && "border-[1.5px] border-[#984D4D]"
           } `}

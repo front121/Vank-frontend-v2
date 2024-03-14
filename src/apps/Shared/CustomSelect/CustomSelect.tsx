@@ -5,7 +5,10 @@ import eth from "../../../assets/images/eth.jpeg";
 import btc from "../../../assets/images/Bitcoin.jpeg";
 import usdt from "../../../assets/images/usdt.jpeg";
 import { use } from "i18next";
-import { convertir, findById } from "../../service/ServiceTransaction/ServiceTransaction";
+import {
+  convertir,
+  findById,
+} from "../../service/ServiceTransaction/ServiceTransaction";
 
 export const CustomSelect = ({
   label,
@@ -21,7 +24,6 @@ export const CustomSelect = ({
   classNameSpanList,
   classNameValue,
   classNameValueText,
-  data,
 }) => {
   const [object, setObject] = useState({
     icon: "",
@@ -31,79 +33,77 @@ export const CustomSelect = ({
     valueText: "",
   });
 
-  const [veiw, setVeiw] = useState();
+  const [veiw, setVeiw] = useState<boolean>();
   //estado de mondeda USD
   const [monyConvertion, setMonyConVertion] = useState();
-   //estado de mondeda Eth
+  //estado de mondeda Eth
   const [monyConvertionusEth, setMonyConVertionEth] = useState();
-   //estado de mondeda BTC
+  //estado de mondeda BTC
   const [monyConvertionBTC, setMonyConVertionBTC] = useState();
-   //estado de mondeda USDT
+  //estado de mondeda USDT
   const [monyConvertionUSDT, setMonyConVertionUSDT] = useState();
-  //estado de user 
-  const [user,setUser]=useState({})
-
- 
-  useEffect(() => {
-    setObject(list[list.length - 1]);
-    
-   //Buscamos el Usuario por  1 y convertimos su moneda
-    const getUser=async()=>{
-      let user=await findById(1);
-      setUser(user.user);
-      console.log(user.user);
-      let usd= await convertir("USD",user.user.amount)
-      setMonyConVertion(usd);
-      
-      let eth= await convertir("ETH",user.user.amount)
-      setMonyConVertionEth(eth);
-      
-      let btc= await convertir("BTC",user.user.amount)
-      setMonyConVertionBTC(btc);
-      
-      let usdt= await convertir("USDT",user.user.amount)
-      setMonyConVertionUSDT(usdt);
-    }  
-    
-    getUser();
-  
-
-  }, [monyConvertion]);
+  //estado de user
+  const [user, setUser] = useState({});
 
   const list = [
     {
       icon: usdt,
       text: "USDT",
       subText: "Wallet",
-      value:monyConvertionUSDT,
+      value: monyConvertionUSDT,
       valueText: "Available",
     },
     {
       icon: eth,
       text: "ETH",
       subText: "Wallet",
-      value:monyConvertionusEth,
+      value: monyConvertionusEth,
       valueText: "Available",
     },
     {
       icon: btc,
       text: "BTC",
       subText: "Wallet",
-      value:monyConvertionBTC,
+      value: monyConvertionBTC,
       valueText: "Available",
     },
     {
       icon: usd,
       text: "USD",
       subText: "Account",
-      value:monyConvertion,
+      value: monyConvertion,
       valueText: "Available",
     },
   ];
+
+  useEffect(() => {
+    setObject(list[list.length - 1]);
+
+    //Buscamos el Usuario por  1 y convertimos su moneda
+    const getUser = async () => {
+      let user = await findById(1);
+      setUser(user.user);
+      console.log(user.user);
+      let usd = await convertir("USD", user.user.amount);
+      setMonyConVertion(usd);
+
+      let eth = await convertir("ETH", user.user.amount);
+      setMonyConVertionEth(eth);
+
+      let btc = await convertir("BTC", user.user.amount);
+      setMonyConVertionBTC(btc);
+
+      let usdt = await convertir("USDT", user.user.amount);
+      setMonyConVertionUSDT(usdt);
+    };
+
+    getUser();
+  }, [monyConvertion]);
+
   const handleItem = (item) => {
     setObject(item);
     setVeiw(false);
-    localStorage.setItem("money",item.text+" "+item.subText)
+    localStorage.setItem("money", item.text + " " + item.subText);
   };
 
   return (
@@ -132,12 +132,9 @@ export const CustomSelect = ({
           veiw ? "block" : "hidden"
         } `}
       >
-        {list.map((item, index) => (
+        {list.map((item) => (
           <button onClick={() => handleItem(item)}>
-            <div
-              className={classNameSpanList}
-             
-            >
+            <div className={classNameSpanList}>
               <div className="flex gap-[17px] items-center h-[24px] max-xl:text-[90%]">
                 <img src={item.icon} alt="" className={classNameIconList} />
                 <p className="font-bold max-2xl:text-[16px]  leading-[20.8px] max-xl:text-[90%] ">

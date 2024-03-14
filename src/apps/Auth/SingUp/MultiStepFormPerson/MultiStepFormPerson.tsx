@@ -119,6 +119,8 @@ const MultiStepFormPerson = () => {
 
   const handleModalStatus = (modal: any) => {
     navigate("/Auth");
+    console.log(modal);
+    
     // const actions = {
     //   cancel: () => setIsCancelModalOpened(!isCancelModalOpened),
     //   complete: () => setIsCompletedModalOpened(!isCompleteModalOpened),
@@ -169,7 +171,6 @@ const MultiStepFormPerson = () => {
           <StepsCard
             circle={circle}
             currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
             width={width}
             setOpen={setIsOpen}
             onActionTriggered={(
