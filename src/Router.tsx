@@ -62,12 +62,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        Component: lazy(() => import("./apps/Vank/Page/Home/Home")),
+        Component: lazy(() => import("@/apps/Vank/Page/Home/Home")),
       },
       {
         path: "/transactions",
         Component: lazy(
-          () => import("./apps/Vank/Page/Transactions/Transactions")
+          () => import("@/apps/Vank/Page/Transactions/Transactions")
         ),
       },
     ],

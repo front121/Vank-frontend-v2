@@ -21,6 +21,8 @@
       "@assets/*": ["./src/assets/*"]
     },
 
+    "preserveSymlinks": true,
+
     /* Bundler mode */
     "moduleResolution": "bundler", // Especifica el algoritmo de resolución de módulos a utilizar. En este caso, se está utilizando un algoritmo de resolución de módulos basado en un "bundler" (empaquetador).
     "allowImportingTsExtensions": true, // Habilita la importación de archivos TypeScript (*.ts) en lugar de archivos JavaScript (*.js) directamente.
