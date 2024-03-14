@@ -6,14 +6,12 @@ import { useNavigate} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 export const Modal = ({
   moreStyle,
-  title,
   monto,
   volver,
   data,
   transactionId,
 }: {
   moreStyle?: any;
-  title?: any;
   volver?: any;
   monto?: any,
   data?: any,
