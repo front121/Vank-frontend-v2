@@ -113,6 +113,102 @@
         "ethereum": "Ethereum",
         "bitcoin": "Bitcoin"
       }
+    },
+    "Transaction":{
+      "nav":{
+        "Back":"Back",
+        "Deposit":"Deposit",
+        "Withdraw":"Withdraw",
+        "Convert":"Covert",
+        "VanPay":"VankPay"
+      },
+      "VankPay":{
+        "Send":{
+          "ChooseAccount":"Choose account or wallet",
+          "Account":"Account",
+          "Available":"Available",
+          "Amount":"Amount",
+          "Email":"Email",
+          "Phone":"Phone",
+          "VankID":"Vank ID",
+          "Beneficiary":"Beneficiary",
+          "Description":"Description",
+          
+          "Resume":{
+            "Amount":"Amount",
+            "BeneficiaryName":"Beneficiary Name",
+            "SendingFrom":"Sending From",
+            "VankID":"Vank ID",
+            "PhoneNumber":"Phone Number",
+            "BeneficiaryEmail":"Beneficiary Email",
+            "TermsAndConditions":{
+              "textByClicking":"By clicking",
+              "TextContinue":"Continue",
+              "TextIAgree":"I agree Vank´s transaction",
+              "TextTerms":"terms",
+              "And":"and",
+              "Conditions":"Conditions"
+
+            }
+          },
+         
+          "2FAValidation":{
+            "Title":"2FA Validation",
+            "Email":"Email",
+            "PhoneNumber":"Phone Number",
+            "TextViaPhone":"The code will be send via",
+            "Authy":{
+              "Authy":"Authy",
+              "TextOpenQR":"Open your Authy App and scan the QR code",
+              "TextExpires":"Code expires in 5:00 min",
+              "TextProblemsQR":"Problems at QR scanning"
+             
+            },
+            "DescriptionTypeValidation":"The code will be send to vank******@*****.com",
+            "DescriptionNumberDigits":"Write the 6 security digits",
+            "DescriptionNotReciveTheCode":"Did not Recieve the Code",
+            "ResendCode":"Resend Code",
+            
+            "Help":{
+              "TextInfo":" When searching for the login verification email in your mailbox",
+              "TextPoint1":"Use keywords like \"verification\" or \"login\" for efficient searching",
+              "TextPoint2":"Check your spam or junk folder to ensure it's not misclassified",
+              "TextPoint3":"Sort emails by date to quickly locate the latest verification email",
+              "TextPoint4":"Check all folders, including inbox and custom folders"
+            }
+
+          },
+
+          "Modal":{
+
+              "LoadingSend":{
+                  "LoadingSend":"Sending VannkPay",
+                  "LoadingDescription":"Every transaction benefits from industry leading security protocols"
+              },
+              "SentSuccesFully":{
+                "SentSuccesFully":"Vankpay Sent Succesfully",
+                "DescriptionSentSuccesFully":"Your transaction is currently undergoing a security validation process . It may take a couple minutes"
+              },
+              "Btns":{
+                "BtnFinish":"Finish Transaction",
+                "ViewTransaction":"View Transaction",
+                "DownloadResume":"DownloadResume"
+              },
+              "ViewDescriptionTransaction":{
+                "Date":"Date",
+                "AmountSent":"Amount Sent",
+                "SentFrom":"Sent From",
+                "VankID":"Vank ID",
+                "PhoneNumber":"Phone Number",
+                "BeneficiaryEmail":"Beneficiary Email"
+              }
+
+
+          }
+        }
+        
+       
+      }
     }
   },
   "Share": {

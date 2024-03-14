@@ -52,50 +52,58 @@ body {
 }
 
 :root {
-  --background-dark-blue: #14181F;
-  --background-soft-blue: #191E25;
+  --background-dark-blue: #14181f;
+  --background-soft-blue: #191e25;
   --text-body: #eff0f1;
-  --text-light-body: #B8B8B8;
+  --text-light-body: #b8b8b8;
   --yellow: #ffed00;
   --yellow-disabled: #dfcf41;
-  --light-grey: #5E6061;
-  --dark-gray: #3E4347;
-  --text-body-light-grey: #9D9DA2;
+  --yellow-disabled: #d6ca5c;
+  --light-grey: #5e6061;
+  --dark-gray: #3e4347;
+  --text-body-light-grey: #9d9da2;
 }
-
 
 .list-color::marker {
   color: var(--yellow); /* Cambia el color del punto a amarillo */
 }
 
-
 nav a:hover,
-nav a.active{
-  color:#FFED00;
-  
+nav a.active {
+  color: #ffed00;
 }
 
 nav a:focus,
-nav a.active{
-  width: 227px; 
+nav a.active {
+  width: 227px;
   position: relative;
   z-index: 50000;
-  border-right: 6px solid #FFED00; 
-  
-  
-  /* background: red; */
- 
+  border-right: 6px solid #ffed00;
 
+  /* background: red; */
 }
 
-
-@media screen and (min-height:800px ) and (max-height:840px) {
+@media screen and (min-height: 800px) and (max-height: 840px) {
+  /* @media screen and (min-height:800px ) and (max-height:840px) {
   
   .card{
     min-height: 46px;
     align-items: center !important;
     
   }
+
+  .responsive-home{
+    height: 100% !important;
+  }
+
+  .responsive-home-cards{ 
+    height:580px !important;
+  }
+
+  .cards-home-responsie{
+    height: 195px !important;
+  }
+
   .cards-home-responsie{
     gap:12px !important;
     font-size: 16px;
@@ -116,6 +124,17 @@ nav a.active{
   .responsi-transaction-resume-main{
     gap:32px !important;
     height: 264px !important;
+  .transaction-send-content2{
+    gap:32px !important;
+  }
+
+  .responsi-transaction-resume-main{
+    gap:32px !important;
+    height: 264px !important; 
+  }
+  responsi-transaction-resume-main2{
+    height:527px; 
+    gap:22.74px; 
   }
 
   .responsi-transaction-resume-content1{
@@ -151,6 +170,374 @@ nav a.active{
 
   .responsive-transaction-medium{
     gap:1.25rem !important ;
+    
+  }
+  .responsi-transaction-resume-content2{
+    height: 264px !important;
+    
+  }
+  
+  .responsi-transaction-2fa-contnt2{
+    height: 420px !important;
   }
 
+  .responsi-transaction-2fa{
+    height: 527px !important;
+  }
+
+ 
+
+ } */
+
+  /* @media screen and (min-width:1366px) and (min-height:768px) { */
+
+  /* .responsie-transaction{
+    height:100% !important;
+  }
+
+  .responsive-transaction{
+   
+    font-size: 14px !important;
+  }
+
+  .responsive-logo{
+      height: 32px !important;
+  }
+
+  .transaction-send-content2{
+    gap:1px !important;
+    height:35px !important;
+  }
+
+  .responsive-transaction-footer-Btn{
+    height: 70.74px !important;
+  
+  } */
+
+  /* }  */
+
+  /* @media screen and (min-width:1280px) and (min-height:800px) {  */
+
+  /* .responsie-transaction{
+    height:100% !important;
+  }
+
+  .responsive-transaction{
+   
+    font-size: 14px !important;
+  }
+
+  .responsive-logo{
+      height: 32px !important;
+  }
+
+  .transaction-send-content2{
+    gap:1px !important;
+    height:35px !important;
+  }
+
+  .responsive-transaction-footer-Btn{
+    height: 70.74px !important;
+  
+  } 
+
+  */
+
+  /* .panel{
+    background: red ;
+  }
+}  */
+
+  @media screen and (min-width: 1300px) and (max-width: 1366px) and (min-height: 600px) and (max-height: 768px) {
+    .responsive-logo {
+      height: 35px !important;
+    }
+
+    .icon-sidebar {
+      width: 20px;
+    }
+
+    .responsive-sildebar-list1 {
+      gap: 20px !important;
+    }
+
+    .panel {
+      height: 100% !important;
+      font-size: 14px !important;
+      width: 44% !important;
+    }
+
+    .card {
+      max-height: 37.74px !important;
+      align-items: center !important;
+    }
+    .pane-content1 {
+      height: 87% !important;
+    }
+
+    .responsive-home-cards {
+      height: 100% !important;
+      gap: 8px !important;
+      justify-content: start;
+    }
+
+    .cards-home-responsie {
+      gap: 6px !important;
+      height: 120px !important;
+    }
+
+    .cards-home-responsie-cryto {
+    }
+    .responsive-transaction {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+      /* padding-left: 20px !important;
+    padding-right: 20px !important; */
+      /* height: 100%; */
+    }
+
+    .transaction-send {
+      /* height: 400px !important;
+    background-color: #9D9DA2; */
+      justify-content: start !important;
+      gap: 20px;
+    }
+
+    .transaction-send-content2 {
+      height: 74% !important;
+      font-size: 14px !important;
+    }
+
+    .send-input {
+      height: 38px;
+      width: 100%;
+    }
+
+    .send-textarea {
+      height: 60px !important;
+    }
+
+    .select-send-avalible {
+      top: 0;
+    }
+
+    .transaction-footer-btn {
+      height: 70px !important;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .footer-btn {
+      height: 30px;
+      width: 45%;
+    }
+
+    .responsi-transaction-resume-main {
+      height: 80%;
+      overflow: hidden;
+    }
+
+    .responsi-transaction-resume-main2 {
+      gap: 12.74px !important;
+      height: 100% !important;
+    }
+
+    .responsi-transaction-resume-content1 {
+      height: 70% !important;
+      gap: 20px !important;
+      width: 100%;
+    }
+
+    .responsi-transaction-resume-content2 {
+      font-size: 14px !important;
+      height: 70% !important;
+    }
+
+    .responsi-transaction-resume-border {
+      height: 1px !important;
+      padding-top: 4px !important;
+      padding-bottom: 5px !important;
+    }
+
+    .responsi-transaction-2fa {
+      height: 100% !important;
+    }
+    .responsi-transaction-2fa-contnt1 {
+      height: 100%;
+      width: 100%;
+    }
+    .responsi-transaction-2fa-contnt2 {
+      height: 81.64% !important;
+      /* background-color: red; */
+    }
+  }
+
+  @media screen and (min-width: 1366px) and (max-width: 1400px) and (min-height: 840px) and (max-height: 1020px) {
+    .responsive-logo {
+      height: 35px !important;
+    }
+
+    .icon-sidebar {
+      /* width:20px; */
+    }
+
+    .responsive-sildebar-list1 {
+      /* gap: 20px !important;; */
+    }
+
+    .panel {
+      height: 100% !important;
+      font-size: 16px !important;
+      width: 50% !important;
+      /* background: #ffed00; */
+      padding: 36px !important;
+    }
+
+    .pane-content1 {
+      height: 100% !important;
+      overflow: hidden;
+    }
+
+    .card {
+      height: 46px !important;
+      align-items: center !important;
+    }
+
+    .responsive-home-cards {
+      height: 100% !important;
+      gap: 0px !important;
+    }
+
+    .cards-home-responsie {
+      gap: 12px !important;
+      height: 137px !important;
+    }
+
+    .cards-home-responsie-cryto {
+      height: 260px !important;
+      gap: 12px !important;
+    }
+
+    .item-card-img {
+      width: 36px !important;
+      height: 36px !important;
+    }
+
+    .responsive-transaction-main {
+      width: 50% !important;
+      padding: 0px !important;
+    }
+
+    .responsive-transaction {
+      gap: 32px !important;
+      /* padding: 36px !important; */
+    }
+
+    .transaction-send {
+      /* height: 400px !important; */
+      /* background-color: #9D9DA2;  */
+      justify-content: space-between;
+    }
+
+    .transaction-send-content2 {
+      height: 74% !important;
+      font-size: 16px !important;
+    }
+
+    .select-send-avalible {
+      top: 0;
+    }
+
+    .send-input {
+    }
+    .send-textarea {
+    }
+
+    .transaction-footer-btn {
+      height: 70px !important;
+      padding: 0px;
+    }
+
+    .footer-btn {
+    }
+
+    .responsi-transaction-resume-main {
+      height: 100% !important;
+      /* overflow: hidden;  */
+    }
+
+    .responsi-transaction-resume-main2 {
+      /* /* gap: 12.74px !important; */
+      height: 100% !important;
+      justify-content: space-between;
+    }
+
+    .responsi-transaction-resume-content1 {
+      height: 70% !important;
+      /* gap: 40px !important; */
+      justify-content: space-between;
+    }
+
+    .responsi-transaction-resume-content2 {
+      font-size: 16px !important;
+      /* height: 100% !important; */
+    }
+
+    .responsi-transaction-resume-border {
+      height: 1px !important;
+      padding-top: 4px !important;
+      padding-bottom: 5px !important;
+    }
+
+    .responsi-transaction-2fa {
+      height: 100% !important;
+      justify-content: space-between;
+    }
+
+    .responsi-transaction-2fa-contnt1 {
+      height: 100%;
+      width: 100%;
+    }
+
+    .responsi-transaction-2fa-contnt2 {
+      height: 86.74% !important;
+      /* background-color: red; */
+    }
+    
+    .responsive-text {
+      font-size: 16px !important;
+    }
+  }
+
+  @media screen and (min-width: 1280px) and (max-width: 1280px) and (max-height: 800px) {
+    .select-send-avalible {
+      top: 0;
+    }
+    .send-input {
+      width: 100% !important;
+    }
+
+    .send-textarea {
+      height: 60px !important;
+    }
+
+    .transaction-footer-btn {
+      height: 70px !important;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .footer-btn {
+      height: 30px;
+      width: 45%;
+    }
+
+    .responsi-transaction-resume-content1 {
+      width: 100%;
+    }
+
+    .responsi-transaction-2fa-contnt1 {
+      width: 100%;
+    }
+  }
 }

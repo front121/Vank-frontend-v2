@@ -1,4 +1,3 @@
-import React from "react";
 import CustomButton from "../../../../Shared/CustomButton/CustomButton";
 
 export const FooterBtn = ({
@@ -15,19 +14,19 @@ export const FooterBtn = ({
   onClickHistory?: any;
 }) => {
   return (
-    <div className="w-[550px] h-[87px] pt-[10px] flex flex-col justify-between items-end ">
-      <div className="w-full flex justify-between ">
+    <div className="transaction-footer-btn  w-full h-[87px] pt-[10px] flex flex-col justify-between items-end ">
+      <div className="w-full flex justify-between gap-x-4 mb-4">
         <CustomButton
           label={"Back"}
           onclick={onclickBack}
-          className={"bg-[#3E4347] rounded-[33px]  w-[243px] h-[36px] "}
+          className={"footer-btn bg-[#3E4347] rounded-[33px]  w-full h-[36px] "}
         />
         <CustomButton
           label={"Continue"}
           onclick={onClik}
           disabled={disabled}
           className={
-            "bg-[#FFED00] rounded-[33px] w-[243px] h-[36px] text-[#14181F] text-[16px] font-bold leading-[20.8px]"
+            `${disabled?'bg-[#D6CA5C]':'hover:bg-[#FFFF33] bg-[#FFED00]'} footer-btn  rounded-[33px] w-full h-[36px] text-[#14181F]  text-[16px] font-bold leading-[20.8px] `
           }
         />
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FooterBtn } from "../../../FooterBtn/FooterBtn";
 // import { Modal } from "../../../Modal/Modal";
@@ -7,17 +7,17 @@ import CustomInputOtp from "../../../../../../Shared/CustomInputOtp/CustomInputO
 import InfoIcon from "../../../../../../../assets/Icon/InfoIcon";
 import CustomTooltip from "../../../../../../Shared/CustomTooltip/CustomTooltip";
 import { Modal } from "../../../Modal/Modal";
+import { transactionAssets } from "../../../../../../service/ServiceVankPay/ServiceVanPay";
+import { ToastContainer, toast } from 'react-toastify';
+// import { isValid } from "zod";
 
 const length = 6;
 
-export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
+export const Validation2FA = ({ retur, back ,data}: { retur?: any; back?: any;data?:any }) => {
   //crea un nuevo array con una longitud especificada, lleno de cadenas vacías.
   const [otp, setOtp] = useState(new Array(length).fill(""));
 
   const [code, setCode] = useState("123456");
-
-  //Referencia mutable para las pestañas.
-  const tabsRef = useRef([]);
 
   //Globalizar texto
   const [t, i18n] = useTranslation("global");
@@ -28,6 +28,7 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
+  const [transactionId, setTransactionId] = useState("");
 
   const [count, setCount] = useState(0);
 
@@ -94,11 +95,11 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
   ];
 
   //Veiw modal
-  const sendOpt = () => {
-    if (1234 == 1234) {
-      setModal(true);
-    }
-  };
+  // const sendOpt = () => {
+  //   if (1234 == 1234) {
+  //     setModal(true);
+  //   }
+  // };
 
   //Generar codigo
   const generateCode = (index?: any) => {
@@ -114,20 +115,31 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
     }
   };
 
-  const onOtpSubmit = () => {
-    // Validar el código OTP (aquí puedes agregar tus propias condiciones)
+  const onOtpSubmit = async() => {
+    
     const isValid = otp?.every((digit) => !isNaN(digit) && digit !== "");
+    
     if (!isValid) {
       const newFieldValidity = otp.map(
         (digit) => !isNaN(digit) && digit !== ""
       );
       setFieldValidity(newFieldValidity);
+ 
+
       return;
     }
 
     try {
       if (otp.join("") !== code) {
         throw new Error("Codigo invalido");
+      }
+      try{
+        const response=await transactionAssets(data);
+        setTransactionId(response?.body.tranId)
+        setModal(true);
+      }catch(error:any){
+        toast.error(error?.response?.data.body)
+        setModal(false);
       }
       setModal(true);
     } catch (error) {
@@ -141,13 +153,15 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
     setCount(60);
   };
 
+  //Referencia mutable para las pestañas.
+  const tabsRef = useRef([]);
   return (
-    <div className="flex flex-col  h-full items-center justify-center">
-      <div className="flex flex-col gap-[27px]">
-        <div className="w-full h-[410px]  flex flex-col justify-between">
-          <h1 className="font-bold text-[18px]">2FA validation</h1>
+    <div className="responsi-transaction-2fa flex flex-col  h-[527px] items-center justify-center max-2xl:h-full ">
+      <div className="responsi-transaction-2fa-contnt1 w-full flex flex-col 2xl:gap-[27px]  max-lg:h-full max-lg:justify-between 2xl:justify-between ">
+        <div className="responsi-transaction-2fa-contnt2 w-full 2xl:h-[410px] flex flex-col justify-between max-2xl:max-2xl:h-[330px] max-lg:h-[80%] ">
+          <h1 className="font-bold text-[18px] xl:text-[18px]"> {t("Vank.Transaction.VankPay.Send.2FAValidation.Title")}</h1>
 
-          <ul className="flew-row relative    h-[2.25rem] flex items-center gap-4 w-[100%]">
+          <ul className="flew-row relative 2xl:h-[36px] flex items-center gap-4 w-full  max-2xl:max-2xl:h-[2.25rem]  mb-4">
             <span
               className="absolute bottom-0 top-0 flex  rounded-3xl  transition-all duration-300 "
               style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
@@ -161,12 +175,8 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
               return (
                 <li
                   key={index}
-                  ref={(el: never) => {
-                    if (el !== null) {
-                      tabsRef.current[index] = el;
-                    }
-                  }}
-                  className={`flex justify-center items-center transition-all duration-300  ${
+                  ref={(el) => ((tabsRef.current[index] as any) = el)}
+                  className={`flex justify-center items-center transition-all duration-300 xl:text-[14px] max-xl:text-[14px] max-2xl:text-[16px] 2xl:text-[16px] ${
                     isActive ? `  text-white` : `text-link `
                   } cursor-pointer rounded-full h-[7px] px-[10px]  text-base `}
                   onClick={() => setActiveTabIndex(index)}
@@ -180,11 +190,11 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
 
           {activeTabIndex != 2 ? (
             <>
-              <p className=" space-y-7 mb-5 w-full sm:w-[514px] text-sm sm:text-base text-[#EFF0F1] leading-[20.8px]">
+              <p className=" space-y-7 mb-5 w-full sm:w-[514px]  sm:text-base text-[#EFF0F1] leading-[20.8px] max-2xl:text-[16px] max-xl:text-[14px]  2xl:text-[16px]">
                 {activeTabIndex == 0 && (
                   <>
                     {t("Auth.login.Otp.thecodebesend")}{" "}
-                    <span className="text-[#FAE100] font-bold">
+                    <span className="text-[#FAE100]">
                       {" "}
                       vank******@*****.com
                     </span>
@@ -193,8 +203,8 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
 
                 {activeTabIndex == 1 && (
                   <>
-                    The code will be sent via
-                    <span className="text-body font-bold">
+                    {t("Vank.Transaction.VankPay.Send.2FAValidation.TextViaPhone")}
+                    <span className="text-body font-bold ">
                       {" "}
                       SMS to +1 *** *** *465
                     </span>
@@ -202,13 +212,14 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
                 )}
               </p>
 
-              <p className=" mb-5 w-[514px] text-sm sm:text-base  text-[#EFF0F1] leading-[20.8px]">
+              <p className=" mb-5 w-[514px]  sm:text-base  text-[#EFF0F1] leading-[20.8px] max-2xl:text-[16px] max-xl:text-[14px]  2xl:text-[16px]">
                 {t("Auth.login.Otp.securityDigits")}
               </p>
-
-              <div className="flex flex-col w-full overflow-hidden mb-3">
+              
+              <div className="relative flex flex-col w-full  mb-3">
+                { otp.join("") === code && <p className="absolute -top-8 z-50 right-3 text-[#FAE100] text-[15px] font-normal">valid ✓</p>}    
                 <CustomInputOtp
-                  className="mb-4"
+                  className="mb-4 w-full"
                   length={6}
                   otp={otp}
                   setOtp={setOtp}
@@ -218,7 +229,7 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
                 <div className="w-full flex justify-between items-center mb-4">
                   <div className="flex items-center justify-center gap-1">
                     <p className="text-right  text-[--text-body] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer">
-                      Did not Recieve the Code?
+                    {t("Vank.Transaction.VankPay.Send.2FAValidation.DescriptionNotReciveTheCode")}?
                     </p>
                     <InfoIcon
                       id="my-anchor-element"
@@ -239,25 +250,23 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
                     >
                       <div className="w-[320px] p-3">
                         <h2 className="mb-2">
-                          When searching for the login verification email in
-                          your mailbox:
+
+                        {t("Vank.Transaction.VankPay.Send.2FAValidation.Help.TextInfo")}:
+                         
                         </h2>
                         <ul className="list-disc flex flex-col items-center justify-center space-y-2">
                           <li className="list-color">
-                            Use keywords like "verification" or "login" for
-                            efficient searching.
+
+                          {t("Vank.Transaction.VankPay.Send.2FAValidation.Help.TextPoint1")}.
                           </li>
                           <li className="list-color">
-                            Check your spam or junk folder to ensure it's not
-                            misclassified.
+                          {t("Vank.Transaction.VankPay.Send.2FAValidation.Help.TextPoint2")}.
                           </li>
                           <li className="list-color">
-                            Sort emails by date to quickly locate the latest
-                            verification email.
+                          {t("Vank.Transaction.VankPay.Send.2FAValidation.Help.TextPoint3")}.
                           </li>
                           <li className="list-color">
-                            Check all folders, including inbox and custom
-                            folders.
+                          {t("Vank.Transaction.VankPay.Send.2FAValidation.Help.TextPoint4")}.
                           </li>
                         </ul>
                       </div>
@@ -282,23 +291,21 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
               </div>
             </>
           ) : (
-            <div className="flex justify-center gap-10 items-center h-[297px] w-full pb-[36px]   text-[16px] ">
+            <div className="flex justify-center gap-10 items-center h-full py-5  w-full text-[16px] ">
               <div className="w-[212px] h-[213px]">
                 <img src={codigoQR} alt="" />
               </div>
 
-              <div className="w-[275px] h-[200px] flex flex-col justify-between pt-2">
+              <div className="w-[275px] h-full flex flex-col justify-between pt-2">
                 <p className="font-normal text-[16px] leading-[20.8px]">
-                  Open your <span className="font-bold"> Authy App</span> and{" "}
-                  <span className="font-bold">scan</span> the{" "}
-                  <span className="font-bold">QR </span>code
+                {t("Vank.Transaction.VankPay.Send.2FAValidation.Authy.TextOpenQR")}
                 </p>
 
-                <div className="h-[81px] flex flex-col gap-[24px] text-[90%]">
+                <div className="h-[81px] flex flex-col justify-center items-start gap-[24px] text-[90%]">
                   <p className=" ">
-                    Code expires in <span className="font-bold">5:00 min</span>{" "}
+                  {t("Vank.Transaction.VankPay.Send.2FAValidation.Authy.TextExpires")}
                   </p>
-                  <p>Problems at QR scanning?</p>
+                  {t("Vank.Transaction.VankPay.Send.2FAValidation.Authy.TextProblemsQR")}
                 </div>
               </div>
             </div>
@@ -310,6 +317,7 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
           onClik={() => onOtpSubmit()}
           onclickBack={back}
           history={`VankPay history  \u25BA`}
+          disabled={otp.join("").length!=6}
         />
       </div>
       {/**si modal es true no permite ver la venta modal*/}
@@ -317,11 +325,16 @@ export const Validation2FA = ({ retur, back }: { retur?: any; back?: any }) => {
         <>
           <Modal
             volver={retur}
-            moreStyle={`${modal ? "absolute bg-[#191E25] ba-[8px] z-50" : ""}`}
+            moreStyle={`${modal ? "absolute bg-[#191E25] top-[100px] z-50 max-2xl:top-2 max-lg:top-[10%]" : ""}`}
+            monto={data?.AMOUNT}
+            data={data}
+            transactionId={transactionId}
+            
           />
           <div className="h-[100%] absolute top-0 bg-[#14181F99] w-[100%]"></div>
         </>
       )}
+      <div className="absolute"><ToastContainer /></div>
     </div>
   );
 };

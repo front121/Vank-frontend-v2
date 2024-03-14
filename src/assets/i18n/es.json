@@ -113,6 +113,90 @@
         "ethereum": "",
         "bitcoin": ""
       }
+    },
+    "VankPay":{
+      "Send":{
+        "ChooseAccount":"Elija cuenta o monedero",
+        "Account":"Cuenta",
+        "Available":"Disponible",
+        "Amount":"Importe",
+        "Email":"Correo electrónico",
+        "Phone":"Teléfono",
+        "VankID":"Vank ID",
+        "Beneficiary":"Beneficiario",
+        "Description":"Descripción",
+        
+        "Resume":{
+          "Amount":"Importe",
+          "BeneficiaryName":"Nombre del beneficiario",
+          "SendingFrom":"Envío desde",
+          "VankID":"Vank ID",
+          "PhoneNumber":"Número de teléfono",
+          "BeneficiaryEmail":"Correo electrónico del beneficiario",
+          "TermsAndConditions":{
+            "textByClicking":"Al hacer clic en",
+            "TextContinue":" Continuar",
+            "TextIAgree":"acepto los",
+            "TextTerms":"términos",
+            "And":"y",
+            "Conditions":"condiciones"
+
+          }
+        },
+       
+        "2FAValidation":{
+          "Title":"Validación 2FA",
+          "Email":"Correo electrónico",
+          "PhoneNumber":"Número de teléfono",
+          "TextViaPhone":"El código se enviará a través de",
+          "Authy":{
+            "Authy":"Authy",
+            "TextOpenQR":"Abra su aplicación Authy y escanee el código QR",
+            "TextExpires":"El código caduca en 5:00 min",
+            "TextProblemsQR":"Problemas al escanear QR"
+           
+          },
+          "DescriptionTypeValidation":"El código se enviará a",
+          "DescriptionNumberDigits":"Escriba los 6 dígitos de seguridad",
+          "DescriptionNotReciveTheCode":"No recibió el código",
+          "ResendCode":"Reenviar código",
+          
+          "Help":{
+            "TextInfo":"Al buscar el correo electrónico de verificación de inicio de sesión en su buzón de correo electrónico",
+            "TextPoint1":"Utilice palabras clave como \"verificación\" o \"inicio de sesión\" para realizar búsquedas eficaces.",
+            "TextPoint2":"Comprueba tu carpeta de spam o correo no deseado para asegurarte de que no está mal clasificado",
+            "TextPoint3":"Ordenar los correos electrónicos por fecha para localizar rápidamente el último correo electrónico de verificación",
+            "TextPoint4":"Comprobar todas las carpetas, incluida la bandeja de entrada y las carpetas personalizadas"
+          }
+
+        },
+
+        "Modal":{
+            "LoadingSend":{
+                "LoadingSend":"Enviar VannkPay",
+                "LoadingDescription":"Cada transacción se beneficia de protocolos de seguridad líderes en el sector"
+            },
+            "SentSuccesFully":{
+              "SentSuccesFully":"Vankpay enviado con éxito",
+              "DescriptionSentSuccesFully":"Su transacción está siendo sometida a un proceso de validación de seguridad. Puede tardar un par de minutos"
+            },
+            "Btns":{
+              "BtnFinish":"Finalizar transacción",
+              "ViewTransaction":"Ver transacción",
+              "DownloadResume":"Descargar currículum"
+            },
+            "ViewDescriptionTransaction":{
+              "Date":"Fecha",
+              "AmountSent":"Importe enviado",
+              "SentFrom":"Enviado desde",
+              "VankID":"Vank ID",
+              "PhoneNumber":"Número de teléfono",
+              "BeneficiaryEmail":"Beneficiary Email"
+            }
+        }
+      }
+      
+
     }
   },
   "Share": {
