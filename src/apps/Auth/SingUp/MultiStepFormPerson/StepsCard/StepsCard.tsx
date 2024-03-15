@@ -4,18 +4,14 @@ import React, { useEffect, useState } from "react";
 interface StepsCardProps {
   circle?: any;
   currentStep?: any;
-  setCurrentStep?: (value: number) => void;
   width?: any;
-  setOpen?: (value: boolean) => void;
   onActionTriggered?: any;
 }
 
 const StepsCard = ({
   circle,
   currentStep,
-  setCurrentStep,
   width,
-  setOpen,
   onActionTriggered,
 }: StepsCardProps) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -53,25 +49,25 @@ const StepsCard = ({
         Vank´s account creation : <span className="font-bold">Individual</span>
       </p>
       <ul
-        className={`flex flex-col max-h-full justify-center items-center  left-0 relative before:absolute before:bg-[--light-grey] before:left-[6%] before:top-0 before:transform before:translate-x-[10%] before:rounded-[5px] before:h-[100%] before:w-[3px] before:z-[1px] before:transition-all before:duration-300 before:ease-in after:absolute after:bg-[--background-dark-blue] ${
-          length === 3 &&
-          "after:w-[7px] after:h-[41%] after:left-[6%] after:bottom-0 transition-all duration-1000"
+        className={`flex flex-col h-full items-center  left-0 relative before:absolute before:bg-[--light-grey] before:left-[7%] 2xl:before:left-[5.5%] before:top-0 before:transform before:translate-x-[10%] before:rounded-[5px] before:h-full before:w-[3px] before:z-[1px] before:transition-all before:duration-300 before:ease-in after:absolute after:bg-[--background-dark-blue] ${
+          length === 3
+            ? "after:w-[7px] after:h-[41%] after:left-[7%] after:2xl:left-[5.2%] after:bottom-0 transition-all duration-1000"
+            : "after:w-[7px] after:h-[21%] after:left-[7%] after:2xl:left-[5.2%] after:bottom-0 transition-all duration-1000"
         }`}
-        style={{}}
       >
         <div
-          className="absolute left-[6%] top-0 bg-[--yellow] transform translate-x-[10%] rounded-[5px] h-[50%] w-[4px] z-[1px] transition-all duration-300 ease-in"
-          style={{ height: length === 3 ? height - 12 + "%" : height + "%" }}
+          className="absolute left-[7%] 2xl:left-[5.5%] top-0 bg-[--yellow] transform translate-x-[10%] rounded-[5px] h-[50%] w-[4px] z-[1px] transition-all duration-300 ease-in"
+          style={{ height: length === 2 ? height - 12 + "%" : height + "%" }}
         />
         {circle?.map((item: any, index: any) => (
           <li
             className={`flex flex-col justify-between w-full overflow-hidden  ${
-              index === circle.length - 1 ? "mb-0" : "mb-5"
+              index === item - 1 ? "mb-0" : "gap-2 2xl:gap-4"
             }`}
             key={index}
           >
             <div
-              className="flex  items-center gap-4 h-full cursor-pointer"
+              className="flex  items-center gap-4 cursor-pointer "
               onClick={() => onNext(item.id - 1)}
             >
               <div

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Residence = ({ className, color }: { className?: string, color?:string }) => {
+const Residence = ({ className }: { className?: string }) => {
   return (
     <svg
       width="22"

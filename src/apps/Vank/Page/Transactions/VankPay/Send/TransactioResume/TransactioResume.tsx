@@ -9,13 +9,11 @@ export const TransactioResume = ({
   dataUser,
   retur,
   back,
-  amount,
   beneficiary
 }: {
   dataUser?: any;
   retur?: any;
   back?: any;
-  amount?: any;
   beneficiary?: any;
 }) => {
   const [data, seData] = useState({} as any);

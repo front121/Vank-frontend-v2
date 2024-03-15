@@ -39,7 +39,7 @@ export const History = ({ moreStyle, value,onClickBlack}: { moreStyle: any,value
             </div>
             <div className="mt-10 w-full flex flex-col gap-5  h-[300px]">
                 {
-                    history.map((item,index)=>(
+                    history.map((item)=>(
                         <div className="flex gap-5  ">
                             <div>
                                 <div className="text-[14px] font-normal text-body leading-[18.2px]">{item.nameBeneficiary}</div>

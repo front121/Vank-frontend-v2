@@ -34,7 +34,7 @@ const MultiStepFormPerson = () => {
       label: "Document Verification",
       description:
         "On this Step, you will have  to choose a verification method, you can scan a QR Code or click the verification Link. ",
-      icon: <Identity color="#FFED00" />,
+      icon: <Identity />,
     },
     {
       id: 2,
@@ -48,7 +48,7 @@ const MultiStepFormPerson = () => {
       label: "Address Information",
       description:
         "To improve our understanding of your location, please provide your current residential Address.",
-      icon: <Residence color="#FFED00" />,
+      icon: <Residence />,
     },
     {
       id: 4,
@@ -119,6 +119,8 @@ const MultiStepFormPerson = () => {
 
   const handleModalStatus = (modal: any) => {
     navigate("/Auth");
+    console.log(modal);
+
     // const actions = {
     //   cancel: () => setIsCancelModalOpened(!isCancelModalOpened),
     //   complete: () => setIsCompletedModalOpened(!isCompleteModalOpened),
@@ -153,7 +155,7 @@ const MultiStepFormPerson = () => {
     <div className="mx-auto w-full min-h-screen flex flex-col justify-center items-center  px-4  sm:px-6 lg:px-8 bg-[--background-dark-blue] overflow-hidden relative ">
       <Header />
       {/* <div className="h-[630px] w-full flex justify-center items-center mt-10 bg-red-600"> */}
-      <div className="flex flex-col w-[90%] h-[510px] 2xl:h-[590px] 2xl:max-w-screen-xl justify-between rounded-[32px]  bg-[--background-soft-blue] items-center mt-14 scale-90">
+      <div className="flex flex-col w-[90%] h-[510px] 2xl:h-[550px] 2xl:max-w-screen-xl justify-between rounded-[32px]  bg-[--background-soft-blue] items-center mt-14 scale-90">
         {/* <span
             role="progressbar"
             aria-labelledby="ProgressLabel"
@@ -169,9 +171,7 @@ const MultiStepFormPerson = () => {
           <StepsCard
             circle={circle}
             currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
             width={width}
-            setOpen={setIsOpen}
             onActionTriggered={(
               action: Action,
               stepNumber?: number,
@@ -189,7 +189,6 @@ const MultiStepFormPerson = () => {
                 data?: any
               ) => handleActionTriggered(action, stepNumber, data)}
               setShowModal={setShowModal}
-              setVerificatioId={setVerificatioId}
             />
             <FormCreateInfo
               onActionTriggered={(

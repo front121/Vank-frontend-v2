@@ -118,7 +118,7 @@ export const Sidebar = ({
                   : "hidden "
               } top-0 right-2 gap-[6px] bg-[#232428] w-[170px] h-[122px] absolute text-[#FFFFFF] text-[16px] flex flex-col items-center justify-center rounded-[12px]`}
             >
-              {languages.map((item, index) => (
+              {languages.map((item) => (
                 <li
                   className="hover:bg-[#3E4347] py-[10px] px-[50px] cursor-pointer "
                   onClick={() =>

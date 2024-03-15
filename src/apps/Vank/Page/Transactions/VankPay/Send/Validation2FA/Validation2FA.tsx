@@ -125,7 +125,6 @@ export const Validation2FA = ({ retur, back, data }: { retur?: any; back?: any; 
       );
       setFieldValidity(newFieldValidity);
 
-
       return;
     }
 

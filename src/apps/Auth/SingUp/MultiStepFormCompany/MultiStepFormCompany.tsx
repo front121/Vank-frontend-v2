@@ -36,7 +36,7 @@ const MultiStepFormCompany = () => {
       label: "Document Verification",
       description:
         "We will need some details about your company's legal identity",
-      icon: <Identity color="#FFED00" />,
+      icon: <Identity />,
     },
     {
       id: 2,
@@ -56,7 +56,7 @@ const MultiStepFormCompany = () => {
       label: "Owner Information",
       description:
         "Details of the authorized person who can manage the company's digital wallet",
-      icon: <Residence color="#FFED00" />,
+      icon: <Residence />,
     },
     {
       id: 5,
@@ -126,6 +126,8 @@ const MultiStepFormCompany = () => {
 
   const handleModalStatus = (modal: any) => {
     navigate("/Auth");
+    console.log(modal);
+    
     // const actions = {
     //   cancel: () => setIsCancelModalOpened(!isCancelModalOpened),
     //   complete: () => setIsCompletedModalOpened(!isCompleteModalOpened),
@@ -176,9 +178,7 @@ const MultiStepFormCompany = () => {
           <StepsCard
             circle={circle}
             currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
             width={width}
-            setOpen={setIsOpen}
             onActionTriggered={(
               action: Action,
               stepNumber?: number,

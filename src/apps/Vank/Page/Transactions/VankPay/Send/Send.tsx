@@ -4,7 +4,7 @@ import CustomInput from "../../../../../Shared/CustomInput/CustomInput";
 import { FooterBtn } from "../../FooterBtn/FooterBtn";
 import { TransactioResume } from "./TransactioResume/TransactioResume";
 import { z } from "zod";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { findById, etUserField, } from "../../../../../service/ServiceTransaction/ServiceTransaction";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
@@ -36,7 +36,6 @@ const schema = z.object({
 });
 
 export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
-
   const [t, i18n] = useTranslation("global");
   const [beneficiary, setBeneficiary] = useState("");
   const [contine, setContinue] = useState(1);
@@ -135,7 +134,6 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
 
       // const response=await transactionAssets(transactionAsset);
-
       setDataResumen(transactionAsset);
       //toast.success("Transaction ID "+response?.body.tranId) //nos trae el id de la transaction
       setContinue(contine + 1)
@@ -160,13 +158,13 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
           <div className="transaction-send-content2 w-[100%] h-[392px]  flex flex-col gap-y-[32px] xl:max-2xl:gap-y-0 xl:max-2xl:justify-between  xl:max-2xl:h-full max-sm: max-lg:justify-between max-lg:h-[80%]">
             <div className="w-[100%] h-[65px]  flex justify-between ">
-              <CustomSelect data={user} label={'Choose account or wallet'} />
+              <CustomSelect  label={'Choose account or wallet'} />
               <div className="w-[259px] flex flex-col gap-y-[2px]">
                 <span className="text-sm sm:text-base font-normal text-[--text-body] xl:text-[14px] 2xl:text-[16px]">
                   {t("Vank.Transaction.VankPay.Send.Amount")}
                 </span>
                 <Controller
-                  render={({ field: { onChange, value, name } }) => (
+                  render={({ field: { onChange,name } }) => (
 
                     <CustomInput
                       type="text"
@@ -221,7 +219,6 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
                   {t("Vank.Transaction.VankPay.Send.VankID")}
                 </span>
               </div>
-
               <Controller
                 render={({ field: { onChange, value, name } }) => (
                   <CustomInput
@@ -329,7 +326,6 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
       {contine == 2 && (
         <TransactioResume
-          amount={amount}
           dataUser={dataResumen}
           beneficiary={beneficiary}
           retur={() => {
@@ -341,7 +337,6 @@ export const Send = ({ onClickHistorial }: { onClickHistorial?: any }) => {
 
         />
       )}
-
     </>
 
   );

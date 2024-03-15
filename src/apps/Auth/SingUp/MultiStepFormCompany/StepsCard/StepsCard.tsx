@@ -4,18 +4,14 @@ import React, { useEffect, useState } from "react";
 interface StepsCardProps {
   circle?: any;
   currentStep?: any;
-  setCurrentStep?: (value: number) => void;
   width?: any;
-  setOpen?: (value: boolean) => void;
   onActionTriggered?: any;
 }
 
 const StepsCard = ({
   circle,
   currentStep,
-  setCurrentStep,
   width,
-  setOpen,
   onActionTriggered,
 }: StepsCardProps) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -57,8 +53,8 @@ const StepsCard = ({
       <ul
         className={`flex flex-col h-full items-center  left-0 relative before:absolute before:bg-[--light-grey] before:left-[7%] 2xl:before:left-[6%] before:top-0 before:transform before:translate-x-[10%] before:rounded-[5px] before:h-full before:w-[3px] before:z-[1px] before:transition-all before:duration-300 before:ease-in after:absolute after:bg-[--background-dark-blue] ${
           length === 4
-            ? "after:w-[7px] after:h-[30%] after:left-[6%] 2xl:after:left-[6%] after:bottom-0 transition-all duration-1000"
-            : "after:w-[7px] after:h-[10%] after:left-[6%] 2xl:after:left-[6%] after:bottom-0 transition-all duration-1000"
+            ? "after:w-[7px] after:h-[30%] after:left-[6%] 2xl:after:left-[5.5%] after:bottom-0 transition-all duration-1000"
+            : "after:w-[7px] after:h-[10%] after:left-[6%] 2xl:after:left-[5.5%] after:bottom-0 transition-all duration-1000"
         }`}
       >
         <div

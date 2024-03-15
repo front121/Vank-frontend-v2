@@ -3,9 +3,8 @@ import { SectionChooseCurrency } from "./SectionChooseCurrency/SectionChooseCurr
 import IconLindkWithdraw from "../../../../../../assets/Icon/IconLindkWithdraw";
 import SectionRecieving from "./SectionRecieving/SectionRecieving";
 import { SectionPaymentMenthod } from "./SectionPaymentMenthod/SectionPaymentMenthod";
-import { SectionBtn } from "./SectionBtn/SectionBtn";
 
-export const Fiat = ({ className }: { className?: string }) => {
+export const Fiat = () => {
   /*Estado que nos permite darle estilos al enlace de Withdraw
   Estos estilos se aplican cuando pasamos el curso*/
   const [iconLindkWithdraw, setIconLindkWithdraw] = useState(false);

@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useRecoilState } from "recoil";
 import { createUserInfoState } from "../../state";
-import Colombia from "../../../../../../assets/Icon/Colombia";
-import Peru from "../../../../../../assets/Icon/Peru";
-import Chile from "../../../../../../assets/Icon/Chile";
-import UnitedStates from "../../../../../../assets/Icon/UnitedStates";
 import { Controller, set, useForm } from "react-hook-form";
 import { infoSchema } from "../../schema/create-schema-auth";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -147,7 +143,7 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
   console.log(errors);
 
   return (
-    <div className="w-full h-full p-10 flex jucstify-center  items-center rounded-[32px]  bg-[--background-dark-blue] shadow-lg transition-all duration-300">
+    <div className="w-full h-full p-8 flex jucstify-center  items-center rounded-[32px]  bg-[--background-dark-blue] shadow-lg transition-all duration-300">
       <form
         onSubmit={handleSubmit((data) => {
           console.log(data);
@@ -173,7 +169,7 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
               Nationality
             </span>
             <Controller
-              render={({ field: { onChange, value, name } }) => (
+              render={({ field: { onChange, name } }) => (
                 <CustomSelectCountries
                   data={countries}
                   name={name}
@@ -420,9 +416,6 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
                   onChange={onChange}
                   value={value}
                   name={name}
-                  onError={(_error) => {
-                    console.log(_error);
-                  }}
                 />
               )}
               name="phone"

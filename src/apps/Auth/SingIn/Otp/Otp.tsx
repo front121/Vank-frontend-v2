@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 
 const length = 6;
 
-const Otp = ({ email }: { email?: string }) => {
+const Otp = () => {
   const [t, i18n] = useTranslation("global");
 
   const navigate = useNavigate();

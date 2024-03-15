@@ -11,7 +11,7 @@ import trx from "../../../../../../../assets/Icon/TRX (2).png";
 // } from "../../../../../../service/ServiceTransaction/ServiceTransaction";
 import { assetsList } from "../../../../../../service/ServiceVankPay/ServiceVanPay";
 
-export const CustomSelect = ({ label, data }: { label?: any; data?: any }) => {
+export const CustomSelect = ({ label}: { label?: any;}) => {
   const [object, setObject] = useState({
     icon: "",
     text: "",
