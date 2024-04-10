@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import tick from "../../../../../assets/Icon/Tick 2.png";
 import CustomButton from "../../../../Shared/CustomButton/CustomButton";
+import { useNavigate} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 export const Modal = ({
   moreStyle,
@@ -22,7 +23,7 @@ export const Modal = ({
   const [view, setView] = useState(1);
   const [typeMoney, setMoney] = useState("");
   const [currentDateTime, setCurrentDateTime] = useState("");
-  
+
   useEffect(() => {
 
 
@@ -47,10 +48,10 @@ export const Modal = ({
 
   return (
     <div
-      className={` w-[502px] h-[514px] p-[36px] rounded-[32px] gap-[16px] bg-[#191E25]  max-2xl:h-[100%]  ${moreStyle} max-2xl:h-[490px] max-lg:h-[70%]`}
+      className={` w-[502px] h-[514px] p-[36px] rounded-[32px] gap-[16px] bg-[#191E25]  max-2xl:h-[100%] ${moreStyle} max-2xl:h-[490px] max-lg:h-[70%]`}
     >
 
-      <div className={`${view == 1 ? 'w-[430px] h-[442px] flex flex-col items-center justify-between ' : 'h-20px '}`}>
+      <div className={`${view == 1 ? 'w-[430px] h-[442px] flex flex-col items-center justify-between' : 'h-20px'}`}>
         {view == 1 ?
           <>
             <div className={`w-[121px] h-[121px] relative flex flex-col justify-center items-center`}>
@@ -92,7 +93,7 @@ export const Modal = ({
             </div>
           </>
           :
-          <div className="h-full">
+          <div className="">
             <h1>VankPay Sending Resume</h1>
             <div className="responsi-transaction-resume-content2 h-[298px] flex flex-col gap-4 mt-10 w-[100%] text-[16px]   xl:max-2xl:text-sm xl:max-2xl:h-[70%] ">
 
@@ -135,14 +136,14 @@ export const Modal = ({
                 <p>{data?.TO_EMAIL}</p>
               </div>
 
-              <div className="responsi-transaction-resume-border h-[6px]  pb-[10px] border-b-[1px] border-[#5E6061] "></div>
+              <div className="responsi-transaction-resume-border h-[6px]  pb-[10px] border-b-[1px] border-[#5E6061] xl:max-2xl:border-0"></div>
             </div>
           </div>
         }
 
 
         {loading && (
-          <div className="flex flex-col gap-4 items-center transition duration-1000 xl:max-2xl:mt-4">
+          <div className="flex flex-col gap-4 items-center transition duration-1000">
             <CustomButton
               label={"Finish Transaction"}
               onclick={volver}

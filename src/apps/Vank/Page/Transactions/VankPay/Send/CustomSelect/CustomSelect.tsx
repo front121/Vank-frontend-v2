@@ -11,7 +11,7 @@ import trx from "../../../../../../../assets/Icon/TRX (2).png";
 // } from "../../../../../../service/ServiceTransaction/ServiceTransaction";
 import { assetsList } from "../../../../../../service/ServiceVankPay/ServiceVanPay";
 
-export const CustomSelect = ({ label }: { label?: any; }) => {
+export const CustomSelect = ({ label}: { label?: any;}) => {
   const [object, setObject] = useState({
     icon: "",
     text: "",
@@ -137,13 +137,13 @@ export const CustomSelect = ({ label }: { label?: any; }) => {
       >
         {label}
       </label>
-      <button onClick={() => setVeiw(veiw ? false : true)}>
-        <div className={"w-[237px] h-[36px] flex justify-between  px-[0px] "}>
+      <button onClick={() => setVeiw(veiw ? false : true)} className="">
+        <div className={"w-[237px] h-[36px] flex justify-between  px-[0px] xl:max-2xl:justify-start xl:max-2xl:gap-10"}>
           <div className={"flex gap-[16px] w-[128px] h-[38px] "}>
             <img
               src={object.icon}
               alt=""
-              className={"w-[36px] h-[36px] rounded-[100%]"}
+              className={"w-[36px] h-[36px] rounded-[100%] xl:max-2xl:w-[30px] xl:max-2xl:h-[30px]"}
             />
             <div>
               <h1
@@ -153,7 +153,7 @@ export const CustomSelect = ({ label }: { label?: any; }) => {
               >
                 {object.text}
               </h1>
-              <p className={"text-[0.75rem] font-normal leading-[15.6px] "}>
+              <p className={"text-[0.75rem] font-normal leading-[15.6px] xl:max-2xl:text-[10px]"}>
                 {object.subText}
               </p>
             </div>
@@ -170,7 +170,7 @@ export const CustomSelect = ({ label }: { label?: any; }) => {
               </h2>
               <p
                 className={
-                  "select-send-avalible text-[12px] font-normal leading-[15.6px] relative top-1 text-end"
+                  "select-send-avalible text-[12px] font-normal leading-[15.6px] relative top-1 text-end xl:max-2xl:top-0 xl:max-2xl:text-[10px]"
                 }
               >
                 {object.valueText}
@@ -180,7 +180,7 @@ export const CustomSelect = ({ label }: { label?: any; }) => {
         </div>
       </button>
       <div
-        className={`flex flex-col absolute  -left-4 top-6 bg-[#191E25] pb-2 rounded-[12px] w-full h-auto z-50 px-[6px] gap-[12px] items-center ${veiw ? "block" : "hidden"
+        className={`flex flex-col absolute -left-4 top-6 bg-[#191E25] pb-2 rounded-[12px] w-full h-auto z-50 px-[6px] gap-[12px] items-center ${veiw ? "block" : "hidden"
           } `}
       >
         {assets.map((item) => (

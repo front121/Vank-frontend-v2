@@ -23,5 +23,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-src/apps/Vank/page/Home/SectionAccounts/SectionAccounts.tsx
-src/apps/Vank/page/Home/SectionCards/SectionCards.tsx

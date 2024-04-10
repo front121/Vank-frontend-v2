@@ -23,7 +23,7 @@ export const RootVank = () => {
         onMouseLeave={() => setEnter(false)}
       />
 
-      <div className="dark:bg-[#13171d] h-[90%] flex  justify-center py-[36px] items-center ml-[120px]  rounded-tl-[32px]  ">
+      <div className="dark:bg-[#13171d] h-[90%] flex  justify-center py-[36px] items-center ml-[120px]  rounded-tl-[32px] xl:py-6">
         <Outlet />
       </div>
     </div>

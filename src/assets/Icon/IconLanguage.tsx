@@ -1,6 +1,4 @@
-import React from "react";
-
-export const IconLanguage = ({className}:{className:any}) => {
+export const IconLanguage = ({className}:{className:string}) => {
   return (
     <svg
       className={className}

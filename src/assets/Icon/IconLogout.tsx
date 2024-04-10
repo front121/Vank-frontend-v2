@@ -1,6 +1,6 @@
 import React from "react";
 
-export const IconLogout = ({ className }: { className: any }) => {
+export const IconLogout = ({className}:{className:any}) => {
   return (
     <svg
       className={className}

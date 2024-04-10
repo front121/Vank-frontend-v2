@@ -15,11 +15,13 @@ export const ListLinkSidebar = ({
   rounded,
   onMouseEnter,
   onMouseLeave,
+ 
 }: {
   className?: any;
   rounded?: any;
   onMouseEnter?: any;
   onMouseLeave?: any;
+  
 }) => {
   const [t, i18n] = useTranslation("global");
 
@@ -27,59 +29,59 @@ export const ListLinkSidebar = ({
     {
       id: "1",
       path: "",
-      icon: <IconHaus className={"xl:max-2xl:w-[18px]"} />,
+      icon: <IconHaus className={' max-2xl:w-[18px] max-2xl:h-[16.66px]'}/>,
       text: t("Share.Sidebar.Home"),
-      className: `${"text-[16px]"}`,
+      className: `${"text-[16px] max-2xl:text-[15px]"}`,
     },
     {
       id: "2",
       path: "transactions",
-      icon: <IconMoneyDolar className={"xl:max-2xl:w-[18px]"} />,
+      icon: <IconMoneyDolar className={'max-2xl:w-[18px] max-2xl:h-[16.66px]'}/>,
       text: t("Share.Sidebar.Transaction"),
-      className: `${"text-[16px]"}`,
+      className: `${"text-[16px] max-2xl:text-[15px]"}`,
     },
     {
       id: "3",
       path: "hola",
-      icon: <IconUsers className={"xl:max-2xl:w-[18px]"} />,
+      icon: <IconUsers className={'max-2xl:w-[18px] max-2xl:h-[16.66px]'}/>,
       text: t("Share.Sidebar.Beneficiaries"),
-      className: `${"text-[16px]"}`,
+      className: `${"text-[16px] max-2xl:text-[15px]"}`,
     },
-    {
-      id: "4",
-      path: "hola",
-      icon: <IconShare className={"xl:max-2xl:w-[18px]"} />,
-      text: "Share app",
-      className: `${"text-[16px]"}`,
-    },
-    {
-      id: "5",
-      path: "hola",
-      icon: <Icon className={"xl:max-2xl:w-[18px]"} />,
-      text: t("Share.Sidebar.Accesibility"),
-      className: `${"text-[16px]"}`,
-    },
+    // {
+    //   id: "4",
+    //   path: "hola",
+    //   icon: <IconShare />,
+    //   text: "Share app",
+    //   className: `${"text-[16px]"}`,
+    // },
+    // {
+    //   id: "5",
+    //   path: "hola",
+    //   icon: <Icon />,
+    //   text: t("Share.Sidebar.Accesibility"),
+    //   className: `${"text-[16px]"}`,
+    // },
   ];
 
   const listLinksFooter = [
     {
       id: 1,
       path: "",
-      icon: <IconLanguage className={"xl:max-2xl:w-[18px]"} />,
+      icon: <IconLanguage className={'max-2xl:w-[18px] max-2xl:h-[16.66px]'} />,
       className: "",
       text: t("Share.Sidebar.BtnLanguage"),
     },
     {
       id: 2,
       path: "",
-      icon: <IconLogout className={"xl:max-2xl:w-[18px]"} />,
+      icon: <IconLogout className={'max-2xl:w-[18px] max-2xl:h-[16.66px]'} />,
       className: "",
       text: t("Share.Sidebar.BtnLogOut"),
     },
     {
       id: 3,
       path: "",
-      icon: <IconMessageInfo className={"xl:max-2xl:w-[18px]"} />,
+      icon: <IconMessageInfo className={'max-2xl:w-[18px] max-2xl:h-[16.66px]'}/>,
       className: `${"text-[12px]"}`,
       text: t("Share.Sidebar.Info"),
     },

@@ -12,8 +12,8 @@ const Home = () => {
   }, [value]);
 
   return (
-    <div className="panel responsive-home 2xl:h-[708px] 2xl:w-[622px] xl:h-[572px]     xl:p-[24px]  bg-[#191E25] 2xl:p-[36px]  text-body    rounded-[32px]  max-sm:h-[100%] max-lg:h-[100%]  max-sm:p-[36px] max-lg:p-[36px] ">
-      <div className="pane-content1 w-[550px] h-[596px] xl:h-full xl:w-full">
+    <div className="panel responsive-home 2xl:h-[708px] 2xl:w-[622px]   xl:w-[45%]  xl:h-full   xl:p-[24px]  bg-[#191E25] 2xl:p-[36px]  text-body    rounded-[32px]  max-sm:h-[100%] max-lg:h-[100%]  max-sm:p-[36px] max-lg:p-[36px] ">
+      <div className="pane-content1 2xl:w-[550px] 2xl:h-full flex flex-col xl:h-full overflow-hidden">
         <SectionNav
           value={value}
           onclickResume={() => {
@@ -30,7 +30,7 @@ const Home = () => {
           }}
         />
         <div
-          className={`responsive-home-cards  2xl:w-full 2xl:h-[580px]  flex flex-col relative justify-between  max-2xl:h-[28.1713rem] max-sm:justify-between max-sm:h-[100%] max-lg:justify-between max-lg:h-[100%] `}
+          className={`responsive-home-cards  2xl:w-full 2xl:h-[580px]   flex flex-col   relative justify-between  max-2xl:h-[28.1713rem] xl:h-full max-sm:justify-between max-sm:h-[100%] max-lg:justify-between max-lg:h-[100%] `}
         >
           {value === 1 || value === 2 ? (
             <SectionAccounts onclik={()=>setValue(2)}
@@ -39,7 +39,7 @@ const Home = () => {
               }`}
             />
           ) : (
-            <SectionAccounts moreStyle={"opacity-0"} />
+            <SectionAccounts moreStyle={"opacity-0"} onclik={''}/>
           )}
           {value === 1 || value === 3 ? (
             <SectionCards onclik={()=>setValue(3)}
@@ -48,7 +48,7 @@ const Home = () => {
               }`}
             />
           ) : (
-            <SectionCards moreStyle={"opacity-0"} />
+            <SectionCards moreStyle={"opacity-0"} onclik={''}/>
           )}
           {value === 1 || value === 4 ? (
             <SectionCryto onclick={()=>setValue(4)}
