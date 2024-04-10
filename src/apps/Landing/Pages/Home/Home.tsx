@@ -44,7 +44,7 @@ const Home = () => {
 
       {/* otra secciones */}
       <div className="w-full min-h-screen bg-[#FFFFFF] pt-[70px] pb-[70px]">
-        <div className="max-w-[1050px] mx-auto flex gap-12 bg-[#161616] rounded-[32px]">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex gap-16 2xl:gap-20 bg-[#161616] rounded-[32px]">
           <div className="w-1/2 h-[550px] flex flex-col justify-center rounded-[32px] pl-[42px] py-[68px]">
             <h3 className="max-w-[130px] text-lg leading-none border-b-2 border-[#6B6B6B] text-[#FFED00] mb-5">
               Tu primera vez
@@ -100,7 +100,7 @@ const Home = () => {
 
       {/* otra secciones */}
       <div className="w-full min-h-screen bg-[#F2F5F7] pt-[30px] pb-[30px]">
-        <div className="max-w-[1050px] mx-auto flex gap-2">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex gap-2">
           <div className="w-[40%] h-[550px] flex flex-col justify-center rounded-[32px] pl-[32px] py-[68px]">
             <h3 className="max-w-[200px] text-lg leading-none border-b-2 border-[#FFED00] text-[#161616] mb-5">
               Únete al universo Bank
@@ -118,7 +118,7 @@ const Home = () => {
 
       {/* otra secciones */}
       <div className="relative w-full min-h-[467px] flex justify-center items-center bg-[#161616] pt-[30px] pb-[30px]">
-        <div className="max-w-[1050px] mx-auto">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px]">
           <div className="w-[852px] p-2 flex flex-col justify-center items-center">
             <h3 className="max-w-max text-lg leading-none border-b-2 border-[#6B6B6B] text-[#FFED00] mb-7">
               ¿Qué más necesitas para empezar?
@@ -163,7 +163,7 @@ const Home = () => {
             />
           </div> */}
         </div>
-        <img src={CintaV2} alt="" className="absolute -bottom-[50px]" />
+        <img src={CintaV2} alt="" className="absolute -bottom-[70px] w-full" />
       </div>
       {/* modal de card */}
       <AnimatePresence>

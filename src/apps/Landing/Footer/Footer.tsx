@@ -11,7 +11,7 @@ import Youtube from "@/assets/Icon/Youtube.svg";
 const Footer = () => {
   return (
     <div className="w-full min-h-[530px] bg-[#F2F5F7] pt-[90px] pb-[30px]">
-      <div className="max-w-[1050px] mx-auto flex flex-col gap-2">
+      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex flex-col gap-2">
         <div className="w-full flex justify-center gap-x-28 mb-12">
           <div className="w-[153px] h-[52px]">
             <img

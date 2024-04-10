@@ -11,10 +11,10 @@ const router = createBrowserRouter([
         path: "",
         Component: lazy(() => import("./apps/Landing/Pages/Home/Home")),
       },
-      // {
-      //   path: "/People",
-      //   Component: lazy(() => import("./apps/Landing/Pages/People/People")),
-      // },
+      {
+        path: "/People",
+        Component: lazy(() => import("./apps/Landing/Pages/People/People")),
+      },
     ],
   },
   {

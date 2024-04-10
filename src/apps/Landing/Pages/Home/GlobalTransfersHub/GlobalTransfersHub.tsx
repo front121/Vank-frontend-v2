@@ -7,7 +7,7 @@ import IconSecured from "@/assets/Icon/IconSecured.svg";
 const GlobalTransfersHub = () => {
   return (
     <div className="w-full min-h-screen bg-[#F2F5F7] pt-[70px] pb-[70px]">
-      <div className="max-w-[1050px] mx-auto">
+      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto">
         <div className="w-full flex flex-col items-center justify-center mb-20">
           <span className="text-lg text-[#161616] border-b-2 border-[--yellow] leading-none mb-3">
             VankCard

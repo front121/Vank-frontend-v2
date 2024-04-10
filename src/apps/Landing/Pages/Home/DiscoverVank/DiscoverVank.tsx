@@ -7,7 +7,7 @@ const DiscoverVank = () => {
 
   return (
     <div className="w-full min-h-screen bg-[#FFFFFF] pt-[70px] pb-[70px]">
-      <div className="max-w-[1050px] mx-auto flex gap-12">
+      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex gap-16 2xl:gap-20">
         <div className="w-1/2 h-[550px] flex flex-col justify-center items-center bg-[#F2F5F7] rounded-[32px]">
           <div className="w-[430px] h-[450px] rounded-[16px] bg-[#FFFFFF] overflow-hidden">
             <div className="w-full h-[35px] flex items-center px-3 gap-1 bg-[#121511]">

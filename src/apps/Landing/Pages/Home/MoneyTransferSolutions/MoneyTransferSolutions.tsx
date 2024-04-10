@@ -6,7 +6,7 @@ import CardWord from "@/assets/Icon/CardWord.svg";
 const MoneyTransferSolutions = () => {
   return (
     <div className="w-full min-h-screen bg-[#FFFFFF] pt-[70px] pb-[70px]">
-      <div className="max-w-[1050px] mx-auto">
+      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto">
         <div className="w-full flex items-center justify-center mb-12">
           <h2 className="w-[800px] text-[55px] leading-[64px] text-center font-medium">
             Ofrecemos transferencias de dinero{" "}

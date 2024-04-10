@@ -6,7 +6,7 @@ import LogoVank from "@/assets/Icon/LogoVank.svg";
 const FinancialCenter = () => {
   return (
     <div className="w-full min-h-screen bg-[#FFFFFF] pt-[70px] pb-[70px]">
-      <div className="max-w-[1050px] mx-auto flex gap-16">
+      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex gap-16 2xl:gap-20">
         <div className="w-[45%] flex flex-col justify-center">
           <div className="flex items-center gap-3 mb-4">
             <img src={LogoVank} alt="" />

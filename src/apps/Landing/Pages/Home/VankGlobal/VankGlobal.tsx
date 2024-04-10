@@ -4,13 +4,13 @@ import CheckIcon from "@/assets/Icon/CheckIcon.svg";
 
 const VankGlobal = () => {
   return (
-    <div className="w-full min-h-screen bg-[#161616] pt-[70px] pb-[70px]">
-      <div className="max-w-[1050px] mx-auto flex gap-16">
-        <div className="w-[60%] h-[575px] flex justify-center items-center">
+    <div className="w-full min-h-screen bg-[#161616] pt-[7rem] pb-[7rem]">
+      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex gap-16 2xl:gap-20">
+        <div className="w-[60%] h-[550px] flex justify-center items-center">
           <img
             src={CardCrypto}
             alt=""
-            className="w-full h-full object-contain"
+            className=" object-cover"
           />
         </div>
         <div className="w-[40%] flex flex-col justify-center">

@@ -67,8 +67,8 @@ const People = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full min-h-screen bg-[--yellow] flex flex-col items-center pt-[8rem] pb-[8rem]">
-        <div className="max-w-[1060px] w-full mx-auto flex">
+      <div className="w-full min-h-screen bg-[--yellow] flex flex-col items-center pt-[8rem] 2xl:pt-[11rem] pb-[8rem]">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] w-full mx-auto flex">
           <div className="w-[55%] h-full">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-[40px] h-[40px] bg-white rounded-full flex justify-center items-center">
@@ -202,7 +202,7 @@ const People = () => {
         </div>
       </div>
       <div className="w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center pt-[6rem]">
-        <div className="max-w-[1060px] w-full mx-auto flex ">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] w-full mx-auto flex ">
           <div className="w-full flex flex-col items-center justify-center mb-20">
             <span className="text-lg text-[#161616] border-b-2 border-[--yellow] leading-none mb-3">
               Cuenta hasta 3
@@ -294,7 +294,7 @@ const People = () => {
         </div>
       </div>
       <div className="w-full min-h-screen bg-[#161616] flex flex-col items-center pt-[6rem] pb-[8rem]">
-        <div className="max-w-[1060px] w-full mx-auto flex flex-col gap-[164px] items-center">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] w-full mx-auto flex flex-col gap-[164px] items-center">
           <div className="w-full flex items-center">
             <div className="w-[55%] h-full ">
               <h2 className="w-[580px] text-[50px] leading-[55px] text-[#FFFFFF] mb-10">
@@ -317,7 +317,7 @@ const People = () => {
                 <h5 className="text-[18px] text-[#FFFFFF] font-bold">
                   Métodos de pago
                 </h5>
-                <p className="w-full text-[14px] leading-[25px] text-[#FFFFFF]">
+                <p className="w-full text-[15px] leading-[25px] text-[#FFFFFF]">
                   Los usuarios de Vank pueden ultilizar los saldos de su propia
                   cuenta Vank, sus tarjetas de crédito o tarjetas débito.{" "}
                   <span className="font-bold">
@@ -523,8 +523,8 @@ const People = () => {
           </div>
         </div>
       </div>
-      <div className="w-full min-h-screen bg-[#FFFFFF] pt-[70px] pb-[70px]">
-        <div className="max-w-[1050px] mx-auto flex gap-12 bg-[#FFED00] rounded-[32px]">
+      {/* <div className="w-full min-h-screen bg-[#FFFFFF] pt-[70px] pb-[70px]">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex gap-12 bg-[#FFED00] rounded-[32px]">
           <div className="w-1/2 h-[550px] flex flex-col justify-center rounded-[32px] pl-[42px] py-[68px]">
             <h3 className="max-w-[130px] text-lg leading-none border-b-2 border-[#FFFFFF] text-[#161616] mb-5">
               Tu primera vez
@@ -578,7 +578,7 @@ const People = () => {
         </div>
       </div>
       <div className="w-full min-h-screen bg-[#F2F5F7] flex flex-col items-center pt-[6rem] pb-[8rem]">
-        <div className="max-w-[1060px] w-full mx-auto flex flex-col gap-[164px] items-center">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] w-full mx-auto flex flex-col gap-[164px] items-center">
           <div className="w-full flex flex-col items-center">
             <span className="text-lg text-[#161616] border-b-2 border-[--yellow] leading-none mb-3">
               Opciones de pago
@@ -821,7 +821,7 @@ const People = () => {
         </div>
       </div>
       <div className="w-full min-h-screen bg-[#161616] flex flex-col items-center pt-[6rem]">
-        <div className="max-w-[1060px] w-full mx-auto flex ">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] w-full mx-auto flex ">
           <div className="w-full flex items-center gap-[96px] mb-20">
             <div className="w-[40%] ">
               <h2 className="w-[400px] text-[55px] text-[#FFFFFF] leading-[64px] text-left font-medium mb-7">
@@ -883,7 +883,7 @@ const People = () => {
         </div>
       </div>
       <div className="w-full min-h-screen bg-[#F2F5F7] pt-[6rem] pb-[8rem]">
-        <div className="max-w-[1060px] mx-auto flex items-end gap-x-12 ">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex items-end gap-x-12 ">
           <div className="w-1/2 h-[530px] flex flex-col justify-start rounded-[32px] pl-[32px] py-[68px]">
             <h3 className="max-w-max text-base leading-none border-b-2 border-[#FFED00] text-[#161616] mb-5">
               Cobertura para personas naturales
@@ -913,7 +913,7 @@ const People = () => {
         </div>
       </div>
       <div className="relative w-full min-h-[467px] flex justify-center items-center bg-[#161616] pt-[30px] pb-[30px]">
-        <div className="max-w-[1060px] mx-auto">
+        <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto">
           <div className="w-[852px] p-2 flex flex-col justify-center items-center">
             <h3 className="max-w-max text-lg leading-none border-b-2 border-[#6B6B6B] text-[#FFED00] mb-7">
               ¿Qué más necesitas para empezar?
@@ -950,16 +950,9 @@ const People = () => {
               </svg>
             </div>
           </div>
-          {/* <div className="w-[60%] flex flex-col justify-center rounded-[32px]">
-            <img
-              src={Map}
-              alt=""
-              className="w-full h-full object-contain"
-            />
-          </div> */}
         </div>
-        <img src={CintaV2} alt="" className="absolute -bottom-[50px]" />
-      </div>
+        <img src={CintaV2} alt="" className="absolute -bottom-[50px] 2xl:-bottom-[80px] w-full" />
+      </div> */}
 
        {/* modal de form */}
        <AnimatePresence>

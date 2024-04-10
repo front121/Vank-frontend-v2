@@ -72,7 +72,7 @@ const SuccessStories = ({
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#F2F5F7] pt-[110px] pb-[110px] pl-[106px]">
+    <div className="w-full min-h-screen bg-[#F2F5F7] pt-[110px] pb-[110px] pl-[6rem] 2xl:pl-[12rem]">
       <h3 className="max-w-[105px] text-lg leading-none border-b-2 border-[#FFED00] text-[#161616] mb-3">
         Testimonios
       </h3>
