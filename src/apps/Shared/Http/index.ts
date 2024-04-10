@@ -13,3 +13,11 @@ export interface HttpRepository {
   patch<T>(url: string, body: any, params?: HttpRequestParams): Promise<T>;
   delete(url: string, params?: HttpRequestParams): Promise<boolean>;
 }
+
+export interface HttpRepositoryVerifik {
+  get<T>(url: string, params?: HttpRequestParams): Promise<T>;
+  post<T>(url: string, body: any, params?: HttpRequestParams): Promise<T>;
+  put<T>(url: string, body: any, params?: HttpRequestParams): Promise<T>;
+  patch<T>(url: string, body: any, params?: HttpRequestParams): Promise<T>;
+  delete(url: string, params?: HttpRequestParams): Promise<boolean>;
+}

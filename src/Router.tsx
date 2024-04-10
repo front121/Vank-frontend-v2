@@ -1,8 +1,22 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { Root } from "./apps/Root/Root";
+import { RootVank } from "./apps/Root/RootVank";
+import RootLanding from "./apps/Root/RootLanding";
 
 const router = createBrowserRouter([
+  {
+    element: <RootLanding />,
+    children: [
+      {
+        path: "",
+        Component: lazy(() => import("./apps/Landing/Pages/Home/Home")),
+      },
+      // {
+      //   path: "/People",
+      //   Component: lazy(() => import("./apps/Landing/Pages/People/People")),
+      // },
+    ],
+  },
   {
     path: "Auth",
     children: [
@@ -15,7 +29,7 @@ const router = createBrowserRouter([
         Component: lazy(() => import("./apps/Auth/SingUp/Opt/Opt")),
       },
       {
-        path: "SingIn/Otp",
+        path: "SingIn/Otp/:accountType",
         Component: lazy(() => import("./apps/Auth/SingIn/Otp/Otp")),
       },
       {
@@ -58,10 +72,10 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <Root />,
+    element: <RootVank />,
     children: [
       {
-        path: "/",
+        path: "/Vank",
         Component: lazy(() => import("@/apps/Vank/Page/Home/Home")),
       },
       {

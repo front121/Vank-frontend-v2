@@ -7,9 +7,15 @@
   },
   "Auth": {
     "login": {
-      "emailTeleLabel": "Email or Phone Number",
+      "emailOrPhone": {
+        "label": "Email or Phone number",
+        "phone": "Phone",
+        "email": "Email"
+      },
       "passwordLabel": "Password",
-      "loginButton": "Log In",
+      "button": "Log In",
+      "separator": "Or",
+      "continueWith": "Continue with",
       "newUserPrompt": "Are you new in the plataform? ",
       "createAccount": "Create an account",
       "ForgotPassword": "Forgot your password?",
@@ -23,16 +29,102 @@
           "phone": "Phone number",
           "authy": "Authy"
         },
-        "thecodebesend": "The code will be send to",
+        "authy": {
+          "paragraphOne": {
+            "one": "Open your ",
+            "two": "Authy Ap",
+            "three": "p and scan the QR code"
+          },
+          "paragraphTwo": {
+            "one": "Code expires in ",
+            "two": "5:00 min"
+          },
+          "paragraphThree": "Open your Authy App and scan the QR code"
+        },
+        "thecodebesendEmail": "The code will be send to",
+        "thecodebesendPhone": "The code will be sent via SMS to",
         "securityDigits": "Write the 6 security digits",
         "resend": "Resend in",
         "resendCode": "Resend Code",
         "didnotCode": "Did not Recieve the Code?",
         "OtpButton": "Continue"
+      },
+      "forgotPassword": {
+        "back": "back",
+        "titleForgotPassword": "Forgot your password?",
+        "paragraph": {
+          "paragraphOne": "Introduce your",
+          "paragraphTwo": "email",
+          "paragraphThree": "and you will receive the",
+          "paragraphFour": "instructions",
+          "paragraphFive": "for your password",
+          "paragraphSix": "recovery"
+        },
+        "textFieldEmail": {
+          "label": "Email",
+          "placeholder": "Type email"
+        },
+        "button": "continue",
+        "Otp": {
+          "back": "back",
+          "title": "Verify your Email",
+          "paragraph": {
+            "paragraphOne": "The",
+            "paragraphTwo": "activation/ recovery",
+            "paragraphThree": "code of your account was",
+            "paragraphFour": "sent",
+            "paragraphFive": "to your",
+            "paragraphSix": "email",
+            "paragraphSeven": "address"
+          },
+          "thecodebesend": "The code will be send to",
+          "securityDigits": "Write the 6 security digits",
+          "resend": "Resend in",
+          "resendCode": "Resend Code",
+          "didnotCode": "Did not Recieve the Code?",
+          "OtpButton": "Continue"
+        },
+        "ResetPassword": {
+          "title": "Reset your password",
+          "subTitle": {
+            "one": "Please, introduce your",
+            "two": "new password"
+          },
+          "textFieldOne": {
+            "label": "password",
+            "placeholder": "Type password9"
+          },
+          "textFieldTwo": {
+            "label": "Confirm Password",
+            "placeholder": "Type confirm Password"
+          },
+          "rules": {
+            "one": "At least 8 characters",
+            "two": "At least 1 number",
+            "three": "At least 1 upper case letter",
+            "four": "Passwords must match"
+          },
+          "button": "continue"
+        }
       }
     },
     "register": {
-      "emailLabel": "Email",
+      "title": "Create an account",
+      "selectAccount": {
+        "one": "Person",
+        "two": "Company"
+      },
+      "textFieldEmail": {
+        "label": "Email",
+        "placeholder": "Type email"
+      },
+      "policy": {
+        "one": "By creating an account , i agree to Vank´s",
+        "two": "Terms of service",
+        "three": "and",
+        "four": "privacy policy",
+        "five": ""
+      },
       "sendConfirmationCode": {
         "WeWillSendYouA": "We will send you a",
         "code": "code",
@@ -71,11 +163,129 @@
         "resendCode": "Reenviar código",
         "didnotCode": "¿No ha recibido el código?"
       },
+      "separator": "Or",
+      "continueWith": "Continue with",
       "newUserPrompt": "Already have an Account? ",
       "createAccount": "Log in",
       "registerButton": "Sign up",
       "buttonContinue": "Continue",
-      "button": "Sign Up"
+      "button": "Sign Up",
+      "multiStepForm": {
+        "Person": {
+          "tile": "Vank´s account creation :",
+          "stepsCard": {
+            "circleOne": {
+              "label": "Document Verification s",
+              "info": "On this Step, you will have  to choose a verification method, you can scan a QR Code or click the verification Link. "
+            },
+            "circleTwo": {
+              "label": "Personal Information",
+              "info": "We would love to learn more about you, please provide us the following information."
+            },
+            "circleThree": {
+              "label": "Address Information",
+              "info": "To improve our understanding of your location, please provide your current residential Address."
+            },
+            "circleFour": {
+              "label": "Set Password",
+              "info": "When setting a new password, please ensure it meets the minimum criteria for security purposes. Thank you."
+            }
+          },
+          "formCard": {
+            "formOne": {
+              "paragraphOne": "Get your Document ready",
+              "paragraphTwo": "Make sure it´s your official document",
+              "paragraphThree": {
+                "one": "Get Verified through your",
+                "two": "browser"
+              }
+            },
+            "formTwo": {
+              "back": "Back",
+              "title": "Identity Confirmation",
+              "subTitle": "Please fill in exactly as it appears on your ID, passport, or driver's license",
+              "textFieldOne": {
+                "label": "Nationality",
+                "placeholder": "Search for nacionalidad"
+              },
+              "textFieldTwo": {
+                "label": "Document Type",
+                "placeholder": "Escriba un correo electrónico"
+              },
+              "textFieldThree": {
+                "label": "Document number",
+                "placeholder": "Enter First Name"
+              },
+              "textFieldFour": {
+                "label": "First Name",
+                "placeholder": "Escriba un correo electrónico"
+              },
+              "textFieldFive": {
+                "label": "Last Names",
+                "placeholder": "Enter Last Names"
+              },
+              "textFieldFix": {
+                "label": "Date of birth",
+                "placeholder": "Escriba un correo electrónico"
+              },
+              "textFieldSeven": {
+                "label": "Phone Number",
+                "placeholder": "Escriba un correo electrónico"
+              },
+              "button": "continue"
+            },
+            "formThree": {
+              "back": "Back",
+              "title": "Residential Address",
+              "subTitle": "Please indicate your current residential address",
+              "textFieldOne": {
+                "label": "Recidence Country",
+                "placeholder": "Search for nacionalidad"
+              },
+              "textFieldTwo": {
+                "label": "Region",
+                "placeholder": "Escriba un correo electrónico"
+              },
+              "textFieldThree": {
+                "label": "City",
+                "placeholder": "Enter First Name"
+              },
+              "textFieldFour": {
+                "label": "Postal Code",
+                "placeholder": "Escriba un correo electrónico"
+              },
+              "textFieldFive": {
+                "label": "Full Residence Address",
+                "placeholder": "Enter Last Names"
+              },
+              "button": "continue"
+            },
+            "formFour": {
+              "back": "Back",
+              "title": "Set User Password",
+              "subTitle": "",
+              "textFieldOne": {
+                "label": "Password",
+                "placeholder": "Type password"
+              },
+              "textFieldTwo": {
+                "label": "confirm password",
+                "placeholder": "Type password"
+              },
+              "rules": {
+                "one": "At least 8 characters",
+                "two": "At least 1 number",
+                "three": "At least 1 upper case letter",
+                "four": "Passwords must match"
+              }
+            }
+          }
+        },
+        "Company": {
+          "stepsCard": {},
+          "formCard": {}
+        }
+      }
     },
 
     "common": {
@@ -114,100 +324,92 @@
         "bitcoin": "Bitcoin"
       }
     },
-    "Transaction":{
-      "nav":{
-        "Back":"Back",
-        "Deposit":"Deposit",
-        "Withdraw":"Withdraw",
-        "Convert":"Covert",
-        "VanPay":"VankPay"
+    "Transaction": {
+      "nav": {
+        "Back": "Back",
+        "Deposit": "Deposit",
+        "Withdraw": "Withdraw",
+        "Convert": "Covert",
+        "VanPay": "VankPay"
       },
-      "VankPay":{
-        "Send":{
-          "ChooseAccount":"Choose account or wallet",
-          "Account":"Account",
-          "Available":"Available",
-          "Amount":"Amount",
-          "Email":"Email",
-          "Phone":"Phone",
-          "VankID":"Vank ID",
-          "Beneficiary":"Beneficiary",
-          "Description":"Description",
-          
-          "Resume":{
-            "Amount":"Amount",
-            "BeneficiaryName":"Beneficiary Name",
-            "SendingFrom":"Sending From",
-            "VankID":"Vank ID",
-            "PhoneNumber":"Phone Number",
-            "BeneficiaryEmail":"Beneficiary Email",
-            "TermsAndConditions":{
-              "textByClicking":"By clicking",
-              "TextContinue":"Continue",
-              "TextIAgree":"I agree Vank´s transaction",
-              "TextTerms":"terms",
-              "And":"and",
-              "Conditions":"Conditions"
+      "VankPay": {
+        "Send": {
+          "ChooseAccount": "Choose account or wallet",
+          "Account": "Account",
+          "Available": "Available",
+          "Amount": "Amount",
+          "Email": "Email",
+          "Phone": "Phone",
+          "VankID": "Vank ID",
+          "Beneficiary": "Beneficiary",
+          "Description": "Description",
 
+          "Resume": {
+            "Amount": "Amount",
+            "BeneficiaryName": "Beneficiary Name",
+            "SendingFrom": "Sending From",
+            "VankID": "Vank ID",
+            "PhoneNumber": "Phone Number",
+            "BeneficiaryEmail": "Beneficiary Email",
+            "TermsAndConditions": {
+              "textByClicking": "By clicking",
+              "TextContinue": "Continue",
+              "TextIAgree": "I agree Vank´s transaction",
+              "TextTerms": "terms",
+              "And": "and",
+              "Conditions": "Conditions"
             }
           },
-         
-          "2FAValidation":{
-            "Title":"2FA Validation",
-            "Email":"Email",
-            "PhoneNumber":"Phone Number",
-            "TextViaPhone":"The code will be send via",
-            "Authy":{
-              "Authy":"Authy",
-              "TextOpenQR":"Open your Authy App and scan the QR code",
-              "TextExpires":"Code expires in 5:00 min",
-              "TextProblemsQR":"Problems at QR scanning"
-             
+
+          "2FAValidation": {
+            "Title": "2FA Validation",
+            "Email": "Email",
+            "PhoneNumber": "Phone Number",
+            "TextViaPhone": "The code will be send via",
+            "Authy": {
+              "Authy": "Authy",
+              "TextOpenQR": "Open your Authy App and scan the QR code",
+              "TextExpires": "Code expires in 5:00 min",
+              "TextProblemsQR": "Problems at QR scanning"
             },
-            "DescriptionTypeValidation":"The code will be send to vank******@*****.com",
-            "DescriptionNumberDigits":"Write the 6 security digits",
-            "DescriptionNotReciveTheCode":"Did not Recieve the Code",
-            "ResendCode":"Resend Code",
-            
-            "Help":{
-              "TextInfo":" When searching for the login verification email in your mailbox",
-              "TextPoint1":"Use keywords like \"verification\" or \"login\" for efficient searching",
-              "TextPoint2":"Check your spam or junk folder to ensure it's not misclassified",
-              "TextPoint3":"Sort emails by date to quickly locate the latest verification email",
-              "TextPoint4":"Check all folders, including inbox and custom folders"
-            }
+            "DescriptionTypeValidation": "The code will be send to vank******@*****.com",
+            "DescriptionNumberDigits": "Write the 6 security digits",
+            "DescriptionNotReciveTheCode": "Did not Recieve the Code",
+            "ResendCode": "Resend Code",
 
+            "Help": {
+              "TextInfo": " When searching for the login verification email in your mailbox",
+              "TextPoint1": "Use keywords like \"verification\" or \"login\" for efficient searching",
+              "TextPoint2": "Check your spam or junk folder to ensure it's not misclassified",
+              "TextPoint3": "Sort emails by date to quickly locate the latest verification email",
+              "TextPoint4": "Check all folders, including inbox and custom folders"
+            }
           },
 
-          "Modal":{
-
-              "LoadingSend":{
-                  "LoadingSend":"Sending VannkPay",
-                  "LoadingDescription":"Every transaction benefits from industry leading security protocols"
-              },
-              "SentSuccesFully":{
-                "SentSuccesFully":"Vankpay Sent Succesfully",
-                "DescriptionSentSuccesFully":"Your transaction is currently undergoing a security validation process . It may take a couple minutes"
-              },
-              "Btns":{
-                "BtnFinish":"Finish Transaction",
-                "ViewTransaction":"View Transaction",
-                "DownloadResume":"DownloadResume"
-              },
-              "ViewDescriptionTransaction":{
-                "Date":"Date",
-                "AmountSent":"Amount Sent",
-                "SentFrom":"Sent From",
-                "VankID":"Vank ID",
-                "PhoneNumber":"Phone Number",
-                "BeneficiaryEmail":"Beneficiary Email"
-              }
-
-
+          "Modal": {
+            "LoadingSend": {
+              "LoadingSend": "Sending VannkPay",
+              "LoadingDescription": "Every transaction benefits from industry leading security protocols"
+            },
+            "SentSuccesFully": {
+              "SentSuccesFully": "Vankpay Sent Succesfully",
+              "DescriptionSentSuccesFully": "Your transaction is currently undergoing a security validation process . It may take a couple minutes"
+            },
+            "Btns": {
+              "BtnFinish": "Finish Transaction",
+              "ViewTransaction": "View Transaction",
+              "DownloadResume": "DownloadResume"
+            },
+            "ViewDescriptionTransaction": {
+              "Date": "Date",
+              "AmountSent": "Amount Sent",
+              "SentFrom": "Sent From",
+              "VankID": "Vank ID",
+              "PhoneNumber": "Phone Number",
+              "BeneficiaryEmail": "Beneficiary Email"
+            }
           }
         }
-        
-       
       }
     }
   },

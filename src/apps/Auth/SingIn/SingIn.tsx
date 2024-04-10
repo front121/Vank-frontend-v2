@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, get, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { z } from "zod";
 import CustomInput from "../../Shared/CustomInput/CustomInput";
@@ -12,14 +12,14 @@ import { motion } from "framer-motion";
 import CustomSelectPhone from "../../Shared/CustomSelectPhone/CustomSelectPhone";
 import InfoIcon from "@/assets/Icon/InfoIcon";
 import CustomTooltip from "@/apps/Shared/CustomTooltip/CustomTooltip";
+import { useService } from "@redtea/react-inversify";
+import { ValidateSendOtpRepository } from "@/Context/ValidateSendOtp/domain/domain";
+import CustomNotification from "@/apps/Shared/CustomNotification/CustomNotification";
 
 const schema = z
   .object({
     email: z.string().email().optional(),
-    phone: z
-      .string()
-      // .regex(/^\d{10}$/)
-      .optional(),
+    phone: z.string().optional(),
     password: z
       .string()
       .regex(/[0-9]/, "Debe contener al menos 1 número")
@@ -27,10 +27,15 @@ const schema = z
       .min(8, "Debe tener al menos 8 caracteres")
       .refine((value) => !!value, { message: "La contraseña es obligatoria" }),
   })
-  .refine((data) => data.email || data.phone, {
-    message:
-      "Debe proporcionar un email o un número de teléfono y una contraseña",
-    path: ["email", "phone"],
+  .refine((data) => {
+    // Asegúrate de que al menos uno de los campos email o telefono esté presente
+    if (!data.email && !data.phone) {
+      // throw new Error(
+      //   "Debes proporcionar un correo electrónico o un número de teléfono."
+      // );
+      return;
+    }
+    return true;
   });
 
 const show = {
@@ -46,9 +51,13 @@ const hide = {
 const SingIn = ({
   isvisible,
   setIsvisible,
+  showModal,
+  setShowModal,
 }: {
   isvisible: boolean;
   setIsvisible: (value: boolean) => void;
+  showModal?: any;
+  setShowModal?: any;
 }) => {
   const [t, i18n] = useTranslation("global");
 
@@ -59,10 +68,13 @@ const SingIn = ({
   const [isLoading, setIsLoading] = useState(false);
 
   const [val, setVal] = useState(false);
+  const [phoneIndicator, setPhoneIndicator] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const [visiblePhone, setVisiblePhone] = useState(false);
+  const [visiblePhone, setVisiblePhone] = useState(true);
+
+  const validateSend = useService<ValidateSendOtpRepository>("ValidateSendOtp");
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -120,14 +132,102 @@ const SingIn = ({
     document.addEventListener("error", (e: any) => setVisiblePhone(e.detail));
   }, []);
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  useEffect(() => {
+    let timer: any;
+    if (showModal) {
+      timer = setTimeout(() => {
+        setShowModal((prevState) => ({
+          ...prevState,
+          show: false,
+        }));
+        // const newFieldValidity = new Array(length).fill(true);
+      }, 5000); // Oculta la modal después de 3 segundos
+    }
+
+    return () => clearTimeout(timer); // Limpia el temporizador al desmontar el componente
+  }, [showModal]);
+
+  const formate = (email: string) => {
+    console.log(email);
+
+    return {
+      project: "65f0cf59a8c6b07717173973",
+      projectFlow: "65f0ef2f29b73ae8fd75f3e5",
+      email: email,
+      type: "login",
+      validationMethod: "verificationCode",
+      language: "es",
+    };
+  };
+
+  const formatePhone = (phone: string, indicator: string) => {
+    return {
+      project: "65f0cf59a8c6b07717173973",
+      projectFlow: "65f0ef2f29b73ae8fd75f3e5",
+      phone: phone,
+      countryCode: indicator,
+      type: "login",
+      validationMethod: "verificationCode",
+      language: "es",
+    };
+  };
+
+  const onSubmit = async (_data: any) => {
     setIsLoading(true);
-    setTimeout(() => {
-      // setIsLoading(false);
-      setIsLoading(false);
-      navigate("SingIn/Otp");
-    }, 1000);
+    navigate("SingIn/Otp/email");
+    setIsLoading(false);
+    return;
+    // try {
+    //   const data = formate(_data?.email);
+    //   const response: any = await validateSend.postSendValidateEmail(data);
+    //   console.log(response);
+    //   if (response?.data) {
+    //     localStorage.setItem("otpEmail", _data?.email);
+    //     setIsLoading(false);
+    //     return;
+    //   }
+    //   throw "";
+    // } catch (error) {
+    //   console.log(error);
+    //   setShowModal({
+    //     title: "Correo Electrónico Inválido:",
+    //     descripcion:
+    //       " Parece que el correo electrónico que has ingresado no está registrado en nuestro sistema. Por favor, verifica que el correo electrónico esté escrito correctamente e inténtalo nuevamente.",
+    //     show: true,
+    //   });
+    //   setIsLoading(false);
+    // }
+  };
+
+  const onSubmitPhone = async (_data: any) => {
+    setIsLoading(true);
+    navigate("SingIn/Otp/phone");
+    setIsLoading(false);
+    return;
+    // const indicator = phoneIndicator.replace(/\+/g, "");
+    // try {
+    //   const data = formatePhone(_data?.phone, indicator);
+    //   const response: any = await validateSend.postSendValidatePhone(data);
+    //   if (response?.data) {
+    //     localStorage.setItem(
+    //       "otpPhone",
+    //       JSON.stringify({ phone: _data?.phone, countryCode: indicator })
+    //     );
+    //     setIsLoading(false);
+    //     navigate("SingIn/Otp/phone");
+    //     return;
+    //   }
+    //   throw "";
+    // } catch (error) {
+    //   console.log(error);
+    //   setShowModal({
+    //     title: "Correo Electrónico Inválido:",
+    //     descripcion:
+    //       " Parece que el correo electrónico que has ingresado no está registrado en nuestro sistema. Por favor, verifica que el correo electrónico esté escrito correctamente e inténtalo nuevamente.",
+    //     show: true,
+    //   });
+    //   setIsLoading(false);
+    // }
   };
 
   return (
@@ -146,7 +246,7 @@ const SingIn = ({
           <div className="flex items-center justify-between mb-2">
             <div className="w-full flex items-center gap-2">
               <span className="text-sm sm:text-[15px] font-normal text-[--text-body]">
-                Email or Phone number
+                {t("Auth.login.emailOrPhone.label")}
               </span>
               {(visiblePhone || errors.phone) && (
                 <>
@@ -187,7 +287,10 @@ const SingIn = ({
                 setValue("phone", "");
               }}
             >
-              {!val ? "Phone" : "Email"}
+              {/* {!val ? "Phone" : "Email"} */}
+              {!val
+                ? t("Auth.login.emailOrPhone.phone")
+                : t("Auth.login.emailOrPhone.email")}
             </span>
           </div>
           <Controller
@@ -220,8 +323,11 @@ const SingIn = ({
               >
                 <CustomSelectPhone
                   className="h-[42px]"
-                  onChange={(e) => {
+                  onChange={(e, i) => {
                     onChange(e);
+                    console.log(e);
+                    setPhoneIndicator(i);
+
                     setValue("phone", e, {
                       shouldValidate: true,
                     });
@@ -240,7 +346,7 @@ const SingIn = ({
         {/* <CustomSelectPhone /> */}
         <div className="w-full flex flex-col gap-y-[7px] mb-9">
           <span className="text-sm sm:text-[15px] font-normal text-[--text-body]">
-            password
+            {t("Auth.login.passwordLabel")}
           </span>
           <Controller
             render={({ field: { onChange, value, name } }) => (
@@ -282,8 +388,19 @@ const SingIn = ({
 
         <CustomButton
           className={`w-full h-[42px] flex justify-center items-center gap-x-2 bg-[--yellow] disabled:bg-[--yellow-disabled] rounded-[60px] px-[12px] text-lg font-bold  text-[--background-dark-blue] mb-4 relative overflow-hidden`}
-          onclick={handleSubmit(onSubmit)}
-          disabled={!isValid}
+          // onclick={handleSubmit(onSubmit)}
+          onclick={() =>
+            !val ? onSubmit(getValues()) : onSubmitPhone(getValues())
+          }
+          disabled={
+            !val
+              ? !isValid
+              : strength !== 3
+              ? true
+              : visiblePhone || getValues("phone").length === 0
+              ? true
+              : false
+          }
         >
           <div
             className={` w-full flex justify-center items-center flex-row gap-2 absolute transition-all duration-500 ${
@@ -299,10 +416,10 @@ const SingIn = ({
           >
             <span
               className={`min-w-[70px] px-3 transition-all duration-500 ${
-                !isLoading ? "translate-x-0" : "-translate-x-[300%]"
+                !isLoading ? "translate-x-0" : "-translate-x-[1000%]"
               }`}
             >
-              {t("Auth.login.loginButton")}
+              {t("Auth.login.button")}
             </span>
             <Login
               className={`w-[28px] transition-all duration-500 ${
@@ -315,7 +432,9 @@ const SingIn = ({
         <div className="flex flex-col justify-center items-center space-y-4 mb-5">
           <div className="flex w-full justify-between gap-4 items-center">
             <hr className="border-[1px] border-[--light-grey] w-full  rounded-full" />
-            <p className="text-center text-base text-[--text-body]">Or</p>
+            <p className="text-center text-base text-[--text-body]">
+              {t("Auth.login.separator")}
+            </p>
             <hr className="border-[1px] border-[--light-grey]  w-full rounded-full" />
           </div>
           <div
@@ -323,7 +442,8 @@ const SingIn = ({
             className="min-w-[180px] h-[42px] py-[20px] px-[37px] dark:bg-[--dark-gray] p-2 flex justify-between items-center gap-5 rounded-[60px] cursor-pointer"
           >
             <span className="font-normal text-base text-[--text-body]">
-              Continue with <span className="font-bold">Google</span>
+              {t("Auth.login.continueWith")}{" "}
+              <span className="font-bold">Google</span>
             </span>
             <IconGoogle />
           </div>

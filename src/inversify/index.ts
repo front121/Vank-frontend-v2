@@ -1,5 +1,6 @@
 import { benefitsPortalContainer } from "@/apps/Auth/container";
 import { FetchClientRepository } from "@/apps/Shared/Http/FetchHttp";
+import { FetchClientRepositoryVerifik } from "@/apps/Shared/Http/FetchHttpVerifik";
 import { environment } from "@/apps/Shared/Http/environments/environment.dev";
 import { Container } from "inversify";
 import { buildProviderModule } from "inversify-binding-decorators";
@@ -16,13 +17,18 @@ export type Injectables = {
 
 export const sharedInjectables = {
   baseUrl: {
-      id: 'baseUrl',
-      class: environment.baseUrl,
-      type: 'constant' as InjectableType,
+    id: "baseUrl",
+    class: environment.baseUrl,
+    type: "constant" as InjectableType,
   },
   HttpRepository: {
     id: "HttpRepository",
     class: FetchClientRepository,
+    type: "class" as InjectableType,
+  },
+  HttpRepositoryVerifik: {
+    id: "HttpRepositoryVerifik",
+    class: FetchClientRepositoryVerifik,
     type: "class" as InjectableType,
   },
 };

@@ -103,7 +103,7 @@ const CustomSelectPhone = ({
       <div className="flex h-full  w-full gap-2">
         <div
           className="inline-flex relative items-center justify-center gap-2 w-[20%] h-full p-2.5 text-base font-medium text-center border-[--text-light-body] bg-[--dark-gray] text-[--text-body] rounded-lg cursor-pointer"
-          onClick={() => setIsFocus(true)}
+          onClick={() => setIsFocus(!isFocus)}
         >
           <span className="opacity-70">{selected ? selected : "+00"}</span>
         </div>
@@ -112,7 +112,7 @@ const CustomSelectPhone = ({
           name={name}
           value={value}
           onChange={(e) => {
-            onChange(e.target.value);
+            onChange(e.target.value, selected);
             setInputValue(e.target.value);
           }}
           className={`w-full h-full outline-none p-[8px] pr-[42px] bg-[--dark-gray] rounded-[10px] text-[--text-body] text-base ${
@@ -131,7 +131,7 @@ const CustomSelectPhone = ({
       </div>
 
       <ul
-        className={`select  bg-[--dark-gray] w-full mt-2 px-2  rounded-[10px] absolute z-50 transition-all duration-300 space-y-2 overflow-y-auto ${
+        className={`select  bg-[--dark-gray] w-full mt-2 px-2  rounded-[10px] absolute  z-50 transition-all duration-300 space-y-2 overflow-y-auto ${
           isFocus ? "max-h-64 pb-2  opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -146,11 +146,13 @@ const CustomSelectPhone = ({
           autoComplete="off"
           placeholder="Search country . . ."
         />
-        {sortedCountries?.map((country, index) => (
-          <li
-            key={index}
-            value={country}
-            className={`flex items-center gap-3 p-3 text-sm hover:bg-[--background-dark-blue] text-[--text-body] rounded-[10px]  cursor-pointer  transition-colors duration-300 
+        {sortedCountries
+          ?.filter((code) => !["AC", "BQ", "EH", "TA"].includes(code))
+          ?.map((country, index) => (
+            <li
+              key={index}
+              value={country}
+              className={`flex items-center gap-3 p-3 text-sm hover:bg-[--background-dark-blue] text-[--text-body] rounded-[10px]  cursor-pointer  transition-colors duration-300 
               ${
                 country === selectedCountry &&
                 "bg-[--background-dark-blue] text-[--text-body] rounded-[10px]"
@@ -160,17 +162,17 @@ const CustomSelectPhone = ({
                   ? "block"
                   : "hidden"
               }`}
-            onClick={() => {
-              setIsFocus(false);
-              setSelectedCountry(country);
-              setSelected(`+${getCountryCallingCode(country as any)}`);
-              setInputSearch("");
-            }}
-          >
-            <FlagIcon code={country as any} className="rounded-sm" />
-            {en[country]} +{getCountryCallingCode(country as any)}
-          </li>
-        ))}
+              onClick={() => {
+                setIsFocus(false);
+                setSelectedCountry(country);
+                setSelected(`+${getCountryCallingCode(country as any)}`);
+                setInputSearch("");
+              }}
+            >
+              <FlagIcon code={country as any} className="rounded-sm" />
+              {en[country]} +{getCountryCallingCode(country as any)}
+            </li>
+          ))}
         {filteredCountries?.length === 0 && (
           <li className="flex items-center gap-3 p-3 text-sm text-[--text-body]  cursor-pointer  transition-colors duration-300">
             No se encontraron resultados...

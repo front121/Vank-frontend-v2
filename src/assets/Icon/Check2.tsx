@@ -1,6 +1,6 @@
 import React from "react";
 
-const Check2 = ({ className }: { className?: any }) => {
+const Check2 = ({ className, fill }: { className?: any; fill?: any }) => {
   return (
     <svg
       width="16"
@@ -12,7 +12,7 @@ const Check2 = ({ className }: { className?: any }) => {
     >
       <path
         d="M1.5 5.95088L5.21429 9.15088L14.5 1.15088"
-        stroke="#FFED00"
+        stroke={fill ? fill : "#FFED00"}
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"

@@ -7,6 +7,7 @@ import i18next from "i18next";
 
 import es from "@assets/i18n/es.json";
 import en from "@assets/i18n/en.json";
+import pt from "@assets/i18n/pt.json";
 import { I18nextProvider } from "react-i18next";
 import { ThemeProvider } from "./Context/UseContext/ThemeContext.tsx";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -28,13 +29,16 @@ i18next.init({
     en: {
       global: en,
     },
+    pt: {
+      global: pt,
+    },
   },
 });
 
 bootstrap()
   .then(({ container }) => {
     console.log(container);
-    
+
     createRoot(document.getElementById("root")!).render(
       <StrictMode>
         <Suspense fallback={<FullScreenLoader />}>
@@ -58,25 +62,3 @@ bootstrap()
     );
   })
   .catch((err) => console.log(err));
-
-// ReactDOM.createRoot(document.getElementById("root")!).render(
-//   <React.StrictMode>
-//     <Suspense fallback={<FullScreenLoader />}>
-//       <RecoilRoot>
-//         <I18nextProvider i18n={i18next}>
-//           <ThemeProvider>
-//             <Auth0Provider
-//               domain={import.meta.env.VITE_AUTH0_DOMAIN}
-//               clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
-//               authorizationParams={{
-//                 redirect_uri: window.location.origin,
-//               }}
-//             >
-//               <App />
-//             </Auth0Provider>
-//           </ThemeProvider>
-//         </I18nextProvider>
-//       </RecoilRoot>
-//     </Suspense>
-//   </React.StrictMode>
-// );

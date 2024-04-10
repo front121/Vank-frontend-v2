@@ -64,21 +64,29 @@ const ForgotPassword = () => {
             className="mb-5 text-base font-normal leading-[20.8px] text-[--text-body] cursor-pointer opacity-[0.6]"
             onClick={() => navigate("/Auth")}
           >
-            {t("Auth.register.opt.back")}
+            {t("Auth.login.forgotPassword.back")}
           </p>
           <h2 className="text-[--text-body] text-base leading-[22.1px] font-bold mb-3">
-            Forgot your Password?
+            {t("Auth.login.forgotPassword.titleForgotPassword")}
           </h2>
           <p className="mb-4 w-full sm:w-[600px] text-sm sm:text-base font-normal text-[--text-body] leading-[20.8px]">
-            Introduce your <span className="text-[--yellow]">email</span> and
-            you will receive the{" "}
-            <span className="text-[--yellow]">instructions</span> for your
-            password <span className="text-[--yellow]">recovery</span>
+            {t("Auth.login.forgotPassword.paragraph.paragraphOne")}{" "}
+            <span className="text-[--yellow]">
+              {t("Auth.login.forgotPassword.paragraph.paragraphTwo")}
+            </span>{" "}
+            {t("Auth.login.forgotPassword.paragraph.paragraphThree")}{" "}
+            <span className="text-[--yellow]">
+              {t("Auth.login.forgotPassword.paragraph.paragraphFour")}
+            </span>{" "}
+            {t("Auth.login.forgotPassword.paragraph.paragraphFive")}{" "}
+            <span className="text-[--yellow]">
+              {t("Auth.login.forgotPassword.paragraph.paragraphSix")}
+            </span>
           </p>
 
           <div className="w-full flex flex-col gap-y-[4px] mb-7 transition-all duration-500">
             <span className="text-sm sm:text-base font-normal text-[--text-body]">
-              Email
+              {t("Auth.login.forgotPassword.textFieldEmail.label")}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -90,7 +98,9 @@ const ForgotPassword = () => {
                   name={name}
                   error={Boolean(errors["email"])}
                   helperText={errors["email"] ? errors["email"].message : ""}
-                  placeholder="Type email"
+                  placeholder={t(
+                    "Auth.login.forgotPassword.textFieldEmail.placeholder"
+                  )}
                 />
               )}
               name="email"
@@ -108,7 +118,7 @@ const ForgotPassword = () => {
               className={`flex absolute w-full justify-center items-center transition-all duration-500 `}
             >
               <span className="min-w-[70px] px-3 transition-all duration-500">
-                Continue
+                {t("Auth.login.forgotPassword.button")}
               </span>
               <Login className="w-[28px] transition-all duration-500" />
             </div>

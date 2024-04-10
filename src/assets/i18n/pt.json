@@ -1,0 +1,419 @@
+{
+  "common": {
+    "commonLanguaje": {
+      "languaje": "Idioma",
+      "search": "Pesquisar"
+    }
+  },
+  "Auth": {
+    "login": {
+      "emailOrPhone": {
+        "label": "E-mail ou telefone",
+        "phone": "telefone",
+        "email": "e-mail"
+      },
+      "passwordLabel": "Senha",
+      "button": "Entrar",
+      "separator": "Ou",
+      "continueWith": "Continuar com",
+      "newUserPrompt": "É novo na plataforma? ",
+      "createAccount": "Criar uma conta",
+      "ForgotPassword": "Esqueceu a sua senha?",
+      "changeLanguage": "Mudar idioma para",
+      "language": "Inglês",
+      "Otp": {
+        "back": "Voltar",
+        "title": "Validação 2FA",
+        "nav": {
+          "email": "e-mail",
+          "phone": "Número de telefone",
+          "authy": "Authy"
+        },
+        "authy": {
+          "paragraphOne": {
+            "one": "Abra o seu",
+            "two": "Aplicativo Authy",
+            "three": "e digitalize o código QR"
+          },
+          "paragraphTwo": {
+            "one": "O código expira em",
+            "two": "5:00 min"
+          },
+          "paragraphThree": "Abra o seu aplicativo Authy e digitalize o código QR"
+        },
+        "thecodebesendEmail": "O código será enviado para",
+        "thecodebesendPhone": "O código será enviado por SMS para",
+        "securityDigits": "Digite os 6 dígitos de segurança",
+        "resend": "Reenviar em",
+        "resendCode": "Reenviar código",
+        "didnotCode": "Não recebeu o código?",
+        "OtpButton": "Continuar"
+      },
+      "forgotPassword": {
+        "back": "Voltar",
+        "titleForgotPassword": "Esqueceu a sua senha?",
+        "paragraph": {
+          "paragraphOne": "Digite o seu",
+          "paragraphTwo": "e-mail",
+          "paragraphThree": "e você receberá",
+          "paragraphFour": "instruções",
+          "paragraphFive": "para recuperar a sua",
+          "paragraphSix": "senha"
+        },
+        "textFieldEmail": {
+          "label": "E-mail",
+          "placeholder": "Digite um e-mail"
+        },
+        "button": "continuar",
+        "Otp": {
+          "back": "Voltar",
+          "title": "Verifique o seu e-mail",
+          "paragraph": {
+            "paragraphOne": "O código de",
+            "paragraphTwo": "ativação/recuperação",
+            "paragraphThree": "da sua conta foi",
+            "paragraphFour": "enviado",
+            "paragraphFive": "para o seu endereço de",
+            "paragraphSix": "e-mail",
+            "paragraphSeven": ""
+          },
+          "thecodebesend": "O código será enviado para",
+          "securityDigits": "Digite os 6 dígitos de segurança",
+          "resend": "Reenviar em",
+          "resendCode": "Reenviar código",
+          "didnotCode": "Não recebeu o código?",
+          "OtpButton": "Continuar"
+        },
+        "ResetPassword": {
+          "title": "Redefinir senha",
+          "subTitle": {
+            "one": "Por favor, insira a sua",
+            "two": "nova senha"
+          },
+          "textFieldOne": {
+            "label": "senha",
+            "placeholder": "Digite a senha"
+          },
+          "textFieldTwo": {
+            "label": "Confirmar senha",
+            "placeholder": "Confirmar senha"
+          },
+          "rules": {
+            "one": "Pelo menos 8 caracteres",
+            "two": "Pelo menos 1 número",
+            "three": "Pelo menos 1 letra maiúscula",
+            "four": "As senhas devem coincidir"
+          },
+          "button": "continuar"
+        }
+      }
+    },
+    "register": {
+      "title": "Crie uma conta",
+      "selectAccount": {
+        "one": "Pessoa",
+        "two": "Empresa"
+      },
+      "textFieldEmail": {
+        "label": "E-mail",
+        "placeholder": "Digite um e-mail"
+      },
+      "policy": {
+        "one": "Ao criar uma conta, concordo com os",
+        "two": "Termos de serviço",
+        "three": "e a",
+        "four": "Política de privacidade",
+        "five": "da Vank."
+      },
+      "sendConfirmationCode": {
+        "WeWillSendYouA": "Vamos enviar um",
+        "code": "código",
+        "toYour": "para o seu",
+        "email": "e-mail",
+        "toConfirm": "para confirmar"
+      },
+      "opt": {
+        "back": "Voltar",
+        "emailVerification": "Verificação de e-mail",
+        "InfoCode": {
+          "info": "Digite o código de verificação de 6 dígitos enviado para",
+          "code": "o código é válido por 30 minutos."
+        },
+        "resend": "Reenviar em",
+        "resendCode": "Reenviar código",
+        "didnotCode": "Não recebeu o código?"
+      },
+      "createPassword": {
+        "setPassword": "Definir senha de usuário",
+        "password": {
+          "labelPassword": "Senha",
+          "placeholder": "Digite a senha"
+        },
+        "confirmPassword": {
+          "labelPassword": "Confirmar senha",
+          "placeholder": "Confirmar senha"
+        },
+        "rules": {
+          "one": "Pelo menos 8 caracteres",
+          "two": "Pelo menos 1 número",
+          "three": "Pelo menos 1 letra maiúscula",
+          "four": "As senhas devem coincidir"
+        },
+        "resend": "Reenviar em",
+        "resendCode": "Reenviar código",
+        "didnotCode": "Não recebeu o código?"
+      },
+      "separator": "Ou",
+      "continueWith": "Continuar com",
+      "passwordLabel": "Senha",
+      "newUserPrompt": "Já tem uma conta? ",
+      "createAccount": "Iniciar sessão",
+      "registerButton": "Continuar",
+      "buttonContinue": "Continuar",
+      "button": "Registrar",
+      "multiStepForm": {
+        "Person": {
+          "tile": "Criação da conta Vank:",
+          "stepsCard": {
+            "circleOne": {
+              "label": "Verificação de documentos",
+              "info": "Neste passo, você precisará escolher um método de verificação, podendo escanear um código QR ou clicar no link de verificação."
+            },
+            "circleTwo": {
+              "label": "Informações pessoais",
+              "info": "Gostaríamos de saber mais sobre você, por favor, forneça as seguintes informações."
+            },
+            "circleThree": {
+              "label": "Informações de endereço",
+              "info": "Para melhor entender sua localização, forneça seu endereço residencial atual."
+            },
+            "circleFour": {
+              "label": "Definir senha",
+              "info": "Ao definir uma nova senha, certifique-se de que ela atenda aos critérios mínimos de segurança. Muito obrigado."
+            }
+          },
+          "formCard": {
+            "formOne": {
+              "paragraphOne": "Prepare seu documento",
+              "paragraphTwo": "Certifique-se de que seja um documento oficial seu",
+              "paragraphThree": {
+                "one": "Obtenha a verificação por meio do seu",
+                "two": "navegador"
+              }
+            },
+            "formTwo": {
+              "back": "Voltar",
+              "title": "Confirmação de identidade",
+              "subTitle": "Preencha exatamente como aparece em seu RG, passaporte ou carteira de motorista",
+              "textFieldOne": {
+                "label": "Nacionalidade",
+                "placeholder": "Buscar nacionalidade"
+              },
+              "textFieldTwo": {
+                "label": "Tipo de documento",
+                "placeholder": "Buscar tipo de documento"
+              },
+              "textFieldThree": {
+                "label": "Número do documento",
+                "placeholder": "Digite o nome"
+              },
+              "textFieldFour": {
+                "label": "Nome",
+                "placeholder": "Digite um e-mail"
+              },
+              "textFieldFive": {
+                "label": "Sobrenome",
+                "placeholder": "Digite os sobrenomes"
+              },
+              "textFieldFix": {
+                "label": "Data de nascimento",
+                "placeholder": "Digite um e-mail"
+              },
+              "textFieldSeven": {
+                "label": "Número de telefone",
+                "placeholder": "Digite um e-mail"
+              },
+              "button": "continuar"
+            },
+            "formThree": {
+              "back": "Voltar",
+              "title": "Endereço residencial",
+              "subTitle": "Informe seu endereço atual",
+              "textFieldOne": {
+                "label": "País de residência",
+                "placeholder": "Buscar nacionalidade"
+              },
+              "textFieldTwo": {
+                "label": "Região",
+                "placeholder": "Digite um e-mail"
+              },
+              "textFieldThree": {
+                "label": "Cidade",
+                "placeholder": "Digite o nome"
+              },
+              "textFieldFour": {
+                "label": "CEP",
+                "placeholder": "Digite um e-mail"
+              },
+              "textFieldFive": {
+                "label": "Endereço completo",
+                "placeholder": "Digite os sobrenomes"
+              },
+              "button": "continuar"
+            },
+            "formFour": {
+              "back": "Voltar",
+              "title": "Definir senha de usuário",
+              "subTitle": "",
+              "textFieldOne": {
+                "label": "Senha",
+                "placeholder": "Digite a senha"
+              },
+              "textFieldTwo": {
+                "label": "Confirmar senha",
+                "placeholder": "Digite a senha"
+              },
+              "rules": {
+                "one": "Pelo menos 8 caracteres",
+                "two": "Pelo menos 1 número",
+                "three": "Pelo menos 1 letra maiúscula",
+                "four": "As senhas devem coincidir"
+              }
+            }
+          }
+        }
+      },
+      "Company": {
+        "stepsCard": {},
+        "formCard": {}
+      }
+    },
+    "common": {
+      "welcome": "Bem-vindo ao Vank! 👋",
+      "joinPlatform": {
+        "joinToThe": "Junte-se à",
+        "bestPlatform": "melhor plataforma",
+        "to": "para",
+        "save": "economizar",
+        "and": "e",
+        "send": "enviar",
+        "your": "seu",
+        "money": "dinheiro"
+      }
+    },
+    "Vank": {
+      "Home": {
+        "nav": {
+          "btnResumen": "Resumo",
+          "btnAccount": "Conta",
+          "btnCards": "Cartão",
+          "btnWallets": "Carteiras",
+          "amountInfo": "Saldo total"
+        },
+        "AccountInfo": {
+          "account": "conta",
+          "usdSavings": "Economias em USD"
+        },
+        "CardsInfo": {
+          "myCard": "meu cartão"
+        },
+        "CryptoInfo": {
+          "tether": "Tether",
+          "ethereum": "",
+          "bitcoin": ""
+        }
+      },
+      "VankPay": {
+        "Send": {
+          "ChooseAccount": "Escolha a conta ou carteira",
+          "Account": "Conta",
+          "Available": "Disponível",
+          "Amount": "Quantidade",
+          "Email": "E-mail",
+          "Phone": "Telefone",
+          "VankID": "ID do Vank",
+          "Beneficiary": "Beneficiário",
+          "Description": "Descrição",
+
+          "Resume": {
+            "Amount": "Quantidade",
+            "BeneficiaryName": "Nome do beneficiário",
+            "SendingFrom": "Enviado de",
+            "VankID": "ID do Vank",
+            "PhoneNumber": "Número de telefone",
+            "BeneficiaryEmail": "E-mail do beneficiário",
+            "TermsAndConditions": {
+              "textByClicking": "Ao clicar em",
+              "TextContinue": " Continuar",
+              "TextIAgree": "concordo com os",
+              "TextTerms": "termos",
+              "And": "e",
+              "Conditions": "condições"
+            }
+          },
+
+          "2FAValidation": {
+            "Title": "Validação 2FA",
+            "Email": "E-mail",
+            "PhoneNumber": "Número de telefone",
+            "TextViaPhone": "O código será enviado através de",
+            "Authy": {
+              "Authy": "Authy",
+              "TextOpenQR": "Abra o aplicativo Authy e digitalize o código QR",
+              "TextExpires": "O código expira em 5:00 min",
+              "TextProblemsQR": "Problemas ao digitalizar o QR"
+            },
+            "DescriptionTypeValidation": "O código será enviado para",
+            "DescriptionNumberDigits": "Digite os 6 dígitos de segurança",
+            "DescriptionNotReciveTheCode": "Não recebeu o código",
+            "ResendCode": "Reenviar código",
+
+            "Help": {
+              "TextInfo": "Ao procurar pelo e-mail de verificação de login na sua caixa de entrada de e-mail",
+              "TextPoint1": "Use palavras-chave como \"verificação\" ou \"login\" para pesquisas eficazes.",
+              "TextPoint2": "Verifique sua pasta de spam ou lixo eletrônico para garantir que não esteja classificado incorretamente",
+              "TextPoint3": "Classifique e-mails por data para localizar rapidamente o e-mail de verificação mais recente",
+              "TextPoint4": "Verifique todas as pastas, incluindo a caixa de entrada e pastas personalizadas"
+            }
+          },
+
+          "Modal": {
+            "LoadingSend": {
+              "LoadingSend": "Enviar VannkPay",
+              "LoadingDescription": "Cada transação se beneficia de protocolos de segurança líderes no setor"
+            },
+            "SentSuccesFully": {
+              "SentSuccesFully": "Vankpay enviado com sucesso",
+              "DescriptionSentSuccesFully": "Sua transação está sendo submetida a um processo de validação de segurança. Pode levar alguns minutos"
+            },
+            "Btns": {
+              "BtnFinish": "Finalizar transação",
+              "ViewTransaction": "Ver transação",
+              "DownloadResume": "Baixar currículo"
+            },
+            "ViewDescriptionTransaction": {
+              "Date": "Data",
+              "AmountSent": "Quantidade enviada",
+              "SentFrom": "Enviado de",
+              "VankID": "ID do Vank",
+              "PhoneNumber": "Número de telefone",
+              "BeneficiaryEmail": "E-mail do beneficiário"
+            }
+          }
+        }
+      }
+    },
+    "Share": {
+      "Sidebar": {
+        "Home": "Início",
+        "Transaction": "Transação",
+        "Beneficiaries": "Beneficiários",
+        "Share": "Compartilhar o aplicativo",
+        "Accessibility": "Acessibilidade",
+        "BtnLanguage": "Idioma",
+        "BtnLogOut": "Sair",
+        "Info": "Não compartilhe seu código do Google Authenticator ou SMS com ninguém, incluindo o pessoal de atendimento ao cliente do Qoripay."
+      }
+    }
+  }
+}

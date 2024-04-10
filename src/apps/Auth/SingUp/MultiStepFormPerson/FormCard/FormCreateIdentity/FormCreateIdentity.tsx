@@ -3,6 +3,7 @@ import { Rocket } from "../../../../../../assets/Icon/Rocket";
 import Document from "../../../../../../assets/Icon/Document";
 import { createUserInfoState } from "../../state";
 import { useRecoilState } from "recoil";
+import { useTranslation } from "react-i18next";
 
 const FormCreateIdentity = ({
   onActionTriggered,
@@ -11,6 +12,7 @@ const FormCreateIdentity = ({
   onActionTriggered?: any;
   setShowModal: (value: boolean) => void;
 }) => {
+  const [t, i18n] = useTranslation("global");
   const [userPayload, setUserPayload] = useRecoilState(createUserInfoState);
 
   const button = useRef<any>(null);
@@ -83,10 +85,14 @@ const FormCreateIdentity = ({
     <div className="w-full h-full  flex flex-col p-4 justify-center items-center rounded-[32px] relative z-40 bg-[--background-dark-blue] shadow-lg ">
       <div className="flex flex-col justify-between items-center z-30">
         <h2 className="text-lg font-bold text-[--text-body] mb-2">
-          Get your Document ready
+          {t(
+            "Auth.register.multiStepForm.Person.formCard.formOne.paragraphOne"
+          )}
         </h2>
         <p className="text-base font-normal text-[--text-body] mb-9">
-          Make sure it´s your official document
+          {t(
+            "Auth.register.multiStepForm.Person.formCard.formOne.paragraphTwo"
+          )}
         </p>
 
         <metamap-button
@@ -99,7 +105,14 @@ const FormCreateIdentity = ({
         ></metamap-button>
 
         <p className="text-base font-normal text-[--text-body] mt-4">
-          Get Verified through your <span className="font-bold">browser</span>
+          {t(
+            "Auth.register.multiStepForm.Person.formCard.formOne.paragraphThree.one"
+          )}{" "}
+          <span className="font-bold">
+            {t(
+              "Auth.register.multiStepForm.Person.formCard.formOne.paragraphThree.two"
+            )}
+          </span>
         </p>
       </div>
 

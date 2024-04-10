@@ -20,6 +20,7 @@ import { CountryRepository } from "@/Context/Country/domain/domain";
 import { useService } from "@redtea/react-inversify";
 
 const MultiStepFormPerson = () => {
+  const [t, i18n] = useTranslation("global");
   const [isOpen, setIsOpen] = useState(false);
   const [verificatioId, setVerificatioId] = useState("");
   const [userPayload, setUserPayload] = useRecoilState(createUserInfoState);
@@ -28,41 +29,46 @@ const MultiStepFormPerson = () => {
 
   const navigate = useNavigate();
 
-  const [circle, setCircle] = useState([
+  let circle = [
     {
       id: 1,
-      label: "Document Verification",
-      description:
-        "On this Step, you will have  to choose a verification method, you can scan a QR Code or click the verification Link. ",
+      label: t("Auth.register.multiStepForm.Person.stepsCard.circleOne.label"),
+      description: t(
+        "Auth.register.multiStepForm.Person.stepsCard.circleOne.info"
+      ),
       icon: <Identity />,
     },
     {
       id: 2,
-      label: "Personal Information",
-      description:
-        "We would love to learn more about you, please provide us the following information.",
+      label: t("Auth.register.multiStepForm.Person.stepsCard.circleTwo.label"),
+      description: t(
+        "Auth.register.multiStepForm.Person.stepsCard.circleTwo.info"
+      ),
       icon: <User color="#FFED00" />,
     },
     {
       id: 3,
-      label: "Address Information",
-      description:
-        "To improve our understanding of your location, please provide your current residential Address.",
+      label: t(
+        "Auth.register.multiStepForm.Person.stepsCard.circleThree.label"
+      ),
+      description: t(
+        "Auth.register.multiStepForm.Person.stepsCard.circleThree.info"
+      ),
       icon: <Residence />,
     },
     {
       id: 4,
-      label: "Set Password",
-      description:
-        "When setting a new password, please ensure it meets the minimum criteria for security purposes. Thank you.",
+      label: t("Auth.register.multiStepForm.Person.stepsCard.circleFour.label"),
+      description: t(
+        "Auth.register.multiStepForm.Person.stepsCard.circleFour.info"
+      ),
       icon: <Lock color="#FFED00" />,
     },
-  ]);
+  ];
 
   const [currentStep, setCurrentStep] = useState(0);
   const [width, setWidth] = useState(0);
 
-  const [t, i18n] = useTranslation("global");
   const [showModal, setShowModal] = useState(false);
 
   // steps

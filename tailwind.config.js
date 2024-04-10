@@ -14,6 +14,15 @@ export default {
         link: "#A1A1A1",
         icons: "#D4D4D5",
       },
+      animation: {
+        "loop-scroll": "loop-scroll 10s linear infinite",
+      },
+      keyframes: {
+        "loop-scroll": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-100%)" },
+        },
+      },
       boxShadow: {
         "box-header": "47px -28px 0px #191E25",
       },

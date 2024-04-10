@@ -19,7 +19,8 @@ function FormCreateInfoResidence({
 }) {
   const [t, i18n] = useTranslation("global");
 
-  const [userPayload, setUserPayload] = useRecoilState<any>(createUserInfoState);
+  const [userPayload, setUserPayload] =
+    useRecoilState<any>(createUserInfoState);
 
   // const HttpRepository = new FetchHttpClientRepository();
   const country = useService<CountryRepository>("Country");
@@ -82,7 +83,7 @@ function FormCreateInfoResidence({
       setStates(format);
       setIsLoadingState(false);
     } catch (error) {
-      getStates()
+      getStates();
       console.log(error);
     }
   };
@@ -166,18 +167,20 @@ function FormCreateInfoResidence({
           className="text-base text-[--text-body] mb-4 cursor-pointer w-[70px]"
           onClick={() => onActionTriggered("previous")}
         >
-          Back
+          {t("Auth.register.multiStepForm.Person.formCard.formThree.back")}
         </p>
         <h2 className="text-[--text-body] text-lg leading-[22.1px] font-bold mb-1">
-          Residential Address
+          {t("Auth.register.multiStepForm.Person.formCard.formThree.title")}
         </h2>
         <p className="text-base text-[--text-body] mb-4">
-          Please indicate your current residential address
+          {t("Auth.register.multiStepForm.Person.formCard.formThree.subTitle")}
         </p>
         <div className="w-full grid grid-cols-2 gap-x-7 gap-y-4 mb-5 ">
           <div className="w-full flex flex-col  col-span-2 gap-y-[5px]">
             <span className="text-base font-normal text-[--text-body]">
-              Recidence Country
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formThree.textFieldOne.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -207,7 +210,9 @@ function FormCreateInfoResidence({
           </div>
           <div className="w-full flex flex-col gap-y-[5px]">
             <span className="text-base font-normal text-[--text-body]">
-              Region
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formThree.textFieldTwo.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -238,7 +243,9 @@ function FormCreateInfoResidence({
           </div>
           <div className="w-full flex flex-col gap-y-[5px]">
             <span className="text-base font-normal text-[--text-body]">
-              City
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formThree.textFieldThree.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -269,7 +276,9 @@ function FormCreateInfoResidence({
           </div>
           <div className="w-full flex flex-col gap-y-[5px]">
             <span className="text-base font-normal text-[--text-body]">
-              Postal Code
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formThree.textFieldFour.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -292,7 +301,9 @@ function FormCreateInfoResidence({
           </div>
           <div className="w-full flex flex-col gap-y-[5px]">
             <span className="text-sm sm:text-base font-normal text-[--text-body]">
-              Full Residence Address
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formThree.textFieldFive.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -322,7 +333,7 @@ function FormCreateInfoResidence({
           onClick={handleSubmit(onSubmit)}
           disabled={!isValid}
         >
-          Continuar
+          {t("Auth.register.multiStepForm.Person.formCard.formThree.button")}
         </button>
       </form>
     </div>

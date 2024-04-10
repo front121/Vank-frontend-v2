@@ -21,7 +21,7 @@ export class FetchClientRepository implements HttpRepository {
       },
       // credentials: "include",
       mode: "cors",
-    });    
+    });
 
     const data = await response.json();
     return data;
@@ -75,7 +75,6 @@ export class FetchClientRepository implements HttpRepository {
   }
 
   async put<T>(url: string, body: any, params?: HttpRequestParams): Promise<T> {
-
     const response = await fetch(`${this.baseUrl} + ${url}`, {
       method: "PUT",
       headers: {
@@ -97,7 +96,6 @@ export class FetchClientRepository implements HttpRepository {
     body: any,
     params?: HttpRequestParams
   ): Promise<T> {
-
     const response = await fetch(`${this.baseUrl} + ${url}`, {
       method: "PATCH",
       headers: {

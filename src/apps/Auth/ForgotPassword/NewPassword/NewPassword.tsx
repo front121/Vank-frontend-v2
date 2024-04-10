@@ -105,16 +105,20 @@ const NewPassword = () => {
           </p> */}
           <h2 className="text-[--text-body] text-lg leading-[22.1px] font-bold mb-3">
             {/* {t("Auth.register.createPassword.setPassword")} */}
-            Reset your password
+            {t("Auth.login.forgotPassword.ResetPassword.title")}
           </h2>
           <p className="w-full sm:w-[600px] text-sm sm:text-base font-normal text-[--text-body] leading-[20.8px] mb-5">
-            Please, introduce your{" "}
-            <span className="text-[--yellow]">new password</span>
+            {t("Auth.login.forgotPassword.ResetPassword.subTitle.one")}{" "}
+            <span className="text-[--yellow]">
+              {t("Auth.login.forgotPassword.ResetPassword.subTitle.two")}
+            </span>
           </p>
           <div className="w-full grid grid-cols-1 2xl:gap-y-2">
             <div className="w-full flex flex-col gap-y-[7px] mb-3">
               <span className="text-sm sm:text-base font-normal text-[--text-body]">
-                password
+                {t(
+                  "Auth.login.forgotPassword.ResetPassword.textFieldOne.label"
+                )}
               </span>
               <Controller
                 render={({ field: { onChange, value, name } }) => (
@@ -130,7 +134,9 @@ const NewPassword = () => {
                     }
                     showPassword={showPassword}
                     togglePasswordVisibility={togglePasswordVisibility}
-                    placeholder="Type password"
+                    placeholder={t(
+                      "Auth.login.forgotPassword.ResetPassword.textFieldOne.placeholder"
+                    )}
                   />
                 )}
                 name="password"
@@ -139,7 +145,9 @@ const NewPassword = () => {
             </div>
             <div className="w-full flex flex-col gap-y-[7px] 2xl:mb-3">
               <span className="text-sm sm:text-base font-normal text-[--text-body]">
-                Confirm Password
+                {t(
+                  "Auth.login.forgotPassword.ResetPassword.textFieldTwo.label"
+                )}
               </span>
               <Controller
                 render={({ field: { onChange, value, name } }) => (
@@ -157,7 +165,9 @@ const NewPassword = () => {
                     }
                     showPassword={showConfirmPassword}
                     togglePasswordVisibility={toggleConfirmPasswordVisibility}
-                    placeholder="Type Confirm Password"
+                    placeholder={t(
+                      "Auth.login.forgotPassword.ResetPassword.textFieldTwo.placeholder"
+                    )}
                   />
                 )}
                 name="confirmPassword"
@@ -177,7 +187,7 @@ const NewPassword = () => {
               ) : (
                 <CheckGray className="w-[14px] h-[14px]" />
               )}
-              <p>{t("Auth.register.createPassword.rules.one")}</p>
+              <p>{t("Auth.login.forgotPassword.ResetPassword.rules.one")}</p>
             </li>
             <li
               className={`text-sm sm:text-base text-[--text-light-body] flex items-center gap-[10px] min-w-[164px]`}
@@ -189,7 +199,7 @@ const NewPassword = () => {
               ) : (
                 <CheckGray className="w-[14px] h-[14px]" />
               )}
-              <p>{t("Auth.register.createPassword.rules.two")}</p>
+              <p>{t("Auth.login.forgotPassword.ResetPassword.rules.two")}</p>
             </li>
             <li
               className={`text-sm sm:text-base text-[--text-light-body] flex items-center gap-[10px]`}
@@ -201,7 +211,7 @@ const NewPassword = () => {
               ) : (
                 <CheckGray className="w-[14px] h-[14px]" />
               )}
-              <p>{t("Auth.register.createPassword.rules.three")}</p>
+              <p>{t("Auth.login.forgotPassword.ResetPassword.rules.three")}</p>
             </li>
             <li
               className={`text-sm sm:text-base text-[--text-light-body] flex items-center gap-[10px]`}
@@ -216,7 +226,7 @@ const NewPassword = () => {
                   <Close className="w-[14px] h-[14px]" />
                 )
               )}
-              <p>{t("Auth.register.createPassword.rules.four")}</p>
+              <p>{t("Auth.login.forgotPassword.ResetPassword.rules.four")}</p>
             </li>
           </ul>
 
@@ -226,7 +236,7 @@ const NewPassword = () => {
             onClick={onSubmit}
             disabled={!isValid}
           >
-            Continuar
+            {t("Auth.login.forgotPassword.ResetPassword.button")}
           </button>
         </form>
         {isLoading && (

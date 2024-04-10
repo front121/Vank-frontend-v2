@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../../Context/UseContext/ThemeContext";
 import World from "@/assets/Icon/World";
 import CustomInput from "@/apps/Shared/CustomInput/CustomInput";
 import CustomSwitch from "@/apps/Shared/CustomSwitch/CustomSwitch";
-import Vank from "../../../assets/Vank.png";
+import Vank from "@assets/Vanks.png";
+import { AnimatePresence, motion } from "framer-motion";
+import { FlagIcon } from "react-flag-kit";
 // import World from "../../../assets/Icon/World";
 // import CustomInput from "../../Shared/CustomInput/CustomInput";
 // import CustomSwitch from "../../Shared/CustomSwitch/CustomSwitch";
@@ -14,7 +16,9 @@ const Header = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [rotate, setRotate] = useState(false);
+  const [isMenu, setIsMenu] = useState(false);
   const { toggleDarkMode } = useTheme();
+  const menuRef = useRef<any>(null);
 
   const handleChangeInput = (event: any) => {
     setSearchTerm(event.target.value);
@@ -48,14 +52,38 @@ const Header = () => {
   //   localStorage.setItem("lenguaje", leng);
   // };
 
-  const toogleLenguaje = () => {
-    console.log(i18n.language);
+  // const toogleLenguaje = () => {
+  //   console.log(i18n.language);
 
-    const leng = i18n.language === "en" ? "es" : "en";
+  //   const leng = i18n.language === "en" ? "es" : "en";
 
-    i18n.changeLanguage(i18n.language === "en" ? "es" : "en");
-    localStorage.setItem("lenguaje", leng);
+  //   i18n.changeLanguage(i18n.language === "en" ? "es" : "en");
+  //   localStorage.setItem("lenguaje", leng);
+  // };
+
+  const toogleLenguaje = (len: string) => {
+    console.log(len);
+
+    // const leng = i18n.language === "en" ? "es" : "en";
+
+    i18n.changeLanguage(len);
+    localStorage.setItem("lenguaje", len);
   };
+
+  useEffect(() => {
+    function handleClickOutside(event?: any) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenu(false);
+        return;
+      }
+    }
+
+    window.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.addEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="absolute top-0 left-0 w-full px-4 sm:px-6 lg:px-8 bg-transparent">
@@ -69,14 +97,74 @@ const Header = () => {
         </div>
         <div className="md:flex md:items-center md:gap-5 mr-3">
           <div className="relative group cursor-pointer">
-            <div className="flex justify-center items-center gap-1 p-1">
+            <div
+              className="flex justify-center items-center gap-1 p-1"
+              ref={menuRef}
+            >
               <span className="text-[--text-body] text-base">
                 {i18n.language === "es" ? "Es" : "Eng"}
               </span>
               <World
                 className="sm:w-[23px]  h-[23px] cursor-pointer transform  transition duration-300 ease-in-out"
-                onClick={toogleLenguaje}
+                // onClick={toogleLenguaje}
+                onClick={() => setIsMenu(true)}
               />
+              <AnimatePresence>
+                {isMenu && (
+                  <motion.ul
+                    className="bg-[--dark-gray] absolute w-28 z-50 right-0 top-9 rounded-lg p-2 flex flex-col justify-between gap-1"
+                    initial={{ opacity: 0, y: "-50%" }}
+                    animate={{ opacity: 1, y: "0%" }}
+                    exit={{
+                      opacity: 0,
+                      y: "-50%",
+                      transition: { duration: "0.35" },
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: "100",
+                      duration: "0.75",
+                    }}
+                  >
+                    <li
+                      className={`py-1 px-2 flex items-center gap-4 rounded-md text-[--text-body] hover:bg-[--background-dark-blue] ${
+                        i18n.language === "es" && "bg-[--background-dark-blue]"
+                      } cursor-pointer`}
+                      onClick={() => {
+                        toogleLenguaje("es");
+                        setIsMenu(false);
+                      }}
+                    >
+                      <FlagIcon code="ES" className="rounded-[3px]" />
+                      Esp
+                    </li>
+                    <li
+                      className={`py-1 px-2 flex items-center gap-4 rounded-md text-[--text-body] hover:bg-[--background-dark-blue] ${
+                        i18n.language === "en" && "bg-[--background-dark-blue]"
+                      } cursor-pointer`}
+                      onClick={() => {
+                        toogleLenguaje("en");
+                        setIsMenu(false);
+                      }}
+                    >
+                      <FlagIcon code="US" className="rounded-[3px]" />
+                      Eng
+                    </li>
+                    <li
+                      className={`py-1 px-2 flex items-center gap-4 rounded-md text-[--text-body] hover:bg-[--background-dark-blue] ${
+                        i18n.language === "pt" && "bg-[--background-dark-blue]"
+                      } cursor-pointer`}
+                      onClick={() => {
+                        toogleLenguaje("pt");
+                        setIsMenu(false);
+                      }}
+                    >
+                      <FlagIcon code="PT" className="rounded-[3px]" />
+                      Por
+                    </li>
+                  </motion.ul>
+                )}
+              </AnimatePresence>
             </div>
             {/* <div className="absolute top-0 right-0 transition group-hover:translate-y-2 translate-y-0 opacity-0 invisible group-hover:opacity-100 z-50 group-hover:visible duration-500 ease-in-out group-hover:transform min-w-[220px] transform">
               <div className="relative top-6 py-5 px-4 dark:bg-[--background-soft-blue] rounded-md shadow-xl w-full text-[--text-body]">

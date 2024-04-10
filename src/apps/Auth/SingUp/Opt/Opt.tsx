@@ -134,7 +134,7 @@ const Opt = ({ email }: { handleBackRegister?: any; email?: any }) => {
           <div className="w-full flex justify-between items-center mb-4">
             <div className="flex items-center justify-center gap-1">
               <p className="text-right  text-[--text-body] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer">
-                Did not Recieve the Code?
+              {t("Auth.login.Otp.didnotCode")}
               </p>
               <InfoIcon id="my-anchor-element" className="cursor-pointer" />
               <CustomTooltip
@@ -177,7 +177,7 @@ const Opt = ({ email }: { handleBackRegister?: any; email?: any }) => {
             </div>
             {count === 0 ? (
               <p
-                className={`text-right  text-[--text-body] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer `}
+                className={`text-right  text-[--yellow] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer `}
                 onClick={generateSecurityCode}
               >
                 {t("Auth.login.Otp.resendCode")}

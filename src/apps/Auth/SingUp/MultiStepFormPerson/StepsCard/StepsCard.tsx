@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface StepsCardProps {
   circle?: any;
@@ -14,6 +15,7 @@ const StepsCard = ({
   width,
   onActionTriggered,
 }: StepsCardProps) => {
+  const [t, i18n] = useTranslation("global");
   const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
@@ -46,13 +48,14 @@ const StepsCard = ({
       transition={{ type: "spring", stiffness: 40, duration: 0.5 }}
     >
       <p className="text-left text-lg text-[--text-body] w-full mb-8">
-        Vank´s account creation : <span className="font-bold">Individual</span>
+        {t("Auth.register.multiStepForm.Person.tile")}{" "}
+        <span className="font-bold">Individual</span>
       </p>
       <ul
         className={`flex flex-col h-full items-center  left-0 relative before:absolute before:bg-[--light-grey] before:left-[7%] 2xl:before:left-[5.5%] before:top-0 before:transform before:translate-x-[10%] before:rounded-[5px] before:h-full before:w-[3px] before:z-[1px] before:transition-all before:duration-300 before:ease-in after:absolute after:bg-[--background-dark-blue] ${
           length === 3
             ? "after:w-[7px] after:h-[41%] after:left-[7%] after:2xl:left-[5.2%] after:bottom-0 transition-all duration-1000"
-            : "after:w-[7px] after:h-[21%] after:left-[7%] after:2xl:left-[5.2%] after:bottom-0 transition-all duration-1000"
+            : "after:w-[7px] after:h-[17%] after:left-[7%] after:2xl:left-[5.2%] after:bottom-0 transition-all duration-1000"
         }`}
       >
         <div

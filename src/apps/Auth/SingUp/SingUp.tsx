@@ -83,7 +83,7 @@ const SingUp = ({
         }`}
       >
         <p className="text-sm sm:text-base font-bold text-[--text-body] mb-3 leading-[20.8px] w-[217px] ">
-          Create an account
+          {t("Auth.register.title")}
         </p>
 
         <div className="w-full flex items-center gap-5 mb-4">
@@ -107,7 +107,9 @@ const SingUp = ({
                 <div className="bg-[--yellow] w-[11px] h-[11px] rounded-[3px]" />
               </div>
             </div>
-            <span className="text-balance text-[--text-body]">Person</span>
+            <span className="text-balance text-[--text-body]">
+              {t("Auth.register.selectAccount.one")}
+            </span>
           </div>
           <div className="flex justify-center items-center gap-4">
             <div className="flex items-center relative cursor-pointer">
@@ -131,7 +133,9 @@ const SingUp = ({
               </div>
               {/* )} */}
             </div>
-            <span className="text-balance text-[--text-body]">Company</span>
+            <span className="text-balance text-[--text-body]">
+              {t("Auth.register.selectAccount.two")}
+            </span>
           </div>
         </div>
 
@@ -201,14 +205,15 @@ const SingUp = ({
             />
           </div>
           <p className="text-sm sm:text-base text-[--text-body] sm:w-[355px]">
-            By creating an account , i agree to Vank´s{" "}
+            {t("Auth.register.policy.one")}{" "}
             <span className="font-bold underline cursor-pointer">
-              Terms of service
+              {t("Auth.register.policy.two")}
             </span>{" "}
-            and
+            {t("Auth.register.policy.three")}
             <span className="font-bold underline cursor-pointer ml-1">
-              privacy policy
+              {t("Auth.register.policy.four")}{" "}
             </span>
+            {t("Auth.register.policy.five")}
           </p>
         </div>
 
@@ -255,7 +260,9 @@ const SingUp = ({
         <div className="flex flex-col justify-center items-center space-y-4 mb-5">
           <div className="flex w-full justify-between gap-4 items-center">
             <hr className="border-[1px] border-[--light-grey] w-full  rounded-full" />
-            <p className="text-center text-base text-[--text-body]">Or</p>
+            <p className="text-center text-base text-[--text-body]">
+              {t("Auth.register.separator")}
+            </p>
             <hr className="border-[1px] border-[--light-grey]  w-full rounded-full" />
           </div>
           <div
@@ -263,21 +270,20 @@ const SingUp = ({
             className="min-w-[180px] h-[42px] py-[20px] px-[37px] dark:bg-[--dark-gray] p-2 flex justify-between items-center gap-5 rounded-[60px] cursor-pointer"
           >
             <span className="font-normal text-base text-[--text-body]">
-              Continue with <span className="font-bold">Google</span>
+              {t("Auth.register.continueWith")}{" "}
+              <span className="font-bold">Google</span>
             </span>
             <IconGoogle />
           </div>
         </div>
 
         <div className="w-full text-center text-[--text-body] text-sm sm:text-base font-normal transition-all duration-300 mb-4">
-          {/* {t("Auth.login.newUserPrompt")} */}
-          Already have an Account?
+          {t("Auth.register.newUserPrompt")}
           <span
             className=" text-[--yellow] ml-1 cursor-pointer font-bold"
             onClick={() => setIsvisible(false)}
           >
-            Login
-            {/* {t("Auth.login.createAccount")} */}
+            {t("Auth.register.createAccount")}
           </span>
         </div>
       </form>

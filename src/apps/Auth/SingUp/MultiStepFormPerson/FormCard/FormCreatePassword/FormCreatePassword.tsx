@@ -89,15 +89,17 @@ const FormCreatePassword = ({
           className="text-base text-[--text-body] mb-4 cursor-pointer w-[70px]"
           onClick={() => onActionTriggered("previous")}
         >
-          Back
+          {t("Auth.register.multiStepForm.Person.formCard.formFour.back")}
         </p>
         <h2 className="text-[--text-body] text-lg leading-[22.1px] font-bold mb-7">
-          {t("Auth.register.createPassword.setPassword")}
+          {t("Auth.register.multiStepForm.Person.formCard.formFour.title")}
         </h2>
         <div className="w-full grid grid-cols-1 gap-y-3 2xl:gap-y-2">
           <div className="w-full flex flex-col gap-y-[7px] mb-3">
             <span className="text-sm sm:text-base font-normal text-[--text-body]">
-              password
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formFour.textFieldOne.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -113,7 +115,9 @@ const FormCreatePassword = ({
                   }
                   showPassword={showPassword}
                   togglePasswordVisibility={togglePasswordVisibility}
-                  placeholder="Type password"
+                  placeholder={t(
+                    "Auth.register.multiStepForm.Person.formCard.formFour.textFieldOne.placeholder"
+                  )}
                 />
               )}
               name="password"
@@ -122,7 +126,9 @@ const FormCreatePassword = ({
           </div>
           <div className="w-full flex flex-col gap-y-[7px] 2xl:mb-3">
             <span className="text-sm sm:text-base font-normal text-[--text-body]">
-              Confirm Password
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formFour.textFieldTwo.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -140,7 +146,9 @@ const FormCreatePassword = ({
                   }
                   showPassword={showConfirmPassword}
                   togglePasswordVisibility={toggleConfirmPasswordVisibility}
-                  placeholder="Type password"
+                  placeholder={t(
+                    "Auth.register.multiStepForm.Person.formCard.formFour.textFieldOne.placeholder"
+                  )}
                 />
               )}
               name="confirmPassword"
@@ -171,7 +179,11 @@ const FormCreatePassword = ({
             ) : (
               <CheckGray className="w-[14px] h-[14px]" />
             )}
-            <p>{t("Auth.register.createPassword.rules.one")}</p>
+            <p>
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formFour.rules.one"
+              )}
+            </p>
           </li>
           <li
             className={`text-sm sm:text-base text-[--text-light-body] flex items-center gap-[10px] min-w-[164px]`}
@@ -183,7 +195,11 @@ const FormCreatePassword = ({
             ) : (
               <CheckGray className="w-[14px] h-[14px]" />
             )}
-            <p>{t("Auth.register.createPassword.rules.two")}</p>
+            <p>
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formFour.rules.two"
+              )}
+            </p>
           </li>
           <li
             className={`text-sm sm:text-base text-[--text-light-body] flex items-center gap-[10px]`}
@@ -195,7 +211,11 @@ const FormCreatePassword = ({
             ) : (
               <CheckGray className="w-[14px] h-[14px]" />
             )}
-            <p>{t("Auth.register.createPassword.rules.three")}</p>
+            <p>
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formFour.rules.three"
+              )}
+            </p>
           </li>
           <li
             className={`text-sm sm:text-base text-[--text-light-body] flex items-center gap-[10px]`}
@@ -210,7 +230,11 @@ const FormCreatePassword = ({
                 <Close className="w-[14px] h-[14px]" />
               )
             )}
-            <p>{t("Auth.register.createPassword.rules.four")}</p>
+            <p>
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formFour.rules.four"
+              )}
+            </p>
           </li>
         </ul>
 

@@ -140,8 +140,6 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
     onActionTriggered("next");
   };
 
-  console.log(errors);
-
   return (
     <div className="w-full h-full p-8 flex jucstify-center  items-center rounded-[32px]  bg-[--background-dark-blue] shadow-lg transition-all duration-300">
       <form
@@ -154,19 +152,20 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
           className="text-base text-[--text-body] mb-2 2xl:mb-4 cursor-pointer w-[70px]"
           onClick={() => onActionTriggered("previous")}
         >
-          Back
+          {t("Auth.register.multiStepForm.Person.formCard.formTwo.back")}
         </p>
         <h2 className="text-[--text-body] text-[17px]] leading-[22.1px] font-bold mb-1">
-          Identity Confirmation
+          {t("Auth.register.multiStepForm.Person.formCard.formTwo.title")}
         </h2>
         <p className="text-[15px] text-[--text-body] mb-4">
-          Please fill in exactly as it appears on your ID, passport, or driver's
-          license
+          {t("Auth.register.multiStepForm.Person.formCard.formTwo.subTitle")}
         </p>
         <div className="w-full grid grid-cols-2 items-center  gap-x-7 gap-y-3 mb-2 2xl:mb-5">
           <div className="w-full flex flex-col  col-span-2 gap-y-[6px]">
             <span className="sm:text-sm text-base font-normal text-[#FFFFFF]">
-              Nationality
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldOne.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, name } }) => (
@@ -181,7 +180,10 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
                       shouldValidate: true,
                     })
                   }
-                  placeholder="Search for data"
+                  // placeholder="Search for data"
+                  placeholder={t(
+                    "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldOne.placeholder"
+                  )}
                   isLoading={isLoading}
                   selected={selected.country}
                   setSelected={setSelected}
@@ -193,7 +195,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
           </div>
           <div className="w-full flex flex-col  gap-y-[6px]">
             <span className="sm:text-sm text-base font-normal text-[#FFFFFF]">
-              Document Type
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldTwo.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -216,7 +220,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
                       shouldValidate: true,
                     })
                   }
-                  placeholder="Search for data"
+                  placeholder={t(
+                    "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldTwo.placeholder"
+                  )}
                   isLoading={isLoading}
                   selected={selected.country}
                   setSelected={setSelected}
@@ -228,7 +234,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
           </div>
           <div className="w-full flex flex-col  gap-y-[6px]">
             <span className="sm:text-sm text-base font-normal text-[#FFFFFF]">
-              Document number
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldThree.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -242,7 +250,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
                   helperText={
                     errors["firstName"] ? errors["firstName"].message : ""
                   }
-                  placeholder="Enter First Name"
+                  placeholder={t(
+                    "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldThree.placeholder"
+                  )}
                 />
               )}
               name="documentNumer"
@@ -251,7 +261,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
           </div>
           <div className="w-full flex flex-col gap-y-[6px]">
             <span className="sm:text-sm text-base font-normal text-[--text-body]">
-              First Name
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldFour.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -265,7 +277,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
                   helperText={
                     errors["firstName"] ? errors["firstName"].message : ""
                   }
-                  placeholder="Enter First Name"
+                  placeholder={t(
+                    "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldFour.placeholder"
+                  )}
                 />
               )}
               name="firstName"
@@ -274,7 +288,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
           </div>
           <div className="w-full flex flex-col gap-y-[7px]">
             <span className="sm:text-sm text-base font-normal text-[#FFFFFF]">
-              Last Names
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldFive.label"
+              )}
             </span>
             <Controller
               render={({ field: { onChange, value, name } }) => (
@@ -288,7 +304,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
                   helperText={
                     errors["lastNames"] ? errors["lastNames"].message : ""
                   }
-                  placeholder="Enter Last Names"
+                  placeholder={t(
+                    "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldFive.placeholder"
+                  )}
                 />
               )}
               name="lastNames"
@@ -297,7 +315,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
           </div>
           <div className="w-full flex flex-col gap-y-[5px] ">
             <label className="sm:text-sm text-base text-[#EFF0F1]">
-              Date of birth
+              {t(
+                "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldFix.label"
+              )}
             </label>
             <div className="w-full flex gap-4 items-center">
               <Controller
@@ -376,7 +396,9 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
           <div className="w-full flex flex-col gap-y-[7px] mb-2">
             <div className="w-full flex items-center gap-2">
               <span className="sm:text-sm text-base font-normal text-[#FFFFFF]">
-                Phone Number
+                {t(
+                  "Auth.register.multiStepForm.Person.formCard.formTwo.textFieldSeven.label"
+                )}
               </span>
               {(visiblePhone || errors.phone) && (
                 <>
@@ -430,7 +452,7 @@ const FormCreateInfo = ({ onActionTriggered }: { onActionTriggered?: any }) => {
           onClick={handleSubmit(onSubmit)}
           disabled={!isValid}
         >
-          Continuar
+          {t("Auth.register.multiStepForm.Person.formCard.formTwo.button")}
         </button>
       </form>
 

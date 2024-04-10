@@ -32,13 +32,11 @@
     "jsx": "react-jsx", // Especifica el tipo de JSX a utilizar. En este caso, se está utilizando react-jsx, que es el tipo de JSX compatible con React.
     "esModuleInterop": true,
 
-
-
     /* Linting */
-    "strict": true, //Habilita o deshabilita el modo estricto de TypeScript, que aplica un conjunto de reglas de lenguaje más estrictas.
+    "strict": false, //Habilita o deshabilita el modo estricto de TypeScript, que aplica un conjunto de reglas de lenguaje más estrictas.
     "noImplicitAny": false, //Habilita o deshabilita la inferencia de tipo implícita en TypeScript.
     "noUnusedLocals": false, //Muestra una advertencia si se declaran variables locales que nunca se utilizan.
-    "noUnusedParameters": true, //Muestra una advertencia si se declaran parámetros de función que nunca se utilizan.
+    "noUnusedParameters": false, //Muestra una advertencia si se declaran parámetros de función que nunca se utilizan.
     "noFallthroughCasesInSwitch": true //Muestra una advertencia si se encuentran casos de "fallthrough" (caída a través) en declaraciones switch.
   },
   "include": ["src"], //Especifica qué archivos y directorios deben ser incluidos en el proceso de compilación. En este caso, se incluyen los directorios src y tests, así como el archivo

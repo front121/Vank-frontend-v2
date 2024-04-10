@@ -133,16 +133,25 @@ const PassResetVerifier = () => {
             className="mb-5 text-base font-normal leading-[20.8px] text-[--text-body] cursor-pointer opacity-[0.6]"
             onClick={() => navigate("/Auth/ForgotPassword")}
           >
-            {t("Auth.register.opt.back")}
+            {t("Auth.login.forgotPassword.Otp.back")}
           </p>
           <h2 className="text-[--text-body] text-base leading-[22.1px] font-bold mb-3">
-            Verify your Email
+            {t("Auth.login.forgotPassword.Otp.title")}
           </h2>
           <p className="mb-4 w-full sm:w-[600px] text-sm sm:text-base font-normal text-[--text-body] leading-[20.8px]">
-            The <span className="text-[--yellow]">activation/ recovery</span>{" "}
-            code of your account was{" "}
-            <span className="text-[--yellow]">sent</span> to your{" "}
-            <span className="text-[--yellow]">email</span> address
+            {t("Auth.login.forgotPassword.Otp.paragraph.paragraphOne")}{" "}
+            <span className="text-[--yellow]">
+              {t("Auth.login.forgotPassword.Otp.paragraph.paragraphTwo")}{" "}
+            </span>
+            {t("Auth.login.forgotPassword.Otp.paragraph.paragraphThree")}{" "}
+            <span className="text-[--yellow]">
+              {t("Auth.login.forgotPassword.Otp.paragraph.paragraphFour")}{" "}
+            </span>
+            {t("Auth.login.forgotPassword.Otp.paragraph.paragraphFive")}{" "}
+            <span className="text-[--yellow]">
+              {t("Auth.login.forgotPassword.Otp.paragraph.paragraphSix")}{" "}
+            </span>
+            {t("Auth.login.forgotPassword.Otp.paragraph.paragraphSeven")}{" "}
           </p>
 
           <div className=" flex flex-col overflow-hidden">
@@ -157,7 +166,7 @@ const PassResetVerifier = () => {
             <div className="w-full flex justify-between items-center mb-4">
               <div className="flex items-center justify-center gap-1">
                 <p className="text-right  text-[--text-body] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer">
-                  Did not Recieve the Code?
+                  {t("Auth.login.forgotPassword.Otp.didnotCode")}
                 </p>
                 <InfoIcon id="my-anchor-element" className="cursor-pointer" />
                 <CustomTooltip
@@ -203,14 +212,14 @@ const PassResetVerifier = () => {
               </div>
               {count === 0 ? (
                 <p
-                  className={`text-right  text-[--text-body] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer `}
+                  className={`text-right  text-[--yellow] text-[13px] sm:text-sm font-normal leading-[18.2px] cursor-pointer `}
                   onClick={generateSecurityCode}
                 >
-                  {t("Auth.login.Otp.resendCode")}
+                  {t("Auth.login.forgotPassword.Otp.resendCode")}
                 </p>
               ) : (
                 <span className="text-[13px] sm:text-sm text-[--text-body] font-normal">
-                  {t("Auth.login.Otp.resend")} {count}s
+                  {t("Auth.login.forgotPassword.Otp.resend")} {count}s
                 </span>
               )}
             </div>
@@ -225,7 +234,7 @@ const PassResetVerifier = () => {
               className={`flex absolute w-full justify-center items-center transition-all duration-500 `}
             >
               <span className="min-w-[70px] px-3 transition-all duration-500">
-                Continue
+                {t("Auth.login.forgotPassword.Otp.OtpButton")}
               </span>
               <Login className="w-[28px] transition-all duration-500" />
             </div>

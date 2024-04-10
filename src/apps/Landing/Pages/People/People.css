@@ -1,0 +1,5 @@
+.gradiente-lineal {
+    /* Prefijos para navegadores */
+    background: -webkit-linear-gradient(left, #FFED00, #FFA723); /* Safari 5.1-6, Chrome 10-25 */
+    background: linear-gradient(to right, #FFED00, #FFA723); /* Estándar */
+  }

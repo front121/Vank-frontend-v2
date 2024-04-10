@@ -32,6 +32,7 @@ const CustomInputOtp = ({
     const newOtp = [...otp];
 
     newOtp[index] = value.substring(value.length - 1);
+    
     setOtp(newOtp);
 
     // submit trigger
