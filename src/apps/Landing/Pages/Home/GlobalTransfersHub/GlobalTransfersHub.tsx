@@ -6,16 +6,16 @@ import IconSecured from "@/assets/Icon/IconSecured.svg";
 
 const GlobalTransfersHub = () => {
   return (
-    <div className="w-full min-h-screen bg-[#F2F5F7] pt-[70px] pb-[70px]">
-      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto">
-        <div className="w-full flex flex-col items-center justify-center mb-20">
+    <div className="w-full h-full xl:min-h-screen bg-[#F2F5F7] py-[60px] xl:py-[70px] overflow-hidden">
+      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto px-12">
+        <div className="w-full flex flex-col items-center justify-center mb-12 xl:mb-20">
           <span className="text-lg text-[#161616] border-b-2 border-[--yellow] leading-none mb-3">
             VankCard
           </span>
-          <h2 className="w-[760px] text-[55px] leading-[64px] text-center font-medium mb-3">
+          <h2 className="w-full xl:w-[760px] text-[50px] xl:text-[55px] leading-[54px] xl:leading-[64px] text-center font-medium mb-3">
             Porque como tú, nos cansamos de las fronteras
           </h2>
-          <p className="text-xl leading-[28px] text-center mb-10">
+          <p className="text-xl leading-[28px] text-center mb-7 xl:mb-10">
             Transferencias de dinero internacionales rápidas, flexibles y
             seguras en todo el mundo.
           </p>
@@ -45,8 +45,8 @@ const GlobalTransfersHub = () => {
             </svg>
           </div>
         </div>
-        <div className="w-full grid grid-cols-4 gap-x-[30px]">
-          <div className="w-full max-w-[274px] h-[250px] flex flex-col gap-4">
+        <div className="w-full grid grid-cols-2 xl:grid-cols-4 items-center justify-center gap-14 xl:gap-[30px]">
+          <div className="w-full xl:w-[274px] h-[250px] flex flex-col gap-4">
             <img
               src={IconReportingTwo}
               alt=""
@@ -59,7 +59,7 @@ const GlobalTransfersHub = () => {
               Obtenga transferencias el mismo día, incluso fines de semana.
             </p>
           </div>
-          <div className="w-full max-w-[274px] h-[250px] flex flex-col gap-4">
+          <div className="w-full xl:w-[274px] h-[250px] flex flex-col gap-4">
             <img
               src={IconGlobal}
               alt=""
@@ -71,7 +71,7 @@ const GlobalTransfersHub = () => {
               múltiples divisas.
             </p>
           </div>
-          <div className="w-full max-w-[274px] h-[250px] flex flex-col gap-4">
+          <div className="w-full xl:w-[274px] h-[250px] flex flex-col gap-4">
             <img
               src={IconReportingOne}
               alt=""
@@ -82,7 +82,7 @@ const GlobalTransfersHub = () => {
               Evita cargos fantasma e innecesarios transfiriendo con Vank.
             </p>
           </div>
-          <div className="w-full max-w-[274px] h-[250px] flex flex-col gap-4">
+          <div className="w-full xl:w-[274px] h-[250px] flex flex-col gap-4">
             <img
               src={IconSecured}
               alt=""

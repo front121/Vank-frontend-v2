@@ -1,5 +1,7 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import WelcomeCard from "@/assets/Icon/WelcomeCard.svg";
+import WelcomePerson from "@/assets/Icon/WelcomePerson.svg";
 import Container from "@/assets/Icon/Container.svg";
 import LogoBloomberg from "@/assets/Icon/LogoBloomberg.svg";
 import LogoUsaToday from "@/assets/Icon/LogoUsaToday.svg";
@@ -9,9 +11,9 @@ import LogoTechRadar from "@/assets/Icon/LogoTechRadar.svg";
 
 const Welcome = () => {
   return (
-    <div className=" bg-[--yellow] flex flex-col items-center pt-[7rem]">
-      <div className="max-w-[800px] w-full  mx-auto flex flex-col items-center pt-[40px]">
-        <div className="flex items-center gap-[12px] py-[4px] pl-[10px] pr-[4px] rounded-[16px] bg-[#FFFCD6] max-w-max mb-4 cursor-pointer">
+    <div className="relative bg-[--yellow] flex flex-col items-center pt-[7rem] overflow-hidden">
+      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex flex-col items-center pt-[40px] xl:px-0 px-12">
+        {/* <div className="flex items-center gap-[12px] py-[4px] pl-[10px] pr-[4px] rounded-[16px] bg-[#FFFCD6] max-w-max mb-4 cursor-pointer">
           <h2 className="px-[10px] py-[2px] rounded-[16px] bg-[--yellow] text-[--background-dark-black] text-[14px] font-medium">
             Nuevo
           </h2>
@@ -42,11 +44,11 @@ const Welcome = () => {
               </g>
             </svg>
           </div>
-        </div>
-        <h2 className="text-[70px] text-[--background-dark-black] text-center leading-[80px] font-medium mb-3">
+        </div> */}
+        <h2 className="text-[45px] xl:text-[60px] text-[--background-dark-black] text-center leading-[50px] xl:leading-[60px] font-medium mb-3">
           Pago sin fronteras simplificado
         </h2>
-        <p className="max-w-[672px]  text-center text-xl mb-7">
+        <p className="w-[500px] xl:max-w-[700px] text-center text-[17px] mb-7">
           Ayudamos a individuos y empresas a enviar y recibir dinero{" "}
           <span className="font-bold">
             globalmente, de forma segura y sin impuestos bancarios.
@@ -105,42 +107,65 @@ const Welcome = () => {
           </div>
         </div>
       </div>
-      <img src={Container} alt="" className="object-cover mt-12" />
-      <div className="w-full pt-[40px] pr-0 pb-[40px] pl-0 bg-[#FFFFFF] -mt-10 relative z-10 rounded-t-[32px]">
-        <div className="max-w-[1050px] h-[24px] mx-auto flex justify-between items-center">
-          <p className="w-[250px] text-base leading-[24px]">As featured on:</p>
-          <Marquee
-            //   gradient
-            pauseOnHover={true}
-            speed={100}
-            className="w-full flex items-center overflow-hidden"
-          >
-            <img
-              src={LogoUsaToday}
-              alt=""
-              className="cursor-pointer object-cover pr-10"
-            />
-            <img
-              src={LogoBloomberg}
-              alt=""
-              className=" cursor-pointer object-cover pr-10"
-            />
-            <img
-              src={LogoTechCrunch}
-              alt=""
-              className="cursor-pointer object-cover pr-10"
-            />
-            <img
-              src={LogoForbes}
-              alt=""
-              className="cursor-pointer object-cover pr-10"
-            />
-            <img
-              src={LogoTechRadar}
-              alt=""
-              className="cursor-pointer object-cover pr-10"
-            />
-          </Marquee>
+
+      <div className="absolute w-[420px] h-[700px] left-0 bottom-6 hidden xl:block">
+        <img
+          src={WelcomePerson}
+          alt=""
+          className="w-full h-full object-contain"
+        />
+      </div>
+      <div className="absolute w-[320px] h-[410px] -right-1 top-[24%] hidden xl:block">
+        <img
+          src={WelcomeCard}
+          alt=""
+          className="w-full h-full object-contain"
+        />
+      </div>
+
+      <img
+        src={Container}
+        alt=""
+        className="object-contain mt-12 w-full xl:w-[1300px] xl:h-[440px] z-10"
+      />
+      <div className="w-full px-12 xl:px-0 pt-[40px] xl:pr-0 xl:pl-0 pb-[40px]  bg-[#FFFFFF] -mt-10 relative z-10 rounded-t-[32px]">
+        <div className="max-w-[1050px] h-[24px] mx-auto flex justify-between gap-3 items-center">
+          <p className="min-w-max xl:w-[250px] text-base leading-[24px]">
+            As featured on:
+          </p>
+          <div className="w-full flex items-center overflow-hidden">
+            <Marquee
+              //   gradient
+              pauseOnHover={true}
+              speed={100}
+            >
+              <img
+                src={LogoUsaToday}
+                alt=""
+                className="cursor-pointer object-cover pr-10"
+              />
+              <img
+                src={LogoBloomberg}
+                alt=""
+                className=" cursor-pointer object-cover pr-10"
+              />
+              <img
+                src={LogoTechCrunch}
+                alt=""
+                className="cursor-pointer object-cover pr-10"
+              />
+              <img
+                src={LogoForbes}
+                alt=""
+                className="cursor-pointer object-cover pr-10"
+              />
+              <img
+                src={LogoTechRadar}
+                alt=""
+                className="cursor-pointer object-cover pr-10"
+              />
+            </Marquee>
+          </div>
         </div>
       </div>
     </div>

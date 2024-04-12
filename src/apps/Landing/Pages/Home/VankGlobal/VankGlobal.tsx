@@ -4,23 +4,19 @@ import CheckIcon from "@/assets/Icon/CheckIcon.svg";
 
 const VankGlobal = () => {
   return (
-    <div className="w-full min-h-screen bg-[#161616] pt-[7rem] pb-[7rem]">
-      <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex gap-16 2xl:gap-20">
-        <div className="w-[60%] h-[550px] flex justify-center items-center">
-          <img
-            src={CardCrypto}
-            alt=""
-            className=" object-cover"
-          />
+    <div className="relative w-full h-full xl:min-h-screen bg-[#161616] py-[60px] xl:py-[70px] overflow-hidden">
+      <div className=" max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex gap-16 2xl:gap-20 px-12 xl:px-0 ">
+        <div className="w-[60%] h-[550px] flex justify-center items-center absolute bottom-0 -right-7 opacity-35 xl:opacity-100 xl:relative">
+          <img src={CardCrypto} alt="" className=" object-cover" />
         </div>
-        <div className="w-[40%] flex flex-col justify-center">
+        <div className="w-full xl:w-[40%] flex flex-col justify-center z-10 xl:z-0">
           <h2 className="max-w-[84px] text-lg leading-none border-b-2 border-[#6B6B6B] text-[#FFED00] mb-4">
             VankCard
           </h2>
-          <h2 className="text-[48px] leading-[55px] text-[#FFFFFF] mb-5">
+          <h2 className="w-[500px] xl:w-full text-[48px] leading-[55px] text-[#FFFFFF] mb-5">
             Usa tu cuenta Vank en todo el mundo
           </h2>
-          <p className="text-base leading-[28px] text-[#FFFFFF] mb-6">
+          <p className="w-[500px] xl:w-full text-base leading-[28px] text-[#FFFFFF] mb-6">
             Disfruta de la flexibilidad que te brinda Vank a nivel mundial.
             Contamos con el respaldo de VISA.
           </p>

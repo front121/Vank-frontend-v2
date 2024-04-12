@@ -50,7 +50,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full mx-auto xl:pl-[97px] pl-4 xl:pr-0 pr-4 bg-[--background-dark-black] z-50">
-      <nav className="flex justify-between items-center py-4 bg-transparent ">
+      <nav className="flex justify-between items-center py-4 bg-transparent">
         <div className="flex items-center gap-20">
           <a href="/" className="w-[84px] h-[29px]">
             <img src={Vank} className="w-full h-full object-cover" alt="" />
@@ -60,15 +60,15 @@ const Header = () => {
           <ul className="hidden md:flex gap-12 items-center">
             {navItems.map(({ path, title }) => (
               <li key={path} className="text-base text-[--text-body]">
-                <NavLink
-                  to={path}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "border-b-2 border-[--yellow] text-[#FFFFFF]"
-                      : "text-[#D9D9D9]"
-                  }
-                >
-                  {title}
+                <NavLink to={path}>
+                  {({ isActive, isPending, isTransitioning }) => (
+                    <div className="relative text-[#FFFFFF]">
+                      {title}
+                      {isActive && (
+                        <span className="absolute bottom-0 left-0 w-[70%] h-[2px] bg-[--yellow]" />
+                      )}
+                    </div>
+                  )}
                 </NavLink>
               </li>
             ))}
@@ -76,7 +76,7 @@ const Header = () => {
         </div>
 
         {/* sing and login btn */}
-        <div className="hidden  lg:flex items-center gap-x-6 pr-2">
+        <div className="flex items-center gap-x-6 pr-2">
           <div className="text-base font-bold space-x-2 hidden lg:block">
             <Link
               to="/Auth"

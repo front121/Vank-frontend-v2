@@ -10,9 +10,9 @@ import Youtube from "@/assets/Icon/Youtube.svg";
 
 const Footer = () => {
   return (
-    <div className="w-full min-h-[530px] bg-[#F2F5F7] pt-[90px] pb-[30px]">
+    <div className="w-full min-h-[530px] bg-[#F2F5F7] py-[60px] xl:py-[70px] overflow-hidden">
       <div className="max-w-[1080px] 2xl:max-w-[1200px] mx-auto flex flex-col gap-2">
-        <div className="w-full flex justify-center gap-x-28 mb-12">
+        <div className="w-full flex justify-center gap-x-28 mb-7 xl:mb-12 2xl:mb-4 xl:px-0 px-5">
           <div className="w-[153px] h-[52px]">
             <img
               src={LogoFooter}
@@ -20,7 +20,7 @@ const Footer = () => {
               className="w-full h-full object-contain"
             />
           </div>
-          <div className="w-full grid grid-cols-4 gap-3">
+          <div className="w-full grid grid-cols-3 xl:grid-cols-4 gap-3">
             <div className="w-full h-full flex flex-col gap-[24px] ">
               <h6 className="font-bold pt-2">Productos</h6>
               <ul className="flex flex-col gap-3">
@@ -30,9 +30,9 @@ const Footer = () => {
                 <li className="py-1 text-[#161616] cursor-pointer">
                   Para empresas
                 </li>
-                <li className="py-1 text-[#161616] cursor-pointer">
+                {/* <li className="py-1 text-[#161616] cursor-pointer">
                   Multi-currency account
-                </li>
+                </li> */}
                 <li className="py-1 text-[#161616] cursor-pointer">
                   Vank Card
                 </li>
@@ -56,7 +56,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="w-full h-full flex flex-col gap-[24px] ">
+            <div className="w-full h-full flex flex-col gap-[24px] mb-3 xl:mb-0">
               <h6 className="font-bold pt-2">Recursos</h6>
               <ul className="flex flex-col gap-3">
                 <li className="py-1 text-[#161616] cursor-pointer">Blog</li>
@@ -72,29 +72,29 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="w-full h-full flex flex-col">
-              <h6 className="font-bold pt-2 text-[#727372] mb-[24px]">
+            <div className="w-full h-full flex flex-row xl:col-span-1 col-span-3  xl:flex-col gap-3 xl:gap-0">
+              <h6 className="w-[150px] xl:max-w-max font-bold pt-2 text-[#727372] xl:mb-[24px]">
                 Pronto <span className="text-[#161616]">Descarga la App</span>
               </h6>
-              <div className="max-w-full flex items-center justify-evenly py-3 px-4 rounded-[40px] bg-[#161616] text-[#F2F5F7] mb-[20px] cursor-pointer">
-                <img src={AppleLogo} alt="" />
+              <div className="max-w-full flex items-center justify-evenly py-3 px-4 rounded-[40px] bg-[#161616] text-[#F2F5F7] xl:mb-[20px] cursor-pointer">
+                <img src={AppleLogo} alt="" className="" />
                 <div className="flex flex-col items-center gap-[3px] text-[#FFED00]">
                   <p className="text-[12px] leading-none">Download on The</p>
-                  <p className="text-xl leading-none">App Store</p>
+                  <p className="text-lg xl:text-xl leading-none">App Store</p>
                 </div>
               </div>
               <div className="max-w-full flex items-center justify-evenly py-3 px-4 rounded-[40px] bg-[#161616] text-[#F2F5F7] cursor-pointer">
                 <img src={PlayLogo} alt="" />
                 <div className="flex flex-col items-center gap-[3px] text-[#FFED00]">
                   <p className="text-[12px] leading-none">Download on The</p>
-                  <p className="text-xl leading-none">App Store</p>
+                  <p className="text-lg xl:text-xl leading-none">App Store</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <hr className="mb-12" />
-        <div className="w-full flex items-center justify-between pl-2">
+        <hr className="mb-5 xl:mb-12 2xl:mb-4" />
+        <div className="w-full flex items-center justify-between px-12 xl:pl-2">
           <h3 className="mr-12">Copyright © Vank 2024.</h3>
           <div className="flex items-center gap-2">
             <div className="group relative">

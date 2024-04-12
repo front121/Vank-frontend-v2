@@ -72,11 +72,11 @@ const SuccessStories = ({
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#F2F5F7] pt-[110px] pb-[110px] pl-[6rem] 2xl:pl-[12rem]">
+    <div className="w-full h-full xl:min-h-screen bg-[#F2F5F7] py-[60px] xl:py-[110px] pl-[2rem] xl:pl-[6rem] 2xl:pl-[12rem] overflow-hidden">
       <h3 className="max-w-[105px] text-lg leading-none border-b-2 border-[#FFED00] text-[#161616] mb-3">
         Testimonios
       </h3>
-      <h2 className="text-[58px] leading-[64px] mb-12">
+      <h2 className="text-[50px] xl:text-[58px] leading-[55px] xl:leading-[64px] mb-12">
         Su éxito también es nuestro
       </h2>
       <motion.div
